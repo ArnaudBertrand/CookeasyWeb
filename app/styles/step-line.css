@@ -1,0 +1,27 @@
+step-line{
+  text-align: center;
+  margin: 0px auto;
+}
+
+step-line circle {
+  fill: #FFC07F;
+  stroke: #999;
+}
+step-line circle.current {
+  stroke: black;
+  fill: #ddd;
+}
+step-line circle:not(.current):hover {
+  stroke: #FFC07F;
+  stroke-width: 7px;
+  pointer: cursor;
+}
+step-line line{
+  stroke-width: 2px;
+  stroke: #FFC07F;
+}
+
+step-line text{
+  font-weight: bold;
+  pointer-events: none;
+}

@@ -1,0 +1,93 @@
+<div class="container create-recipe">
+  <step-line graph="lineGraph" steps="stepsInfo" current="currentStep.number" step-clicked="goTo"></step-line>
+  <!-- Recipe information -->
+  <div ng-show="stepInformation">
+    <h2 class="title">Create a recipe</h2>
+    <div class="recipe-title">
+      <input type="text" ng-class="{'input-error' : errors.name}" ng-model="recipe.name" placeholder="Name of the recipe" />
+      <br /><span class="error-details">{{errors.name}}</span>
+    </div>
+    <p>
+      This is a dish for  <input type="number" min="1" class="input top-input" placeholder="Nb" ng-model="recipe.nbPerson" ng-class="{'input-error': errors.nbPerson}" /> persons
+      and take <input type="number" min="1" class="input top-input" placeholder="Nb" ng-model="recipe.time" ng-class="{'input-error': errors.time}" /> mins to cook.
+      <br /><span class="error-details">{{errors.nbPerson}} {{errors.time}}</span>
+    </p>
+    <p>
+      Course:
+      <select ng-model="recipe.course" class="input" ng-class="{'input-error': errors.course}" ng-options="course.name for course in courses">
+        <option value="">Pick a course</option>
+      </select>
+      <br /><span class="error-details">{{errors.course}}</span>
+    </p>
+    <p>Difficulty:
+      <input type="number" min="1" max="5" class="input" ng-model="recipe.difficulty" ng-class="{'input-error': errors.difficulty}" />
+      <span class="info">(Between 1 and 5)</span>
+      <br /><span class="error-details">{{errors.difficulty}}</span>
+    </p>
+    <div class="ingredients">
+      <h3>Ingredients</h3>
+      <ul class="list">
+        <li ng-repeat="ingredient in recipe.ingredients">
+          {{ingredient.qte + ingredient.unit }} of {{ingredient.name}}
+          <a ng-click="deleteIngredient($index)"> (remove)</a>
+        </li>
+      </ul>
+      <div class="list-add">
+        <input type="text" class="input name" placeholder="Name" ng-model="currentIngredient.name" ng-class="{'input-error': errors.ingredient.name}" />
+        <input type="number" class="input" min="0" placeholder="Quantity" ng-model="currentIngredient.qte" ng-class="{'input-error': errors.ingredient.qte}" />
+        <input type="text" class="input" placeholder="Unit" ng-model="currentIngredient.unit" ng-class="{'input-error': errors.ingredient.unit}" />
+        <button ng-click="addIngredient()" class="btn bg-primary">+</button>
+      </div>
+      <span class="error-details">{{errors.ingredient.name}} {{errors.ingredient.qte}} {{errors.ingredient.unit}}</span>
+    </div>
+    <div class="utensils">
+      <h3>Utensils required</h3>
+      <ul class="list">
+        <li ng-repeat="utensil in recipe.utensils">
+          {{ utensil }}
+          <a ng-click="deleteUtensil($index)"> (remove)</a>
+        </li>
+      </ul>
+      <div class="list-add">
+        <input type="text" class="input" placeholder="Name" ng-model="currentUtensil" />
+        <button ng-click="addUtensil()" class="btn bg-primary">+</button>
+      </div>
+      <span class="error-details">{{errors.utensil}}</span>
+    </div>
+    <div class="next-step">
+      <button class="bg-primary" ng-click="nextStep()">Next</button>
+    </div>
+  </div>
+
+  <!-- Recipe steps -->
+  <div ng-show="stepCreations">
+    <div class="previous" ng-click="previousStep()">
+      <i class="fa fa-chevron-circle-left fa-5x"></i>
+    </div>
+    <div class="step">
+      <h2 class="title">Step {{currentStep.number}}</h2>
+      <div class="timer" style="text-align:left; width: 80%; margin: 0px auto;">
+        <a ng-hide="showTimer" ng-click="toggleTimer()"><i class="fa fa-clock-o"></i> Add timer</a>
+        <a ng-show="showTimer" ng-click="toggleTimer()"><i class="fa fa-clock-o"></i> Remove timer</a>
+        <input ng-show="showTimer" type="time" ng-model="currentStep.time" />
+      </div>
+      <div class="action">
+        <textarea ng-model="currentStep.action" placeholder="To do..."></textarea>
+      </div>
+      <picture-upload image-uploaded="currentStep.picture" target-url="pictureUrl" target-tags="pictureStepTags" callback="setUploadedPicture"></picture-upload>
+      <div class="next-step">
+        <button class="bg-primary" ng-click="deleteStep()">Delete</button>
+        <button class="bg-primary" ng-click="lastStep()">Terminate</button>
+      </div>
+    </div>
+    <div class="next">
+      <i class="fa fa-chevron-circle-right fa-5x" ng-click="nextStep()"></i>
+    </div>
+  </div>
+
+  <!-- Final step -->
+  <div ng-show="stepFinal">
+    <picture-upload image-uploaded="recipe.picture" target-url="pictureUrl" target-tags="pictureFinalTags" callback="setUploadedPicture"></picture-upload>
+    <button class="bg-primary" ng-click="createRecipe()">Submit your recipe !</button>
+  </div>
+</div>

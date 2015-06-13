@@ -1,0 +1,47 @@
+<div ng-if="notConnected">
+  <div ng-show="error" class="alert alert-danger">{{error}}</div>
+  <h2>Login</h2>
+  <form name="loginForm" ng-submit="login()" role="form">
+      <div class="form-group">
+        Username or E-mail
+        <input type="text" name="userId" class="form-control" ng-model="userLogin.id" required />
+        <span ng-show="loginForm.userId.$dirty && loginForm.userId.$error.required" class="help-block">Username or E-mail is required</span>
+      </div>
+      <div class="form-group">
+        Password
+        <input type="password" name="password" class="form-control" ng-model="userLogin.password" ng-minlength="6" required />
+        <span ng-show="loginForm.password.$dirty && loginForm.password.$error.required" class="help-block">Password is required</span>
+      </div>
+      <div class="form-actions">
+        <button ng-type="submit" ng-disabled="loginForm.$invalid || dataLoading" class="btn btn-danger">Login</button>
+        <i ng-if="dataLoading" class="fa fa-spinner"></i>
+      </div>
+  </form>
+  <h2>Register</h2>
+  <form name="registerForm" ng-submit="register()" role="form">
+      <div class="form-group">
+        E-mail
+        <input type="email" name="email" class="form-control" ng-model="userSignup.email" required />
+        <span ng-show="registerForm.email.$dirty && registerForm.email.$error.required" class="help-block">E-mail is required</span>
+      </div>
+      <div class="form-group">
+        Password
+        <input type="password" name="password" class="form-control" ng-model="userSignup.password" ng-minlength="6" required />
+        <span ng-show="registerForm.password.$dirty && registerForm.password.$error.required" class="help-block">Password is required</span>
+      </div>
+      <div class="form-group">
+        Confirm password
+        <input type="password" name="confirmPassword" class="form-control" ng-model="userSignup.confirmPassword" ng-minlength="6" required />
+        <span ng-show="registerForm.confirmPassword.$dirty && registerForm.confirmPassword.$error.required" class="help-block">Password is required</span>
+      </div>
+      <div class="form-group">
+        Username
+        <input type="text" name="username" class="form-control" ng-model="userSignup.username" ng-minlength="2" required />
+        <span ng-show="registerForm.username.$dirty && registerForm.username.$error.required" class="help-block">Password is required</span>
+      </div>
+      <div class="form-actions">
+        <button ng-type="submit" ng-disabled="registerForm.$invalid || dataLoading" class="btn btn-danger">Register</button>
+        <i ng-if="dataLoading" class="fa fa-spinner"></i>
+      </div>
+  </form>
+</div>

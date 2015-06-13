@@ -1,0 +1,118 @@
+<div class="container display-recipe">
+  <!-- Step selector -->
+  <step-line graph="lineGraph" steps="stepsInfo" ng-hide="showInfoPage" current="currentStep.number" step-clicked="goTo"></step-line>
+  <!-- Informations -->
+  <div ng-show="showInfoPage">
+    <h1>{{recipe.name}}</h1>
+    <div class="recipe-info">
+      <span class="difficulty">
+        Difficulty:
+        <i ng-repeat="t in [] | range: recipe.difficulty" class="fa fa-star">
+        </i><i ng-repeat="t in [] | range: (5-recipe.difficulty)" class="fa fa-star-o"></i>
+      </span>
+      <span><i class="fa fa-clock-o"></i> {{recipe.time}} mins</span>
+      <span><i class="fa fa-cutlery"></i> {{recipe.nbPerson}} person(s)</span>
+    </div>
+    <div class="recipe-image">
+      <img ng-src="{{recipe.picture.url}}" ng-click="showMainPicture()" />
+    </div>
+    <div class="recipe-create-info">
+      Created on {{recipe.createdOn | date}} by {{recipe.author}}.
+    </div>
+    <div ng-show="recipe.utensils.length">
+      <h3>Utensils</h3>
+      <ul>
+        <li ng-repeat="utensil in recipe.utensils">
+          {{utensil}}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="list-title">Ingredients</h3>
+      <ul class="list">
+        <li ng-repeat="ingredient in recipe.ingredients">
+          {{ingredient.qte}} {{ingredient.unit}} of {{ingredient.name}}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="list-title">Steps</h3>
+      <ul class="list">
+        <li ng-repeat="step in recipe.steps">
+          {{step.number}} | {{step.action}}
+        </li>
+      </ul>
+    </div>
+    <div class="recipe-actions">
+      <button class="bg-primary" ng-click="nextStep()">Start Recipe</button>
+    </div>
+  </div>
+
+  <!-- Steps -->
+  <div ng-show="showStep" class="current-step">
+    <div class="previous" ng-click="previousStep()">
+      <i class="fa fa-chevron-circle-left fa-3x"></i>
+    </div>
+    <div class="step">
+      <h2>Step {{currentStep.number}}</h2>
+      <div class="action">
+        {{currentStep.action}}
+      </div>
+      <img ng-src="{{currentStep.picture.url}}" />
+      Timer: {{currentStep.time}}
+    </div>
+    <div class="next">
+      <i class="fa fa-chevron-circle-right fa-3x" ng-click="nextStep()"></i>
+    </div>
+  </div>
+
+  <!-- End of steps -->
+  <div class="after-steps" ng-show="stepsFinished">
+    <h2>Congratulations !</h2>
+    <p>Share a picture of your result with the community :)</p>
+    <picture-upload target-url="picturesUploadUrl" target-tags="picturesUploadTags" callback="afterPictureUpload" ng-hide="done"></picture-upload>
+    <div ng-show="done">
+      <p>Upload finished</p>
+      <h2>Thanks for sharing !</h2>
+    </div>
+  </div>
+
+  <!-- Thumbnails -->
+  <div ng-if="recipe.pictures.length" ng-show="showInfoPage || stepsFinished" class="thumbnail-area">
+    <h3>Pictures of this recipe by other users:</h3>
+    <div class="thumbnails">
+      <div ng-repeat="pic in recipe.pictures | orderObjectBy:'createdOn':-1 track by $index" class="thumbnail" ng-click="openGallery($index)">
+        <img ng-src="{{pic.miniThumbUrl}}" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Comments -->
+  <div ng-show="showInfoPage || stepsFinished" class="comment-area">
+    <div class="add-comment">
+      <div class="add-mark" ng-mouseleave="markEvent.mouseLeave()" ng-mouseup="markEvent.mouseUp()">
+        Give a mark: <i ng-repeat="t in [] | range: tempMark" class="fa fa-star" ng-mouseenter="markEvent.mouseEnter(false,$index)"/>
+      </i><i ng-repeat="t in [] | range: (5-tempMark)" class="fa fa-star-o" ng-mouseenter="markEvent.mouseEnter(true,$index)"></i>
+      </div>
+      <textarea ng-model="currentComment" placeholder="Type your comment here..."></textarea>
+      <button class="bg-primary" ng-click="addComment()">Add comment</button>
+    </div>
+    <div class="comments">
+      <div class="comment" ng-repeat="comment in recipe.comments">
+        <a href="#" class="profile-picture"><img ng-src="http://www.lcfc.com/images/common/bg_player_profile_default_big.png" /></a>
+        <div class="content">
+          <a href="#" class="author">{{comment.author}}</a>
+          <div class="message-container">
+            <span ng-show="comment.mark" class="info-top">
+              <i ng-repeat="t in [] | range: comment.mark" class="fa fa-star"/>
+            </i><i ng-repeat="t in [] | range: (5-comment.mark)" class="fa fa-star-o">
+              </i> -
+            </span>
+            <span class="info-top">Added on {{comment.date | date}}</span>
+            <p>{{comment.message}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

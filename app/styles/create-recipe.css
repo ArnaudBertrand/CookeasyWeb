@@ -1,0 +1,122 @@
+.container.create-recipe{
+  max-width: 700px;
+}
+
+/** Page title **/
+.create-recipe .title {
+  text-align: center;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 3em;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
+/** Recipe title **/
+.create-recipe .recipe-title{
+  width: 100%;
+}
+.create-recipe .recipe-title input{
+  width: 60%;
+  font-size: 1.5em;
+  padding: 3px 5px;
+  border-radius: 5px;
+  border: 1px solid #ffcccc;
+}
+
+/** Recipe information **/
+.create-recipe p{
+  font-size: 1.2em;
+}
+.create-recipe .top-input{
+  background: rgba(255,255,255,0);
+  border: 0px;
+  border-bottom: 1px solid #ccc;
+  box-shadow: inset 0px 0px;
+}
+.info{
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+/** Lists **/
+.create-recipe h3{
+  font-size: 1.5em;
+}
+.create-recipe .list{
+  list-style-type: none;
+  width: 50%;
+}
+.create-recipe .list li{
+  border: 1px solid #ffcccc;
+  background: rgba(255, 200, 200);
+  background: rgba(255, 200, 200, 0.3);
+  padding: 5px 10px;
+  font-size: 1.5em;
+}
+.create-recipe .list li a{
+  font-style: italic;
+  cursor: pointer;
+  color: #483d8b;
+}
+.create-recipe .list-add button{
+  margin-left: 10px;
+}
+
+/** Ingredients **/
+.create-recipe .ingredients input{
+  width: 15%;
+}
+.create-recipe .ingredients input.name{
+  width: 30%;
+}
+
+/** Utensil **/
+.create-recipe .utensils input{
+  width: 50%;
+}
+
+/** Next step button **/
+.create-recipe .next-step{
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+}
+.create-recipe .next-step button{
+  width: 40%;
+  border-radius: 5px;
+  border: 1px solid #ffcccc;
+  font-size: 2em;
+}
+
+/** Step **/
+.create-recipe .previous, .create-recipe .next{
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+  vertical-align: top;
+  color: #800000;
+  margin-top: 120px;
+}
+.create-recipe .step{
+  width: 65%;
+  display: inline-block;
+  text-align: center;
+}
+.create-recipe .action textarea{
+  width: 80%;
+  resize: none;
+  height: 150px;
+  border-radius: 5px;
+  padding: 20px;
+}
+.create-recipe .add-picture .drop-box{
+  margin-top: 15px;
+  padding-top: 15px;
+  border: 5px dashed #a55;
+}
+.create-recipe .add-picture .drop-box.dragover{
+  border: 5px dashed blue;
+}
+.create-recipe .add-picture p{
+  margin-top: 0px;
+}

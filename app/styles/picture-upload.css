@@ -1,0 +1,8 @@
+picture-upload .preview{
+  width: 100%;
+  margin: -15px;
+}
+
+picture-upload .preview img{
+  width: 100%;
+}

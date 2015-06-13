@@ -1,0 +1,208 @@
+/** Main **/
+.container.display-recipe{
+  max-width: 600px;
+  padding-top: 15px;
+}
+
+/** Recipe informations**/
+.display-recipe h1{
+  text-align: center;
+}
+.display-recipe .recipe-info{
+  text-align: center;
+}
+.display-recipe .recipe-info span{
+  margin: 5px 10px;
+}
+.display-recipe .recipe-image{
+  width:95%;
+  text-align: center;
+  margin: 0px auto;
+}
+.display-recipe .recipe-image img{
+  max-width: 90%;
+  border-radius: 15px;
+  margin-top: 10px;
+  border: 1px solid #bbb;
+  max-height: 400px;
+}
+.display-recipe .recipe-create-info{
+  text-align: center;
+}
+
+/** List **/
+.display-recipe .list-title{
+  margin-bottom: 5px;
+}
+.display-recipe .list{
+  list-style-type: none;
+  width: 80%;
+  margin-top: 5px;
+  padding-left: 0px;
+}
+.display-recipe .list li{
+  border: 1px solid #ffcccc;
+  background: rgba(255, 200, 200);
+  background: rgba(255, 200, 200, 0.3);
+  padding: 5px 10px;
+  font-size: 1.5em;
+}
+.display-recipe .list li a{
+  font-style: italic;
+  cursor: pointer;
+  color: #483d8b;
+}
+
+/** Actions buttons **/
+.display-recipe .recipe-actions {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+}
+.display-recipe .recipe-actions button{
+  width: 40%;
+  border-radius: 5px;
+  border: 1px solid #ffcccc;
+  font-size: 2em;
+}
+
+/** Steps **/
+.display-recipe .previous, .display-recipe .next{
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+  vertical-align: top;
+  color: #800000;
+  margin-top: 100px;
+  cursor: pointer;
+}
+.display-recipe .step{
+  width: 65%;
+  display: inline-block;
+  text-align: center;
+}
+.display-recipe .step .action{
+  padding: 10px 15px;
+  border-radius: 15px;
+  background-color: #fff;
+  margin: 15px 0px;
+  font-size: 1.5em;
+  border: 1px solid #c77;
+}
+.display-recipe .step img{
+  max-width: 100%;
+  border: 1px solid #c77;
+  border-radius: 5px;
+}
+
+/** End of steps **/
+.after-steps{
+  text-align: center;
+}
+.display-recipe .after-steps .add-picture .drop-box{
+  margin-top: 15px;
+  padding-top: 15px;
+  border: 5px dashed #a55;
+}
+.display-recipe .after-steps .add-picture .drop-box.dragover{
+  border: 5px dashed blue;
+}
+.display-recipe .after-steps .add-picture p{
+  margin-top: 0px;
+}
+
+/** Thumbnails **/
+.display-recipe .thumbnail-area h3{
+  margin-bottom: 5px;
+}
+.display-recipe .thumbnail-area .thumbnails{
+  height: 100px;
+  overflow: hidden;
+  animation: going 15s linear infinite;
+}
+.display-recipe .thumbnail-area .thumbnails .thumbnail{
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin-right: 15px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.display-recipe .thumbnail-area .thumbnails .thumbnail img{
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+}
+
+/** Comments **/
+.display-recipe .comment-area{
+  width: 100%;
+  margin-top: 10px;
+}
+.display-recipe .add-comment{
+  text-align: center;
+  width: 100%;
+  border: 1px solid #a88;
+  padding: 20px 0px;
+  background-color: #bdcdbd;
+}
+.display-recipe .add-comment .add-mark{
+  margin-bottom: 5px;
+  font-style: italic;
+}
+.display-recipe .add-comment textarea{
+  width: 90%;
+  height: 80px;
+  resize: none;
+  padding: 10px;
+}
+.display-recipe .add-comment button{
+  width: 50%;
+  border-radius: 5px;
+  border: 0px;
+  padding: 10px 0px;
+  margin-top: 5px;
+}
+.display-recipe .comments{
+  margin-top: 10px;
+  width: 100%;
+}
+.display-recipe .comment{
+  background-color: #e6e6e4;
+  padding: 10px;
+  display: table;
+  vertical-align: top;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+.display-recipe .comment .profile-picture{
+  margin: 0px 10px 0px 0px;
+}
+.display-recipe .comment .profile-picture img{
+  width: 60px;
+  height: auto;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+.display-recipe .content{
+  width: 500px;
+  display: table-cell;
+  vertical-align: top;
+
+}
+.display-recipe .content .author{
+  text-decoration: none;
+}
+.display-recipe .content .message-container{
+  margin: 10px 0px 0px 0px;
+  background: #fff;
+  border: 1px solid #d6d6d4;
+  padding: 10px;
+}
+.display-recipe .content .message-container .info-top{
+  border-bottom: 1px solid #d6d6d4;
+  font-style: italic;
+}

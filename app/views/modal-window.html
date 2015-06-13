@@ -1,0 +1,9 @@
+<div id="modal" ng-click="close()" ng-controller="ModalWindowCtrl">
+  <div class="modalDialog" ng-click="$event.stopPropagation()">
+    <a class="close" ng-click="close()">X</a>
+    <img ng-src="{{currentPicture}}" ng-click="nextPicture()"/>
+    <i class="fa fa-chevron-circle-left fa-2x" ng-click="previousPicture()" ng-if="!isFirstImage()"></i>
+    <i class="fa fa-chevron-circle-right fa-2x" ng-click="nextPicture()" ng-if="!isLastImage()"></i>
+    <i></i>
+  </div>
+</div>

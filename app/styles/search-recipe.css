@@ -1,0 +1,43 @@
+.recipe-search{
+  margin: 20px auto;
+  text-align: center;
+  width: 100%;
+}
+.recipe-search input{
+  width: 60%;
+}
+
+/** Tiles **/
+.tile-container{
+  display: inline-block;
+  width: 300px;
+  height: 400px;
+  vertical-align: top;
+  margin: 10px auto;
+}
+.tile-container.large{
+  width: 600px;
+}
+.tile-container .tile{
+  height: 400px;
+  position: relative;
+  border: 1px solid #999;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.tile-container .tile.small{
+  height: 195px;
+}
+.tile-container .tile img{
+  width: 100%;
+}
+.tile-container .tile .title{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(128, 0, 0, 0.5);
+  font-size: 1.5em;
+  color: white;
+}
