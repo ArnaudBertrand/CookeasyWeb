@@ -94,21 +94,25 @@
   border: 1px solid #c77;
   border-radius: 5px;
 }
+.display-recipe .step .timer{
+  margin-top: 15px;
+}
+.display-recipe .step .timer > span{
+  background-color: #800000;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+}
+.display-recipe .step .timer > span > button{
+  background-color: rgba(255, 0, 0, 0);
+  border: 0px;
+  color: white;
+}
+
 
 /** End of steps **/
 .after-steps{
   text-align: center;
-}
-.display-recipe .after-steps .add-picture .drop-box{
-  margin-top: 15px;
-  padding-top: 15px;
-  border: 5px dashed #a55;
-}
-.display-recipe .after-steps .add-picture .drop-box.dragover{
-  border: 5px dashed blue;
-}
-.display-recipe .after-steps .add-picture p{
-  margin-top: 0px;
 }
 
 /** Thumbnails **/

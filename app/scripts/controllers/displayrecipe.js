@@ -8,8 +8,8 @@
  * Controller of the applicationApp
  */
 angular.module('applicationApp')
-.controller('DisplayRecipeCtrl', ['$scope', '$stateParams', 'RecipeService', 'ModalWindow','Upload',
-  function ($scope, $stateParams, RecipeService, ModalWindow, Upload) {
+.controller('DisplayRecipeCtrl', ['$scope', '$stateParams','$timeout', 'RecipeService', 'ModalWindow','Upload',
+  function ($scope, $stateParams, $timeout, RecipeService, ModalWindow, Upload) {
     // Current step
     $scope.currentStep = {};
     // Errors
@@ -24,12 +24,14 @@ angular.module('applicationApp')
     $scope.picturesUploadTags = [];
     // Current recipe
     $scope.recipe = {};
-    // Temporary mark to be displayed
-    $scope.tempMark = 0;
     // Show infoPage
     $scope.showInfoPage = true;
     // Steps infos for the graph
     $scope.stepsInfo = [];
+    // Temporary mark to be displayed
+    $scope.tempMark = 0;
+    // Seconds passed for timer
+    $scope.timerSecondsPassed = 0;
 
     // Get recipe information
     RecipeService.get($stateParams.id).then(function(recipe){
@@ -69,6 +71,7 @@ angular.module('applicationApp')
       }
     };
 
+    // Call back after picture is uploaded
     $scope.afterPictureUpload = function(picture){
       $scope.recipe.pictures.push(picture);
       $scope.done = true;
@@ -93,6 +96,8 @@ angular.module('applicationApp')
 
     // Change screen or step
     $scope.goTo = function(id){
+      // Reset timer
+      $scope.timerSecondsPassed = 0;
       // Back to info
       if(id === $scope.stepsInfo[0]){
         $scope.showInfoPage = true;
@@ -141,8 +146,35 @@ angular.module('applicationApp')
       }
     };
 
+    // Show the main picture on click
     $scope.showMainPicture = function(){
       ModalWindow.openGallery(0,[{url: $scope.recipe.picture.url}]);
+    };
+
+    var timer;
+    // Pause timer
+    $scope.timerPause = function(){
+      $scope.timerRunning = false;
+      $timeout.cancel(timer);
+    }
+    // Start timer
+    $scope.timerStart = function(){
+      timer = $timeout($scope.timerTick,1000);
+      $scope.timerRunning = true;
+    };
+    // Stop timer
+    $scope.timerStop = function(){
+      $scope.timerRunning = false;
+      $timeout.cancel(timer);
+      $scope.timerSecondsPassed = 0;
+    };
+    // Update timer each seconds
+    $scope.timerTick = function(){
+      $scope.timerSecondsPassed++;
+      if($scope.timerSecondsPassed == $scope.currentStep.time*60){
+        return $scope.timerStop();
+      }
+      timer = $timeout($scope.timerTick,1000);
     };
 
   }]);

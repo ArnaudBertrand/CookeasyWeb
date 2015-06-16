@@ -58,8 +58,15 @@
       <div class="action">
         {{currentStep.action}}
       </div>
-      <img ng-src="{{currentStep.picture.url}}" />
-      Timer: {{currentStep.time}}
+      <img ng-repeat="step in recipe.steps" ng-show="currentStep.number == step.number" ng-src="{{step.picture.url}}" />
+      <div class="timer">
+        <span ng-show="currentStep.time">
+          {{((currentStep.time*60)-timerSecondsPassed) | secondsToDateTime | date:'HH:mm:ss' }}
+          <button ng-hide="timerRunning" ng-click="timerStart()"><i class="fa fa-play"></i></button>
+          <button ng-show="timerRunning" ng-click="timerPause()"><i class="fa fa-pause"></i></button>
+          <button ng-show="timerRunning" ng-click="timerStop()"><i class="fa fa-stop"></i></button>
+        </span>
+      </div>
     </div>
     <div class="next">
       <i class="fa fa-chevron-circle-right fa-3x" ng-click="nextStep()"></i>
@@ -82,7 +89,7 @@
     <h3>Pictures of this recipe by other users:</h3>
     <div class="thumbnails">
       <div ng-repeat="pic in recipe.pictures | orderObjectBy:'createdOn':-1 track by $index" class="thumbnail" ng-click="openGallery($index)">
-        <img ng-src="{{pic.miniThumbUrl}}" />
+        <img ng-src="{{pic.miniThumbUrlSquare}}" />
       </div>
     </div>
   </div>

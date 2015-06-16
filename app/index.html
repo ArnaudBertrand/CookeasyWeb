@@ -27,22 +27,22 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    <!-- Add your site or application content here -->
-    <header-principal></header-principal>
-    <div class="header">
-    </div>
-
-    <div class="container">
-    <div ui-view></div>
-    </div>
-
-    <footer>
-      <div class="container">
-        <menu-directive></menu-directive>
+    <div id="wrapper">
+      <!-- Add your site or application content here -->
+      <header-principal></header-principal>
+      <div class="header">
       </div>
-    </footer>
 
+      <div class="container">
+      <div ui-view></div>
+      </div>
+
+      <footer>
+        <div class="container">
+          <menu-directive></menu-directive>
+        </div>
+      </footer>
+    </div>
     <modal-window></modal-window>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -94,8 +94,7 @@
         <script src="scripts/services/tokeninterceptor.js"></script>
         <script src="scripts/services/uploadpicture.js"></script>
         <script src="scripts/services/userservice.js"></script>
-        <script src="scripts/filters/orderobjectby.js"></script>
-        <script src="scripts/filters/range.js"></script>
+        <script src="scripts/filters.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -87,6 +87,7 @@
 
   <!-- Final step -->
   <div ng-show="stepFinal">
+    <h2>Upload the main picture of your recipe</h2>
     <picture-upload image-uploaded="recipe.picture" target-url="pictureUrl" target-tags="pictureFinalTags" callback="setUploadedPicture"></picture-upload>
     <button class="bg-primary" ng-click="createRecipe()">Submit your recipe !</button>
   </div>
