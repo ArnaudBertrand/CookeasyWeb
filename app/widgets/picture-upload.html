@@ -1,0 +1,20 @@
+<div>
+  <div class="add-picture" ng-app="fileUpload" ng-hide="pictureUpload.uploadProgress">
+      <div ngf-drop ngf-select ng-model="pictureUpload.files" class="drop-box"
+          ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+          accept="image/*">
+        <div ng-hide="pictureUpload.imageUploaded">
+          <i class="fa fa-camera fa-3x"></i>
+          <p>Add or Drop picture<p>
+        </div>
+        <div class="preview" ng-if="pictureUpload.imageUploaded">
+          <img ng-src="{{pictureUpload.imageUploaded.url}}"/>
+        </div>
+        {{pictureUpload.imageUploaded}}
+      </div>
+      <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+  </div>
+  <div ng-show="pictureUpload.uploadProgress" class="drop-box">
+    <progress value="{{pictureUpload.uploadProgress}}" max="100"></progress>
+  </div>
+</div>

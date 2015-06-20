@@ -3,7 +3,7 @@
 describe('Controller: CreateRecipeCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('applicationApp'));
+  beforeEach(module('app'));
 
   var CreateRecipeCtrl,
     scope;

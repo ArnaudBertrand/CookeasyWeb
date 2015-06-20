@@ -23,13 +23,13 @@
     <link rel="stylesheet" href="styles/step-line.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="applicationApp">
+  <body ng-app="app">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div id="wrapper">
       <!-- Add your site or application content here -->
-      <header-principal></header-principal>
+      <ce-header></ce-header>
       <div class="header">
       </div>
 
@@ -43,7 +43,7 @@
         </div>
       </footer>
     </div>
-    <modal-window></modal-window>
+    <ce-modal-gallery></ce-modal-gallery>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -58,6 +58,7 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -68,33 +69,43 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+    <script src="bower_components/jquery-bridget/jquery.bridget.js"></script>
+    <script src="bower_components/get-style-property/get-style-property.js"></script>
+    <script src="bower_components/get-size/get-size.js"></script>
+    <script src="bower_components/eventie/eventie.js"></script>
+    <script src="bower_components/doc-ready/doc-ready.js"></script>
+    <script src="bower_components/eventEmitter/EventEmitter.js"></script>
+    <script src="bower_components/matches-selector/matches-selector.js"></script>
+    <script src="bower_components/outlayer/item.js"></script>
+    <script src="bower_components/outlayer/outlayer.js"></script>
+    <script src="bower_components/masonry/masonry.js"></script>
+    <script src="bower_components/imagesloaded/imagesloaded.js"></script>
+    <script src="bower_components/angular-masonry/angular-masonry.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
+        <script src="app.module.js"></script>
         <!-- Controllers -->
-        <script src="scripts/controllers/contact.js"></script>
-        <script src="scripts/controllers/createrecipe.js"></script>
-        <script src="scripts/controllers/displayrecipe.js"></script>
-        <script src="scripts/controllers/modalwindow.js"></script>
-        <script src="scripts/controllers/picture-upload.js"></script>
-        <script src="scripts/controllers/searchrecipe.js"></script>
+        <script src="recipe-create/create-recipe.controller.js"></script>
+        <script src="recipe-display/display-recipe.controller.js"></script>
+        <script src="recipe-search/search-recipe.controller.js"></script>
         <!-- Directives -->
-        <script src="scripts/directives/header-principal.js"></script>
-        <script src="scripts/directives/logindirective.js"></script>
-        <script src="scripts/directives/menu.js"></script>
-        <script src="scripts/directives/modal-window.js"></script>
-        <script src="scripts/directives/picture-upload.js"></script>
-        <script src="scripts/directives/step-line.js"></script>
+        <script src="layout/header.directive.js"></script>
+        <script src="connexion/connexion.directive.js"></script>
+        <script src="modal-gallery/modal-gallery.directive.js"></script>
+        <script src="widgets/picture-upload.directive.js"></script>
+        <script src="widgets/step-line.directive.js"></script>
         <!-- Services -->
-        <script src="scripts/services/authenticationservice.js"></script>
-        <script src="scripts/services/modalwindow.js"></script>
-        <script src="scripts/services/recipeservice.js"></script>
-        <script src="scripts/services/tokeninterceptor.js"></script>
-        <script src="scripts/services/uploadpicture.js"></script>
-        <script src="scripts/services/userservice.js"></script>
-        <script src="scripts/filters.js"></script>
+        <script src="connexion/authentication.service.js"></script>
+        <script src="modal-gallery/modal-gallery.service.js"></script>
+        <script src="recipe-create/create-recipe.services.js"></script>
+        <script src="recipe-display/display-recipe.service.js"></script>
+        <script src="recipe-search/search-recipe.service.js"></script>
+        <script src="widgets/tokeninterceptor.js"></script>
+        <script src="widgets/picture-upload.service.js"></script>
+        <script src="connexion/connexion.service.js"></script>
+        <script src="filters.js"></script>
         <!-- endbuild -->
 </body>
 </html>

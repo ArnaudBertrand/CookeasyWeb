@@ -6,6 +6,17 @@
 .recipe-search input{
   width: 60%;
 }
+.recipe-search .masonry-brick {
+  width: 200px;
+  margin: 1em;
+  display: none;
+}
+.recipe-search .masonry-brick.loaded {
+    display: block;
+}
+.recipe-search .masonry-brick > img {
+  width: 100%;
+}
 
 /** Tiles **/
 .tile-container{

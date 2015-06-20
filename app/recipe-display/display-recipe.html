@@ -1,0 +1,136 @@
+<div class="container display-recipe">
+  <!-- Step selector -->
+  <step-line graph="display.lineGraph" steps="display.stepsInfo"
+    ng-hide="display.showInfoPage" current="display.currentStep.number"
+    step-clicked="display.goTo"></step-line>
+  <!-- Informations -->
+  <div ng-show="display.showInfoPage">
+    <h1>{{display.recipe.name}}</h1>
+    <div class="recipe-info">
+      <span class="difficulty">
+        Difficulty:
+        <i ng-repeat="t in [] | range: display.recipe.difficulty" class="fa fa-star">
+        </i><i ng-repeat="t in [] | range: (5-display.recipe.difficulty)" class="fa fa-star-o"></i>
+      </span>
+      <span><i class="fa fa-clock-o"></i> {{display.recipe.time}} mins</span>
+      <span><i class="fa fa-cutlery"></i> {{display.recipe.nbPerson}} person(s)</span>
+    </div>
+    <div class="recipe-image">
+      <img ng-src="{{display.recipe.picture.url}}" ng-click="display.showMainPicture()" />
+    </div>
+    <div class="recipe-create-info">
+      Created on {{display.recipe.createdOn | date}} by {{display.recipe.author}}.
+    </div>
+    <div ng-show="display.recipe.utensils.length">
+      <h3>Utensils</h3>
+      <ul>
+        <li ng-repeat="utensil in display.recipe.utensils">
+          {{utensil}}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="list-title">Ingredients</h3>
+      <ul class="list">
+        <li ng-repeat="ingredient in display.recipe.ingredients">
+          {{ingredient.qte}} {{ingredient.unit}} of {{ingredient.name}}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="list-title">Steps</h3>
+      <ul class="list">
+        <li ng-repeat="step in display.recipe.steps">
+          {{step.number}} | {{step.action}}
+        </li>
+      </ul>
+    </div>
+    <div class="recipe-actions">
+      <button class="bg-primary" ng-click="display.nextStep()">Start Recipe</button>
+    </div>
+  </div>
+
+  <!-- Steps -->
+  <div ng-show="display.showStep" class="current-step">
+    <div class="previous" ng-click="display.previousStep()">
+      <i class="fa fa-chevron-circle-left fa-3x"></i>
+    </div>
+    <div class="step">
+      <h2>Step {{display.currentStep.number}}</h2>
+      <div class="action">
+        {{display.currentStep.action}}
+      </div>
+      <img ng-repeat="step in display.recipe.steps"
+        ng-show="display.currentStep.number == step.number"
+        ng-src="{{step.picture.url}}" />
+      <div class="timer">
+        <span ng-show="display.currentStep.time">
+          {{((display.currentStep.time*60)-display.timerSecondsPassed) | secondsToDateTime | date:'HH:mm:ss' }}
+          <button ng-hide="timerRunning" ng-click="timerStart()"><i class="fa fa-play"></i></button>
+          <button ng-show="timerRunning" ng-click="timerPause()"><i class="fa fa-pause"></i></button>
+          <button ng-show="timerRunning" ng-click="timerStop()"><i class="fa fa-stop"></i></button>
+        </span>
+      </div>
+    </div>
+    <div class="next">
+      <i class="fa fa-chevron-circle-right fa-3x" ng-click="display.nextStep()"></i>
+    </div>
+  </div>
+
+  <!-- End of steps -->
+  <div class="after-steps" ng-show="display.stepsFinished">
+    <h2>Congratulations !</h2>
+    <p>Share a picture of your result with the community :)</p>
+    <picture-upload target-url="display.picturesUploadUrl"
+      target-tags="display.picturesUploadTags" callback="display.afterPictureUpload"
+      ng-hide="display.done"></picture-upload>
+    <div ng-show="display.done">
+      <p>Upload finished</p>
+      <h2>Thanks for sharing !</h2>
+    </div>
+  </div>
+
+  <!-- Thumbnails -->
+  <div ng-if="display.recipe.pictures.length" class="thumbnail-area"
+    ng-show="display.showInfoPage || display.stepsFinished">
+    <h3>Pictures of this recipe by other users:</h3>
+    <div class="thumbnails">
+      <div class="thumbnail" ng-click="display.openGallery($index)"
+        ng-repeat="pic in display.recipe.pictures | orderObjectBy:'createdOn':-1 track by $index">
+        <img ng-src="{{pic.miniThumbUrlSquare}}" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Comments -->
+  <div ng-show="display.showInfoPage || display.stepsFinished" class="comment-area">
+    <div class="add-comment">
+      <div class="add-mark" ng-mouseleave="display.markEvent.mouseLeave()"
+        ng-mouseup="display.markEvent.mouseUp()">
+        Give a mark: <i ng-repeat="t in [] | range: display.tempMark" class="fa fa-star"
+          ng-mouseenter="display.markEvent.mouseEnter(false,$index)">
+          </i><i ng-repeat="t in [] | range: (5-display.tempMark)" class="fa fa-star-o"
+          ng-mouseenter="display.markEvent.mouseEnter(true,$index)"></i>
+      </div>
+      <textarea ng-model="display.currentComment" placeholder="Type your comment here..."></textarea>
+      <button class="bg-primary" ng-click="display.addComment()">Add comment</button>
+    </div>
+    <div class="comments">
+      <div class="comment" ng-repeat="comment in display.recipe.comments">
+        <a href="#" class="profile-picture"><img ng-src="http://www.lcfc.com/images/common/bg_player_profile_default_big.png" /></a>
+        <div class="content">
+          <a href="#" class="author">{{comment.author}}</a>
+          <div class="message-container">
+            <span ng-show="comment.mark" class="info-top">
+              <i ng-repeat="t in [] | range: comment.mark" class="fa fa-star">
+              </i><i ng-repeat="t in [] | range: (5-comment.mark)" class="fa fa-star-o">
+              </i> -
+            </span>
+            <span class="info-top">Added on {{comment.date | date}}</span>
+            <p>{{comment.message}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

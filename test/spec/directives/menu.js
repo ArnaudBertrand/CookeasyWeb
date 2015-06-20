@@ -3,7 +3,7 @@
 describe('Directive: Menu', function () {
 
   // load the directive's module
-  beforeEach(module('applicationApp'));
+  beforeEach(module('app'));
 
   var element,
     scope;

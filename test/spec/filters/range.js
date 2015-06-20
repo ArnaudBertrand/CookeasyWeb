@@ -3,7 +3,7 @@
 describe('Filter: range', function () {
 
   // load the filter's module
-  beforeEach(module('applicationApp'));
+  beforeEach(module('app'));
 
   // initialize a new instance of the filter before each test
   var range;

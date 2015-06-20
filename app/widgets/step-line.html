@@ -1,0 +1,11 @@
+<svg ng-attr-height="{{stepLine.graph.height}}" ng-attr-width="{{stepLine.graph.width}}">
+  <line ng-attr-x1="{{stepLine.graph.rSize}}" ng-attr-y1="{{stepLine.graph.height/2}}"
+    ng-attr-x2="{{stepLine.graph.width-graph.rSize}}" ng-attr-y2="{{stepLine.graph.height/2}}"/>
+  <circle ng-repeat-start="step in stepLine.stepPos"
+    ng-class="{current: stepLine.current==step.text}" ng-click="stepLine.callbackClick(step.text)"
+    ng-attr-cx="{{step.x}}" ng-attr-cy="{{stepLine.graph.height/2}}"
+    ng-attr-r="{{stepLine.graph.rSize}}">
+  </circle>
+  <text ng-repeat-end ng-attr-x="{{step.x}}" ng-attr-y="{{stepLine.graph.height/2 +5}}"
+    text-anchor="middle">{{step.text}}</text>
+</svg>
