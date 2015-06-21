@@ -39,7 +39,8 @@
       .state('createRecipe', {
         url: '/recipe/create',
         templateUrl: '/recipe-create/create-recipe.html',
-        controller: 'CreateRecipeCtrl'
+        controller: 'CreateRecipeCtrl',
+        controllerAs: 'rcpCreate'
       })
       .state('displayRecipe', {
         url: '/recipe/display/:id',

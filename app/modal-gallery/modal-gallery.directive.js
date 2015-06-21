@@ -7,7 +7,7 @@
 
   function ceModalGallery () {
     return {
-      templateUrl: '/modal-gallery/modal-window.html',
+      templateUrl: '/modal-gallery/modal-gallery.html',
       restrict: 'EA',
       controller: ModalGalleryCtrl,
       controllerAs: 'mw',

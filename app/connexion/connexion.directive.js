@@ -13,13 +13,13 @@
     };
   }
 
-  ConnexionCtrl.$inject = ['$window','connexionService','CeAuthentication']
-  function ConnexionCtrl ($window,UserService,CeAuthentication){
+  ConnexionCtrl.$inject = ['$window','connexionService','ceAuthentication']
+  function ConnexionCtrl ($window,connexionService,ceAuthentication){
     var vm = this;
 
     vm.userLogin = {id: '', password: ''};
     vm.userSignup = {username: '', password: '', confirmPassword: '', email: ''};
-    vm.notConnected = !CeAuthentication.isLogged;
+    vm.notConnected = !ceAuthentication.isLogged;
     vm.login = login;
     vm.register = register;
 
@@ -27,8 +27,8 @@
       vm.dataLoading = true;
       vm.error = "";
 
-      UserService.login(vm.userLogin).then(function (token) {
-        CeAuthentication.isLogged = true;
+      connexionService.login(vm.userLogin).then(function (token) {
+        ceAuthentication.isLogged = true;
         vm.notConnected = false;
         $window.sessionStorage.token = token;
         vm.dataLoading = false;
@@ -47,8 +47,8 @@
         return vm.error = "Passwords do not match";
       }
 
-      UserService.signUp(vm.userSignup).then(function(token) {
-        CeAuthentication.isLogged = true;
+      connexionService.signUp(vm.userSignup).then(function(token) {
+        ceAuthentication.isLogged = true;
         vm.notConnected = false;
         $window.sessionStorage.token = token;
         vm.dataLoading = false;

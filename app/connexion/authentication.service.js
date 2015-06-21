@@ -3,9 +3,9 @@
 
   angular
     .module('app')
-    .factory('CeAuthentication', CeAuthentication);
+    .factory('CeAuthentication', ceAuthentication);
 
-  function CeAuthentication () {
+  function ceAuthentication () {
     return {
       isLogged: false
     };

@@ -6,138 +6,137 @@
 
   CreateRecipeCtrl.$inject = ['$scope', '$state', 'Upload', 'createRecipeService'];
   function CreateRecipeCtrl ($scope,$state,Upload,createRecipeService) {
-    $scope.recipe = {course: {}, ingredients: [], name: '', steps: [], utensils: []};
+    var vm = this;
 
-    // List of different courses
-    $scope.courses = [{name: 'Starter', value: 1}, {name: 'Main course', value: 2}, {name: 'Dessert', value: 3}];
-    // Current ingredient in edition
-    $scope.currentIngredient = {};
-    // Current step in edition
-    $scope.currentStep = {};
-    // Errors
-    $scope.errors = {};
-    // Infomation for line step graph
-    $scope.lineGraph = {width: 500, height: 30, rSize: 12};
-    // Pictures upload url
-    $scope.pictureUrl = 'https://mysterious-eyrie-9135.herokuapp.com/picture/upload';
-    // Pictures upload tags
-    $scope.pictureStepTags = ['recipe','step'];
-    $scope.pictureFinalTags = ['recipe','main'];
-    // Show timer for steps
-    $scope.showTimer = false;
-    // Steps infos for the graph
-    $scope.stepsInfo = ['I','E'];
+    /** Navigation **/
+    vm.goTo = goTo;
+    vm.lastStep = lastStep;
+    vm.nextStep = nextStep
+    vm.previousStep = previousStep;
+    vm.stepInformation = true;
+    vm.stepCreations = false;
+    vm.stepFinal = false;
+    /** Recipe **/
+    vm.createRecipe = createRecipe;
+    vm.courses = [{name: 'Starter', value: 1}, {name: 'Main course', value: 2}, {name: 'Dessert', value: 3}];
+    vm.errors = {};
+    vm.recipe = {course: {}, ingredients: [], name: '', steps: [], utensils: []};
+    /** Ingredients **/
+    vm.addIngredient = addIngredient;
+    vm.currentIngredient = {};
+    vm.deleteIngredient = deleteIngredient;
+    /** Utensil **/
+    vm.addUtensil = addUtensil;
+    vm.deleteUtensil = deleteUtensil;
+    /** Steps **/
+    vm.currentStep = {};
+    vm.deleteStep = deleteStep;
+    vm.lineGraph = {width: 500, height: 30, rSize: 12};
+    vm.showTimer = false;
+    vm.stepsInfo = ['I','E'];
+    vm.toggleTimer = toggleTimer;
+    /** Picture upload **/
+    vm.pictureFinalTags = ['recipe','main'];
+    vm.pictureStepTags = ['recipe','step'];
+    vm.pictureUrl = 'https://mysterious-eyrie-9135.herokuapp.com/picture/upload';
+    vm.setUploadedPicture = setUploadedPicture;
 
-    // Show / Hide screens
-    $scope.stepInformation = true;
-    $scope.stepCreations = false;
-    $scope.stepFinal = false;
-
-    // Add an ingredient
-    $scope.addIngredient = function (){
-      $scope.errors.ingredient = {};
-      var ingredient = $scope.currentIngredient;
+    function addIngredient (){
+      vm.errors.ingredient = {};
+      var ingredient = vm.currentIngredient;
       // Check name
       if(!ingredient.name || ingredient.name == ''){
-        $scope.errors.ingredient.name = 'Please insert an ingredient name.';
+        vm.errors.ingredient.name = 'Please insert an ingredient name.';
       }
       // Check quantity
       if(isNaN(ingredient.qte)){
-        $scope.errors.ingredient.qte = 'Quantity should be a number.';
+        vm.errors.ingredient.qte = 'Quantity should be a number.';
       } else if(Number(ingredient.qte)<0){
-        $scope.errors.ingredient.qte = 'Quantity should be positive.';
+        vm.errors.ingredient.qte = 'Quantity should be positive.';
       }
       // Check unit
       if(!ingredient.unit || ingredient.unit == ''){
-        $scope.errors.ingredient.unit = 'Please insert an ingredient unit.';
+        vm.errors.ingredient.unit = 'Please insert an ingredient unit.';
       }
       // Check for errors
-      if(Object.keys($scope.errors.ingredient).length){
+      if(Object.keys(vm.errors.ingredient).length){
         return;
       }
       // Insert ingredient
       ingredient.qte = Number(ingredient.qte);
-      $scope.recipe.ingredients.push(ingredient);
-      $scope.currentIngredient = {};
-    };
+      vm.recipe.ingredients.push(ingredient);
+      vm.currentIngredient = {};
+    }
 
-    // Add an utensil
-    $scope.addUtensil = function (){
-      delete $scope.errors.utensil;
-      if(!$scope.currentUtensil || $scope.currentUtensil == ''){
-        $scope.errors.utensil = 'Please insert ustensil name.';
+    function addUtensil (){
+      delete vm.errors.utensil;
+      if(!vm.currentUtensil || vm.currentUtensil == ''){
+        vm.errors.utensil = 'Please insert ustensil name.';
       } else {
-        $scope.recipe.utensils.push($scope.currentUtensil);
-        $scope.currentUtensil = '';
-      }
-    };
-
-    // Check recipe informations
-    function checkRecipeInformation(){
-      $scope.errors = {};
-      // Name
-      if($scope.recipe.name.length < 5){
-        $scope.errors.name = 'Recipe name too short.';
-      }
-      // Course
-      if(!($scope.recipe.course.value > 0 || $scope.recipe.course.value <= 3)){
-        $scope.errors.course = 'Please choose a course.';
-      }
-      // Difficulty
-      if(!($scope.recipe.difficulty > 0 && $scope.recipe.difficulty < 5)){
-        $scope.errors.difficulty = 'Please choose a difficulty between 1 and 5.';
-      }
-      // Number of person
-      if(!($scope.recipe.nbPerson > 0)){
-        $scope.errors.nbPerson = 'Please insert a valid number of person.';
-      }
-      // Time
-      if(!($scope.recipe.time > 0)){
-        $scope.errors.time = 'Please insert a valid number of minutes.';
+        vm.recipe.utensils.push(vm.currentUtensil);
+        vm.currentUtensil = '';
       }
     }
 
-    // Check steps informations
+    function checkRecipeInformation(){
+      vm.errors = {};
+      // Name
+      if(vm.recipe.name.length < 5){
+        vm.errors.name = 'Recipe name too short.';
+      }
+      // Course
+      if(!(vm.recipe.course.value > 0 || vm.recipe.course.value <= 3)){
+        vm.errors.course = 'Please choose a course.';
+      }
+      // Difficulty
+      if(!(vm.recipe.difficulty > 0 && vm.recipe.difficulty < 5)){
+        vm.errors.difficulty = 'Please choose a difficulty between 1 and 5.';
+      }
+      // Number of person
+      if(!(vm.recipe.nbPerson > 0)){
+        vm.errors.nbPerson = 'Please insert a valid number of person.';
+      }
+      // Time
+      if(!(vm.recipe.time > 0)){
+        vm.errors.time = 'Please insert a valid number of minutes.';
+      }
+    }
+
     function checkStepInformation(){
 
     }
 
-    // Delete an ingredient
-    $scope.deleteIngredient = function (id){
-      $scope.recipe.ingredients.splice(id,1);
+    function deleteIngredient (id){
+      vm.recipe.ingredients.splice(id,1);
     }
 
-    // Delete an utensil
-    $scope.deleteUtensil = function (id){
-      $scope.recipe.utensils.splice(id,1);
-    };
+    function deleteUtensil (id){
+      vm.recipe.utensils.splice(id,1);
+    }
 
-    // Delete current step
-    $scope.deleteStep = function(){
+    function deleteStep (){
       // Get current step number
-      var stepNb = $scope.currentStep.number;
+      var stepNb = vm.currentStep.number;
       // Go to previous step
-      $scope.previousStep();
+      vm.previousStep();
       // Remove from array only if it is already in
-      if (stepNb < ($scope.recipe.steps.length+1)) {
+      if (stepNb < (vm.recipe.steps.length+1)) {
         // Delete step
-        $scope.recipe.steps.splice(stepNb-1,1);
-        $scope.stepsInfo.splice(stepNb,1);
+        vm.recipe.steps.splice(stepNb-1,1);
+        vm.stepsInfo.splice(stepNb,1);
         // Change step numbers
-        $scope.recipe.steps.map(function(step){
+        vm.recipe.steps.map(function(step){
           if(step.number > stepNb-1) step.number--;
         });
-        $scope.stepsInfo = $scope.stepsInfo.map(function(step){
+        vm.stepsInfo = vm.stepsInfo.map(function(step){
           if(!isNaN(step) && step > stepNb-1) --step;
           return step;
         });
       }
-    };
+    }
 
-    // Go to a step
-    $scope.goTo = function(id){
-      console.log(id);
-      var stepNb = $scope.currentStep.number || 0;
+    function goTo (id){
+      var stepNb = vm.currentStep.number || 0;
       // Check first page informations
       if(stepNb == 0){
         checkRecipeInformation();
@@ -146,100 +145,93 @@
       }
 
       // Stop if there are some errors
-      if(Object.keys($scope.errors).length){
-//          return false;
+      if(Object.keys(vm.errors).length){
+        return false;
       }
 
       // Save step
       saveStep();
       // Show information
       if(id === 'I'){
-        $scope.stepInformation = true;
-        $scope.stepCreations = false;
-        $scope.stepFinal = false;
-        $scope.currentStep = {};
+        vm.stepInformation = true;
+        vm.stepCreations = false;
+        vm.stepFinal = false;
+        vm.currentStep = {};
       }
       // Show end
       if(id === 'E'){
-        $scope.stepInformation = false;
-        $scope.stepCreations = false;
-        $scope.stepFinal = true;
-        $scope.currentStep = {};
+        vm.stepInformation = false;
+        vm.stepCreations = false;
+        vm.stepFinal = true;
+        vm.currentStep = {};
       }
       // Show step
       if(!isNaN(id)){
-        $scope.stepInformation = false;
-        $scope.stepCreations = true;
-        $scope.stepFinal = false;
-        $scope.currentStep = $scope.recipe.steps[id-1];
-        if(typeof $scope.currentStep === "undefined"){
-          $scope.currentStep = {number: id};
-          $scope.stepsInfo.splice(id,0,id);
+        vm.stepInformation = false;
+        vm.stepCreations = true;
+        vm.stepFinal = false;
+        vm.currentStep = vm.recipe.steps[id-1];
+        if(typeof vm.currentStep === "undefined"){
+          vm.currentStep = {number: id};
+          vm.stepsInfo.splice(id,0,id);
         }
       }
     }
 
-    // Go to the last step
-    $scope.lastStep = function (){
-      $scope.goTo('E');
-    };
+    function lastStep (){
+      vm.goTo('E');
+    }
 
-    // Go to next step
-    $scope.nextStep = function(){
-      var stepNb = $scope.currentStep.number || 0;
-      $scope.goTo(++stepNb);
-    };
+    function nextStep (){
+      var stepNb = vm.currentStep.number || 0;
+      vm.goTo(++stepNb);
+    }
 
-    // Go to previous step
-    $scope.previousStep = function(){
-      var stepNb = $scope.currentStep.number || 0;
-      if(stepNb == 1) return $scope.goTo('I');
-      $scope.goTo(--stepNb);
-    };
+    function previousStep (){
+      var stepNb = vm.currentStep.number || 0;
+      if(stepNb == 1) return vm.goTo('I');
+      vm.goTo(--stepNb);
+    }
 
-    // Save current step
     function saveStep(){
       // Get current step number
-      var stepNb = $scope.currentStep.number || 0;
+      var stepNb = vm.currentStep.number || 0;
       // Do not save if information screen
       if(!stepNb){
         return;
       }
-      console.log(stepNb > $scope.recipe.steps.length);
       // Save current step was new
-      if(stepNb > $scope.recipe.steps.length){
-        $scope.recipe.steps.push($scope.currentStep);
+      if(stepNb > vm.recipe.steps.length){
+        vm.recipe.steps.push(vm.currentStep);
       } else {
-        $scope.recipe.steps[stepNb-1] = $scope.currentStep;
+        vm.recipe.steps[stepNb-1] = vm.currentStep;
       }
     }
 
-    $scope.setUploadedPicture = function(picture){
-      $scope.uploadProgress = undefined;
-      if($scope.stepCreations){
-        $scope.currentStep.picture = picture;
+    function setUploadedPicture (picture){
+      vm.uploadProgress = undefined;
+      if(vm.stepCreations){
+        vm.currentStep.picture = picture;
       }
-      if($scope.stepFinal){
-        $scope.recipe.picture = picture;
+      if(vm.stepFinal){
+        vm.recipe.picture = picture;
       }
-    };
+    }
 
-    // Toggle timer display
-    $scope.toggleTimer = function (){
-      $scope.showTimer = !$scope.showTimer;
-    };
+    function toggleTimer (){
+      vm.showTimer = !vm.showTimer;
+    }
 
-    // Create the recipe
-    $scope.createRecipe = function(){
+    function createRecipe (){
       // Check last picture
-      if(typeof $scope.recipe.picture === "undefined"){
-        return $scope.errors.picture = 'Insert a picture before submitting recipe';
+      if(typeof vm.recipe.picture === "undefined"){
+        return vm.errors.picture = 'Insert a picture before submitting recipe';
       }
 
-      $scope.recipe.course = $scope.recipe.course.value;
-      createRecipeService.create($scope.recipe).then(function(id){
+      vm.recipe.course = vm.recipe.course.value;
+      createRecipeService.create(vm.recipe).then(function(id){
         $state.go('displayRecipe',{id: id});
       });
-    };
+    }
   }
 })();
