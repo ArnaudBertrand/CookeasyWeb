@@ -49,21 +49,24 @@
         vm.errors.ingredient.name = 'Please insert an ingredient name.';
       }
       // Check quantity
-      if(isNaN(ingredient.qte)){
-        vm.errors.ingredient.qte = 'Quantity should be a number.';
-      } else if(Number(ingredient.qte)<0){
-        vm.errors.ingredient.qte = 'Quantity should be positive.';
+      if(ingredient.qte){
+        console.log('test');
+      } else {
+        console.log(ingredient);
+      }
+      if(ingredient.qte && (isNaN(ingredient.qte) || Number(ingredient.qte)<0)){
+        console.log('test');
+        vm.errors.ingredient.qte = 'Quantity should be a positive number.';
       }
       // Check unit
-      if(!ingredient.unit || ingredient.unit == ''){
-        vm.errors.ingredient.unit = 'Please insert an ingredient unit.';
+      if(ingredient.unit && !ingredient.qte){
+        vm.errors.ingredient.unit = 'Unit should be used with quantity.';
       }
       // Check for errors
       if(Object.keys(vm.errors.ingredient).length){
         return;
       }
       // Insert ingredient
-      ingredient.qte = Number(ingredient.qte);
       vm.recipe.ingredients.push(ingredient);
       vm.currentIngredient = {};
     }
@@ -85,12 +88,16 @@
         vm.errors.name = 'Recipe name too short.';
       }
       // Course
-      if(!(vm.recipe.course.value > 0 || vm.recipe.course.value <= 3)){
+      if(!(vm.recipe.course.value > 0 && vm.recipe.course.value <= 3)){
         vm.errors.course = 'Please choose a course.';
       }
       // Difficulty
       if(!(vm.recipe.difficulty > 0 && vm.recipe.difficulty < 5)){
         vm.errors.difficulty = 'Please choose a difficulty between 1 and 5.';
+      }
+      // Ingredients
+      if(!vm.recipe.ingredients.length){
+        vm.errors.ingredients = 'Please add at least one ingredient';
       }
       // Number of person
       if(!(vm.recipe.nbPerson > 0)){

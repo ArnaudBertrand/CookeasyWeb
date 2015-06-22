@@ -22,8 +22,8 @@
       Created on {{display.recipe.createdOn | date}} by {{display.recipe.author}}.
     </div>
     <div ng-show="display.recipe.utensils.length">
-      <h3>Utensils</h3>
-      <ul>
+      <h3 class="list-title">Utensils</h3>
+      <ul class="list">
         <li ng-repeat="utensil in display.recipe.utensils">
           {{utensil}}
         </li>
@@ -33,7 +33,7 @@
       <h3 class="list-title">Ingredients</h3>
       <ul class="list">
         <li ng-repeat="ingredient in display.recipe.ingredients">
-          {{ingredient.qte}} {{ingredient.unit}} of {{ingredient.name}}
+          {{ingredient.qte}} <span ng-show="ingredient.unit">{{ingredient.unit }} of </span>{{ingredient.name}}
         </li>
       </ul>
     </div>
@@ -66,9 +66,9 @@
       <div class="timer">
         <span ng-show="display.currentStep.time">
           {{((display.currentStep.time*60)-display.timerSecondsPassed) | secondsToDateTime | date:'HH:mm:ss' }}
-          <button ng-hide="timerRunning" ng-click="timerStart()"><i class="fa fa-play"></i></button>
-          <button ng-show="timerRunning" ng-click="timerPause()"><i class="fa fa-pause"></i></button>
-          <button ng-show="timerRunning" ng-click="timerStop()"><i class="fa fa-stop"></i></button>
+          <button ng-hide="display.timerRunning" ng-click="display.timerStart()"><i class="fa fa-play"></i></button>
+          <button ng-show="display.timerRunning" ng-click="display.timerPause()"><i class="fa fa-pause"></i></button>
+          <button ng-show="display.timerRunning" ng-click="display.timerStop()"><i class="fa fa-stop"></i></button>
         </span>
       </div>
     </div>
@@ -104,7 +104,8 @@
 
   <!-- Comments -->
   <div ng-show="display.showInfoPage || display.stepsFinished" class="comment-area">
-    <div class="add-comment">
+    <div class="add-comment" ng-hide="display.commentAdded">
+      <h3>Leave a comment</h3>
       <div class="add-mark" ng-mouseleave="display.markEvent.mouseLeave()"
         ng-mouseup="display.markEvent.mouseUp()">
         Give a mark: <i ng-repeat="t in [] | range: display.tempMark" class="fa fa-star"
@@ -113,9 +114,10 @@
           ng-mouseenter="display.markEvent.mouseEnter(true,$index)"></i>
       </div>
       <textarea ng-model="display.currentComment" placeholder="Type your comment here..."></textarea>
-      <button class="bg-primary" ng-click="display.addComment()">Add comment</button>
+      <button class="bg-primary" ng-click="display.addComment()" ng-disabled="vm.commentAdding">Add comment</button>
     </div>
     <div class="comments">
+      <h3>Comments</h3>
       <div class="comment" ng-repeat="comment in display.recipe.comments">
         <a href="#" class="profile-picture"><img ng-src="http://www.lcfc.com/images/common/bg_player_profile_default_big.png" /></a>
         <div class="content">

@@ -17,7 +17,7 @@
 .display-recipe .recipe-image{
   width:95%;
   text-align: center;
-  margin: 0px auto;
+  margin: 0 auto;
 }
 .display-recipe .recipe-image img{
   max-width: 90%;
@@ -28,29 +28,6 @@
 }
 .display-recipe .recipe-create-info{
   text-align: center;
-}
-
-/** List **/
-.display-recipe .list-title{
-  margin-bottom: 5px;
-}
-.display-recipe .list{
-  list-style-type: none;
-  width: 80%;
-  margin-top: 5px;
-  padding-left: 0px;
-}
-.display-recipe .list li{
-  border: 1px solid #ffcccc;
-  background: rgba(255, 200, 200);
-  background: rgba(255, 200, 200, 0.3);
-  padding: 5px 10px;
-  font-size: 1.5em;
-}
-.display-recipe .list li a{
-  font-style: italic;
-  cursor: pointer;
-  color: #483d8b;
 }
 
 /** Actions buttons **/
@@ -85,7 +62,7 @@
   padding: 10px 15px;
   border-radius: 15px;
   background-color: #fff;
-  margin: 15px 0px;
+  margin: 15px 0;
   font-size: 1.5em;
   border: 1px solid #c77;
 }
@@ -105,7 +82,7 @@
 }
 .display-recipe .step .timer > span > button{
   background-color: rgba(255, 0, 0, 0);
-  border: 0px;
+  border: 0;
   color: white;
 }
 
@@ -148,8 +125,11 @@
   text-align: center;
   width: 100%;
   border: 1px solid #a88;
-  padding: 20px 0px;
+  padding: 10px 0;
   background-color: #bdcdbd;
+}
+.display-recipe .add-comment h3{
+  margin: 0 0 5px 0;
 }
 .display-recipe .add-comment .add-mark{
   margin-bottom: 5px;
@@ -164,8 +144,8 @@
 .display-recipe .add-comment button{
   width: 50%;
   border-radius: 5px;
-  border: 0px;
-  padding: 10px 0px;
+  border: 0;
+  padding: 10px 0;
   margin-top: 5px;
 }
 .display-recipe .comments{
@@ -183,7 +163,7 @@
   margin-top: 5px;
 }
 .display-recipe .comment .profile-picture{
-  margin: 0px 10px 0px 0px;
+  margin: 0 10px 0 0;
 }
 .display-recipe .comment .profile-picture img{
   width: 60px;
@@ -201,7 +181,7 @@
   text-decoration: none;
 }
 .display-recipe .content .message-container{
-  margin: 10px 0px 0px 0px;
+  margin: 10px 0 0 0;
   background: #fff;
   border: 1px solid #d6d6d4;
   padding: 10px;

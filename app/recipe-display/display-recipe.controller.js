@@ -39,7 +39,7 @@
     vm.mark = 0;
     vm.markEvent = {
       mouseUp : markMouseUp,
-      mouseEnter: markMouseLeave,
+      mouseLeave: markMouseLeave,
       mouseEnter: markMouseEnter
     };
     vm.tempMark = 0;
@@ -66,12 +66,16 @@
 
       // Check length
       if(comment.message.length > 10){
+        vm.commentAdding = true;
         displayRecipeService.addComment($stateParams.id,comment).then(function(comment){
           vm.recipe.comments.unshift(comment);
           vm.currentComment = "";
+          vm.commentAdded = true;
+          delete vm.commentAdding;
         });
       } else {
         vm.errors.addComment = 'Please enter at least 10 characters';
+        delete vm.commentAdding;
       }
     }
 
@@ -170,7 +174,7 @@
       if(vm.timerSecondsPassed == vm.currentStep.time*60){
         return vm.timerStop();
       }
-      timer = $timeout(vm.timerTick,1000);
+      timer = $timeout(timerTick,1000);
     }
   }
 })();

@@ -33,10 +33,11 @@
       <br /><span class="error-details">{{rcpCreate.errors.difficulty}}</span>
     </p>
     <div class="ingredients">
-      <h3>Ingredients</h3>
+      <h3 class="list-title">Ingredients</h3>
+      <span class="error-details">{{rcpCreate.errors.ingredients}}</span>
       <ul class="list">
         <li ng-repeat="ingredient in rcpCreate.recipe.ingredients">
-          {{ingredient.qte + ingredient.unit }} of {{ingredient.name}}
+          {{ingredient.qte}} <span ng-show="ingredient.unit">{{ingredient.unit }} of </span>{{ingredient.name}}
           <a ng-click="rcpCreate.deleteIngredient($index)"> (remove)</a>
         </li>
       </ul>
@@ -54,7 +55,7 @@
       </span>
     </div>
     <div class="utensils">
-      <h3>Utensils required</h3>
+      <h3 class="list-title">Utensils required</h3>
       <ul class="list">
         <li ng-repeat="utensil in rcpCreate.recipe.utensils">
           {{ utensil }}
@@ -62,7 +63,7 @@
         </li>
       </ul>
       <div class="list-add">
-        <input type="text" class="input" placeholder="Name" ng-model="currentUtensil" />
+        <input type="text" class="input" placeholder="Name" ng-model="rcpCreate.currentUtensil" />
         <button ng-click="rcpCreate.addUtensil()" class="btn bg-primary">+</button>
       </div>
       <span class="error-details">{{rcpCreate.errors.utensil}}</span>

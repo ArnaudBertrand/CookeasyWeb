@@ -38,39 +38,16 @@
   font-size: 0.8em;
 }
 
-/** Lists **/
-.create-recipe h3{
-  font-size: 1.5em;
-}
-.create-recipe .list{
-  list-style-type: none;
-  width: 50%;
-}
-.create-recipe .list li{
-  border: 1px solid #ffcccc;
-  background: rgba(255, 200, 200);
-  background: rgba(255, 200, 200, 0.3);
-  padding: 5px 10px;
-  font-size: 1.5em;
-}
-.create-recipe .list li a{
-  font-style: italic;
-  cursor: pointer;
-  color: #483d8b;
-}
+/** List adding **/
 .create-recipe .list-add button{
   margin-left: 10px;
 }
-
-/** Ingredients **/
 .create-recipe .ingredients input{
   width: 15%;
 }
 .create-recipe .ingredients input.name{
   width: 30%;
 }
-
-/** Utensil **/
 .create-recipe .utensils input{
   width: 50%;
 }
