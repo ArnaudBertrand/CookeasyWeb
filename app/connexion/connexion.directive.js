@@ -13,7 +13,7 @@
     };
   }
 
-  ConnexionCtrl.$inject = ['$window','connexionService','ceAuthentication']
+  ConnexionCtrl.$inject = ['$window','connexionService','ceAuthentication'];
   function ConnexionCtrl ($window,connexionService,ceAuthentication){
     var vm = this;
 

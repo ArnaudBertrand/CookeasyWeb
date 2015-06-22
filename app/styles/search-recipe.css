@@ -1,54 +1,47 @@
 .recipe-search{
-  margin: 20px auto;
   text-align: center;
   width: 100%;
+  margin: 10px auto;
 }
-.recipe-search input{
+
+.recipe-search .top{
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.recipe-search .top input{
   width: 60%;
 }
 .recipe-search .masonry-brick {
-  width: 200px;
-  margin: 1em;
+  width: 33%;
   display: none;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0;
+  background: #000;
 }
 .recipe-search .masonry-brick.loaded {
-    display: block;
+  display: block;
 }
 .recipe-search .masonry-brick > img {
   width: 100%;
-}
-
-/** Tiles **/
-.tile-container{
-  display: inline-block;
-  width: 300px;
-  height: 400px;
-  vertical-align: top;
-  margin: 10px auto;
-}
-.tile-container.large{
-  width: 600px;
-}
-.tile-container .tile{
-  height: 400px;
   position: relative;
-  border: 1px solid #999;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  overflow: hidden;
+  z-index:6;
+  transition: all 1s ease-in-out;
+  display: block;
 }
-.tile-container .tile.small{
-  height: 195px;
+.recipe-search .masonry-brick > img:hover{
+  transform:scale(1.1,1.1);
+  z-index:2;
+  opacity: 0.8;
 }
-.tile-container .tile img{
-  width: 100%;
-}
-.tile-container .tile .title{
+.recipe-search .masonry-brick > .recipe-title {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(128, 0, 0, 0.5);
-  font-size: 1.5em;
-  color: white;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  pointer-events: none;
+  color: #fff;
 }

@@ -3,7 +3,7 @@
 
   angular
     .module('app')
-    .factory('CeAuthentication', ceAuthentication);
+    .factory('ceAuthentication', ceAuthentication);
 
   function ceAuthentication () {
     return {
