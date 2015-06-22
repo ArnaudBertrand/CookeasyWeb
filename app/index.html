@@ -12,15 +12,18 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/create-recipe.css">
-    <link rel="stylesheet" href="styles/display-recipe.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/header-principal.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/modal-window.css">
-    <link rel="stylesheet" href="styles/picture-upload.css">
-    <link rel="stylesheet" href="styles/search-recipe.css">
-    <link rel="stylesheet" href="styles/step-line.css">
+    <link rel="stylesheet" href="connexion/connexion.css" />
+    <link rel="stylesheet" href="login/login.css" />
+    <link rel="stylesheet" href="signup/signup.css" />
+    <link rel="stylesheet" href="styles/create-recipe.css" />
+    <link rel="stylesheet" href="styles/display-recipe.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link rel="stylesheet" href="layout/header.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/modal-window.css" />
+    <link rel="stylesheet" href="styles/picture-upload.css" />
+    <link rel="stylesheet" href="styles/search-recipe.css" />
+    <link rel="stylesheet" href="styles/step-line.css" />
     <!-- endbuild -->
   </head>
   <body ng-app="app">
@@ -84,28 +87,40 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="app.module.js"></script>
-        <!-- Controllers -->
-        <script src="recipe-create/create-recipe.controller.js"></script>
-        <script src="recipe-display/display-recipe.controller.js"></script>
-        <script src="recipe-search/search-recipe.controller.js"></script>
-        <!-- Directives -->
-        <script src="layout/header.directive.js"></script>
-        <script src="connexion/connexion.directive.js"></script>
-        <script src="modal-gallery/modal-gallery.directive.js"></script>
-        <script src="widgets/picture-upload.directive.js"></script>
-        <script src="widgets/step-line.directive.js"></script>
-        <!-- Services -->
-        <script src="connexion/authentication.service.js"></script>
-        <script src="modal-gallery/modal-gallery.service.js"></script>
-        <script src="recipe-create/create-recipe.services.js"></script>
-        <script src="recipe-display/display-recipe.service.js"></script>
-        <script src="recipe-search/search-recipe.service.js"></script>
-        <script src="widgets/tokeninterceptor.js"></script>
-        <script src="widgets/picture-upload.service.js"></script>
-        <script src="connexion/connexion.service.js"></script>
-        <script src="filters.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="app.module.js"></script>
+    <!-- Connexion-->
+    <script src="connexion/authentication.service.js"></script>
+    <script src="connexion/connexion.directive.js"></script>
+    <script src="connexion/connexion.service.js"></script>
+    <!-- Layout -->
+    <script src="layout/header.directive.js"></script>
+    <!-- Login -->
+    <script src="login/login.controller.js"></script>
+    <script src="login/login.service.js"></script>
+    <!-- Modal gallery -->
+    <script src="modal-gallery/modal-gallery.directive.js"></script>
+    <script src="modal-gallery/modal-gallery.service.js"></script>
+    <!-- Recipe - Create -->
+    <script src="recipe-create/create-recipe.controller.js"></script>
+    <script src="recipe-create/create-recipe.services.js"></script>
+    <!-- Recipe - Display-->
+    <script src="recipe-display/display-recipe.controller.js"></script>
+    <script src="recipe-display/display-recipe.service.js"></script>
+    <!-- Recipe - Search -->
+    <script src="recipe-search/search-recipe.controller.js"></script>
+    <script src="recipe-search/search-recipe.service.js"></script>
+    <!-- Signup -->
+    <script src="signup/signup.controller.js"></script>
+    <script src="signup/signup.service.js"></script>
+    <!-- Widgets -->
+    <script src="widgets/picture-upload.directive.js"></script>
+    <script src="widgets/picture-upload.service.js"></script>
+    <script src="widgets/step-line.directive.js"></script>
+    <script src="widgets/tokeninterceptor.js"></script>
+
+    <!-- Filters -->
+    <script src="filters.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

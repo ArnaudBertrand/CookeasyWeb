@@ -31,6 +31,10 @@ footer > .container {
   background-color: #800000;
   color: #fff;
 }
+.bg-primary:disabled{
+  background-color: #600000;
+  color: #ddd;
+}
 
 /** Forms **/
 .btn{
@@ -57,6 +61,7 @@ footer > .container {
   -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
   -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  box-sizing: border-box;
 }
 .input[type="number"]{
   width: 50px;

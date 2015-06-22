@@ -50,6 +50,18 @@
         resolve: {
           recipePre: recipePre
         }
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: '/login/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
+      .state('register', {
+        url: '/register',
+        templateUrl: '/signup/signup.html',
+        controller: 'SignupCtrl',
+        controllerAs: 'signup',
       });
 
     $httpProvider.interceptors.push('TokenInterceptor');

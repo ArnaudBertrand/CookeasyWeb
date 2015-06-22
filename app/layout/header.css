@@ -1,0 +1,88 @@
+header {
+  background-color: #800000;
+  border-bottom: 1px solid black;
+  padding: 10px 20px;
+}
+
+header nav{
+  max-width: 1024px;
+  color: #fff;
+  margin: 0 auto;
+}
+header nav .logo {
+  display: inline-block;
+  height: 54px;
+}
+
+header nav .logo .title{
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: top;
+  font-family: cookiedough, arial, sans-serif;
+  font-size: 2.5em;
+  font-weight: normal;
+  text-shadow: 1px 1px 2px #333;
+  color: #FFE4E1;
+  background: linear-gradient(to bottom right,#500,#801);  border-radius: 15px;
+  padding: 0 15px;
+  border: 1px solid #FFE4E1;
+}
+
+@-webkit-keyframes shaky {
+  0% { -webkit-transform: scale(1); }
+  50% { -webkit-transform: scale(1.05); }
+  100% { -webkit-transform: scale(1); }
+}
+
+header nav .logo .title:hover
+{
+  -webkit-animation-name: shaky;
+  -webkit-animation-duration: 200ms;
+  -webkit-transform-origin:50% 50%;
+  -webkit-animation-iteration-count: 2;
+  -webkit-animation-timing-function: linear;
+}
+
+header > nav > ul {
+  list-style-type: none;
+  display: inline-block;
+  text-align: right;
+  margin: 0;
+  vertical-align: top;
+  float: right;
+}
+
+header > nav .menu-item{
+  display: inline-block;
+  height: 54px;
+}
+
+header > nav .menu-item > a{
+  height: 54px;
+  cursor: pointer;
+}
+
+header > nav .menu-item > .menu-item-btn {
+  border-radius: 6.2px;
+  display: inline-block;
+  position: relative;
+  height: 40px;
+  font-weight: 600;
+  margin-top: 5px;
+  color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(0,0,0,0.2);
+}
+
+header > nav .menu-item > .menu-item-btn span{
+  text-shadow: 0 1px 2px rgba(0,0,0,0.16);
+  line-height: 2.25em;
+  padding: 0 18px;
+  font-size: 17.5px;
+  letter-spacing: 0.5px;
+}
+
+@font-face {
+  font-family: cookiedough;
+  src: url(/layout/fonts/cookiedough.otf);
+}

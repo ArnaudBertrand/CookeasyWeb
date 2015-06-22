@@ -1,0 +1,29 @@
+<div class="login">
+  <form name="loginForm" ng-submit="login.login()" role="form">
+
+    <div class="form-group">
+      <label>
+        Username or E-mail
+        <input type="text" name="userId" class="input" ng-model="login.user.id" required />
+      </label>
+      <span ng-show="loginForm.userId.$dirty && loginForm.userId.$error.required" class="help-block">
+        Username or E-mail is required
+      </span>
+    </div>
+    <div class="form-group">
+      <label>
+        Password
+        <input type="password" name="password" class="input" ng-model="login.user.password" ng-minlength="6" required />
+      </label>
+      <span ng-show="loginForm.password.$dirty && loginForm.password.$error.required" class="help-block">
+        Password is required
+      </span>
+    </div>
+    <span class="form-actions">
+      <span ng-show="login.error" class="alert alert-danger">{{login.error}}</span>
+      <button ng-type="submit" ng-disabled="loginForm.$invalid || dataLoading" class="btn btn-danger bg-primary">
+        Login
+      </button>
+    </div>
+  </form>
+</div>

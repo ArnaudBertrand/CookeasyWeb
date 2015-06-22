@@ -1,10 +1,22 @@
 <header>
   <nav>
-    <img class="logo" src="http://www.chick-fil-a.com/Media/Img/catalog/Food/XLarge/Cookie.png"/>
-    <h1 class="title">Cookeasy</h1>
-    <a class="menu-item">Recipes</a>
-    <a class="menu-item"><!--<img src="images/icons/education.png"/>-->Learning Games</a>
-    <a class="menu-item">Arnaud Bertrand</a>
-    <ce-connexion></ce-connexion>
+    <div class="logo">
+      <a ui-sref="searchRecipe">
+        <h1 class="title">COOKEASY</h1>
+      </a>
+    </div>
+    <ul>
+      <li class="menu-item">
+        <a class="menu-item-btn">
+          <span>Recipes</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-item-btn">
+          <span>Learning Games</span>
+        </a>
+      </li>
+      <ce-connexion></ce-connexion>
+    </ul>
   </nav>
 </header>
