@@ -73,6 +73,8 @@
   vertical-align: top;
   color: #800000;
   margin-top: 120px;
+  cursor: pointer;
+
 }
 .create-recipe .step{
   width: 65%;

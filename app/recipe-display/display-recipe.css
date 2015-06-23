@@ -25,6 +25,7 @@
   margin-top: 10px;
   border: 1px solid #bbb;
   max-height: 400px;
+  cursor: pointer;
 }
 .display-recipe .recipe-create-info{
   text-align: center;
@@ -114,6 +115,7 @@
   height: 100%;
   width: 100%;
   border-radius: 15px;
+  cursor: pointer;
 }
 
 /** Comments **/
