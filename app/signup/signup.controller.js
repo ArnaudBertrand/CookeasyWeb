@@ -5,28 +5,31 @@
     .module('app')
     .controller('SignupCtrl',SignupCtrl);
 
-  SignupCtrl.$inject = ['$window','signupService','ceAuthentication'];
-  function SignupCtrl ($window,signupService,ceAuthentication) {
+  SignupCtrl.$inject = ['$resource','$state','$window','ceAuthentication'];
+  function SignupCtrl ($resource,$state,$window,ceAuthentication) {
     var vm = this;
+    var User = $resource('http://mysterious-eyrie-9135.herokuapp.com/user/:username');
 
-    vm.user = {username: '', password: '', confirmPassword: '', email: ''};
+    vm.user = new User();
+    //{username: '', password: '', email: ''}
     vm.connected = ceAuthentication.isLogged;
-    vm.signUp= signUp;
+    vm.register= register;
 
-    function signUp() {
+    function register() {
       vm.dataLoading = true;
-      vm.error = "";
+      vm.errors = {};
+      if(vm.user.username.length < 2) vm.errors.username = 'Username too short';
+      if(vm.user.password.length < 6) vm.errors.password = 'Password too short';
+      if(vm.user.email.length < 4) vm.errors.email = 'Please insert an e-mail';
 
-      if (vm.user.password !== vm.user.confirmPassword) {
-        vm.dataLoading = false;
-        return vm.error = "Passwords do not match";
-      }
+      if(Object.keys(vm.errors).length > 0) return console.log(vm.errors);
 
-      signupService.signUp(vm.user).then(function (token) {
+      vm.user.$save().then(function(res){
         ceAuthentication.isLogged = true;
         vm.notConnected = false;
-        $window.sessionStorage.token = token;
+        $window.sessionStorage.token = res.token;
         vm.dataLoading = false;
+        $state.go('recipeSearch');
       }, function (error) {
         vm.error = error;
         vm.dataLoading = false;

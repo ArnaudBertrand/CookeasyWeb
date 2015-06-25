@@ -95,11 +95,10 @@
     return recipeSearchService.getTrends();
   }
 
-  userFromUserName.$inject = ['$stateParams','$resource'];
-  function userFromUserName ($stateParams,$resource){
-    var User = $resource('http://mysterious-eyrie-9135.herokuapp.com/user/:username');
-    return User.get({username: $stateParams.username}).$promise.then(function(res){
-      return res.user;
+  userFromUserName.$inject = ['$stateParams','ceUser'];
+  function userFromUserName ($stateParams,ceUser){
+    return ceUser.get({username: $stateParams.username}).$promise.then(function(user){
+      return user;
     });
   }
 })();
