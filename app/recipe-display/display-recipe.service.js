@@ -3,10 +3,10 @@
 
   angular
     .module('app')
-    .factory('displayRecipeService', displayRecipeService);
+    .factory('recipeDisplayService', recipeDisplayService);
 
-  displayRecipeService.$inject = ['$http','$q'];
-  function displayRecipeService($http, $q) {
+  recipeDisplayService.$inject = ['$http','$q'];
+  function recipeDisplayService($http, $q) {
     return {
       addComment: addComment,
       get: get,

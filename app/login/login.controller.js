@@ -22,7 +22,7 @@
         vm.notConnected = false;
         $window.sessionStorage.token = token;
         vm.dataLoading = false;
-        $state.go('searchRecipe');
+        $state.go('rearchSearch');
       }, function (error) {
         vm.error = error;
         vm.dataLoading = false;

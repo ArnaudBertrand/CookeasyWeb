@@ -1,11 +1,11 @@
 'use strict';
 
-describe('Controller: DisplayRecipeCtrl', function () {
+describe('Controller: RecipeDisplayCtrl', function () {
 
   // load the controller's module
   beforeEach(module('app'));
 
-  var DisplayRecipeCtrl,
+  var RecipeDisplayCtrl,
     scope,
     mockRecipeService,
     mockModalWindow;
@@ -114,7 +114,7 @@ describe('Controller: DisplayRecipeCtrl', function () {
       };
 
       // Create controller
-      DisplayRecipeCtrl = $controller('DisplayRecipeCtrl', {
+      RecipeDisplayCtrl = $controller('RecipeDisplayCtrl', {
         $scope: scope,
         RecipeService: mockRecipeService,
         $stateParams: stateParams,

@@ -1,11 +1,11 @@
 <div class="recipe-search">
   <div class="top">
-    <input type="text" class="input" ng-model="searchRecipe.recipeToSearch" ng-change="searchRecipe.search()"
+    <input type="text" class="input" ng-model="rcpSearch.recipeToSearch" ng-change="rcpSearch.search()"
            ng-model-options="{ debounce: 500 }" placeholder="Search for a recipe" />
   </div>
 
   <div masonry>
-    <div class="masonry-brick" ng-repeat="recipe in searchRecipe.recipes" ng-click="searchRecipe.displayRecipe(recipe._id)">
+    <div class="masonry-brick" ng-repeat="recipe in rcpSearch.recipes" ng-click="rcpSearch.displayRecipe(recipe._id)">
       <div class="recipe-title">
         <h2>{{recipe.name}}</h2>
       </div>

@@ -2,16 +2,16 @@
   'use strict';
   angular
     .module('app')
-    .controller('CreateRecipeCtrl', CreateRecipeCtrl);
+    .controller('RecipeCreateCtrl', RecipeCreateCtrl);
 
-  CreateRecipeCtrl.$inject = ['$scope', '$state', 'Upload', 'createRecipeService'];
-  function CreateRecipeCtrl ($scope,$state,Upload,createRecipeService) {
+  RecipeCreateCtrl.$inject = ['$state', 'recipeCreateService'];
+  function RecipeCreateCtrl ($state,recipeCreateService) {
     var vm = this;
 
     /** Navigation **/
     vm.goTo = goTo;
     vm.lastStep = lastStep;
-    vm.nextStep = nextStep
+    vm.nextStep = nextStep;
     vm.previousStep = previousStep;
     vm.stepInformation = true;
     vm.stepCreations = false;
@@ -236,8 +236,8 @@
       }
 
       vm.recipe.course = vm.recipe.course.value;
-      createRecipeService.create(vm.recipe).then(function(id){
-        $state.go('displayRecipe',{id: id});
+      recipeCreateService.create(vm.recipe).then(function(id){
+        $state.go('recipeDisplay',{id: id});
       });
     }
   }

@@ -4,6 +4,7 @@
   angular
     .module('app')
     .filter('ageFromDob',ageFromDob)
+    .filter('formatImg',formatImg)
     .filter('numberFixedLen', numberFixedLen)
     .filter('orderObjectBy', orderObjectBy)
     .filter('range', range)
@@ -16,6 +17,13 @@
       return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
   }
+
+  function formatImg(){
+    return function(img,w,h){
+      return 'http://res.cloudinary.com/hqk7wz0oa/image/upload/c_fill,h_'+h+',w_'+w+'/'+img+'.jpg';
+    }
+  }
+
   function numberFixedLen () {
     return function(n, len) {
       var num = parseInt(n, 10);

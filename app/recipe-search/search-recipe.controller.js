@@ -3,11 +3,11 @@
 
   angular
     .module('app')
-    .controller('SearchRecipeCtrl', SearchRecipeCtrl);
+    .controller('RecipeSearchCtrl', RecipeSearchCtrl);
 
-  SearchRecipeCtrl.$inject = ['$state','recipesTrendsPre','searchRecipeService'];
+  RecipeSearchCtrl.$inject = ['$state','recipesTrendsPre','recipeSearchService'];
 
-  function SearchRecipeCtrl ($state,recipesTrendsPre,searchRecipeService) {
+  function RecipeSearchCtrl ($state,recipesTrendsPre,recipeSearchService) {
     var vm = this;
 
     vm.recipes = [];
@@ -18,7 +18,7 @@
     vm.search = search;
 
     function displayRecipe (id){
-      $state.go('displayRecipe',{id: id});
+      $state.go('recipeDisplay',{id: id});
     }
 
     function isPair (index){
@@ -27,7 +27,7 @@
 
     function search (){
       if(vm.recipeToSearch.length){
-        searchRecipeService.search(vm.recipeToSearch).then(function(recipes){
+        recipeSearchService.search(vm.recipeToSearch).then(function(recipes){
           vm.recipes = recipes;
         });
       } else {

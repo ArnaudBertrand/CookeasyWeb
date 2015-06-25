@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: CreateRecipeCtrl', function () {
+describe('Controller: RecipeCreateCtrl', function () {
 
   // load the controller's module
   beforeEach(module('app'));
 
-  var CreateRecipeCtrl,
+  var RecipeCreateCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    CreateRecipeCtrl = $controller('CreateRecipeCtrl', {
+    RecipeCreateCtrl = $controller('RecipeCreateCtrl', {
       $scope: scope
     });
   }));

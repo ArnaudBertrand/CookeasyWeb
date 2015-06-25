@@ -3,10 +3,10 @@
 
   angular
     .module('app')
-    .factory('createRecipeService', createRecipeService);
+    .factory('recipeCreateService', recipeCreateService);
 
-  createRecipeService.$inject = ['$http','$q'];
-  function createRecipeService($http, $q) {
+  recipeCreateService.$inject = ['$http','$q'];
+  function recipeCreateService($http, $q) {
     return {
       create: create
     };

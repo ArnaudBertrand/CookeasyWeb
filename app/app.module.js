@@ -27,26 +27,11 @@
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-      .state('searchRecipe', {
-        url: '/',
-        templateUrl: '/recipe-search/search-recipe.html',
-        controller: 'SearchRecipeCtrl',
-        controllerAs: 'searchRecipe',
-        resolve: {
-          recipesTrendsPre: recipesTrendsPre
-        }
-      })
-      .state('createRecipe', {
-        url: '/recipe/create',
-        templateUrl: '/recipe-create/create-recipe.html',
-        controller: 'CreateRecipeCtrl',
-        controllerAs: 'rcpCreate'
-      })
-      .state('displayRecipe', {
+      .state('recipeDisplay', {
         url: '/recipe/display/:id',
         templateUrl: '/recipe-display/display-recipe.html',
-        controller: 'DisplayRecipeCtrl',
-        controllerAs: 'display',
+        controller: 'RecipeDisplayCtrl',
+        controllerAs: 'rcpDisplay',
         resolve: {
           recipePre: recipePre
         }
@@ -57,17 +42,35 @@
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
+      .state('recipeCreate', {
+        url: '/recipe/create',
+        templateUrl: '/recipe-create/create-recipe.html',
+        controller: 'RecipeCreateCtrl',
+        controllerAs: 'rcpCreate'
+      })
+      .state('recipeSearch', {
+        url: '/',
+        templateUrl: '/recipe-search/search-recipe.html',
+        controller: 'RecipeSearchCtrl',
+        controllerAs: 'rcpSearch',
+        resolve: {
+          recipesTrendsPre: recipesTrendsPre
+        }
+      })
       .state('register', {
         url: '/register',
         templateUrl: '/signup/signup.html',
         controller: 'SignupCtrl',
-        controllerAs: 'signup',
+        controllerAs: 'signup'
       })
       .state('viewProfile',{
-        url: '/user/:id',
+        url: '/user/:username',
         templateUrl: '/profile-view/view-profile.html',
         controller: 'ViewProfileCtrl',
-        controllerAs: 'profView'
+        controllerAs: 'profView',
+        resolve: {
+          userPre: userFromUserName
+        }
       });
 
     $httpProvider.interceptors.push('TokenInterceptor');
@@ -79,16 +82,24 @@
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
   }
 
-  recipePre.$inject = ['$filter','$stateParams','displayRecipeService'];
-  function recipePre ($filter,$stateParams,displayRecipeService){
-    return displayRecipeService.get($stateParams.id).then(function(recipe){
+  recipePre.$inject = ['$filter','$stateParams','recipeDisplayService'];
+  function recipePre ($filter,$stateParams,recipeDisplayService){
+    return recipeDisplayService.get($stateParams.id).then(function(recipe){
       $filter('orderObjectBy')(recipe.pictures,'createdOn',-1);
       return recipe;
     });
   }
 
-  recipesTrendsPre.$inject = ['searchRecipeService'];
-  function recipesTrendsPre (searchRecipeService){
-    return searchRecipeService.getTrends();
+  recipesTrendsPre.$inject = ['recipeSearchService'];
+  function recipesTrendsPre (recipeSearchService){
+    return recipeSearchService.getTrends();
+  }
+
+  userFromUserName.$inject = ['$stateParams','$resource'];
+  function userFromUserName ($stateParams,$resource){
+    var User = $resource('http://mysterious-eyrie-9135.herokuapp.com/user/:username');
+    return User.get({username: $stateParams.username}).$promise.then(function(res){
+      return res.user;
+    });
   }
 })();

@@ -3,10 +3,10 @@
 
   angular
     .module('app')
-    .factory('searchRecipeService', searchRecipeService);
+    .factory('recipeSearchService', recipeSearchService);
 
-  searchRecipeService.$inject = ['$http','$q'];
-  function searchRecipeService ($http,$q) {
+  recipeSearchService.$inject = ['$http','$q'];
+  function recipeSearchService ($http,$q) {
     return {
       getTrends: getTrends,
       search: search

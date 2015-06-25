@@ -3,10 +3,10 @@
 
   angular
     .module('app')
-    .controller('DisplayRecipeCtrl', DisplayRecipeCtrl);
+    .controller('RecipeDisplayCtrl', RecipeDisplayCtrl);
 
-  DisplayRecipeCtrl.$inject = ['$stateParams','$timeout','$filter','recipePre','displayRecipeService','ceModalGallery','Upload'];
-  function DisplayRecipeCtrl($stateParams,$timeout,$filter,recipePre,displayRecipeService,ceModalGallery,Upload){
+  RecipeDisplayCtrl.$inject = ['$stateParams','$timeout','recipePre','recipeDisplayService','ceModalGallery'];
+  function RecipeDisplayCtrl($stateParams,$timeout,recipePre,recipeDisplayService,ceModalGallery){
     /* jshint validthis: true */
     var vm = this;
 
@@ -67,7 +67,7 @@
       // Check length
       if(comment.message.length > 10){
         vm.commentAdding = true;
-        displayRecipeService.addComment($stateParams.id,comment).then(function(comment){
+        recipeDisplayService.addComment($stateParams.id,comment).then(function(comment){
           vm.recipe.comments.unshift(comment);
           vm.currentComment = "";
           vm.commentAdded = true;
