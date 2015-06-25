@@ -1,0 +1,27 @@
+user-activities > ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/** Top **/
+user-activities > ul > li > .top > .picture, user-activities > ul > li > .top > .info{
+  display: inline-block;
+  vertical-align: top;
+}
+user-activities > ul > li > .top > .picture > img{
+  height: 40px;
+  width: 40px;
+  border-radius: 2px;
+}
+
+/** Content **/
+user-activities > ul > li > .content{
+  text-align: center;
+}
+user-activities > ul > li > .content > img{
+  width: 100%;
+}
+user-activities > ul > li > .content > p{
+  text-align: left;
+}

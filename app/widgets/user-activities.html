@@ -1,0 +1,18 @@
+<ul>
+  <li ng-repeat="activity in userActivities.activities" class="box-white">
+    <div class="top">
+      <div class="picture">
+        <img ng-src="{{userActivities.getPicture(activity.picture)}}" />
+      </div>
+      <div class="info">
+        <div>{{activity.title}}</div>
+        <div>{{activity.date | date}}</div>
+      </div>
+    </div>
+    <div class="content">
+      <h3 ng-if="activity.content.title">{{activity.content.title}}</h3>
+      <img ng-if="activity.content.picture" ng-src="{{activity.content.picture}}" />
+      <p ng-if="activity.content.text">{{activity.content.text}}</p>
+    </div>
+  </li>
+</ul>

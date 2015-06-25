@@ -114,3 +114,32 @@ footer > .container {
   -ms-user-select: none;
   user-select: none;
 }
+
+/** Outlined Forms **/
+.outlined-form{
+  max-width: 300px;
+  margin: 30px auto;
+  padding: 15px;
+  background: #fff;
+  box-shadow: 0 0 1px #800;
+  border-radius: 5px;
+}
+.outlined-form  > .form-group{
+  margin-bottom: 10px;
+}
+.outlined-form .input, .outlined-form .btn{
+  width: 100%;
+}
+.outlined-form  > .form-actions{
+  text-align: center;
+}
+
+/** Box **/
+.box-white{
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+}

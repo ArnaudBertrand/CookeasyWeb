@@ -39,7 +39,7 @@
 
     function getMiddleY (){
       return $scope.graph.height/2;
-    };
+    }
 
     $scope.$watchCollection(function(){
       return vm.steps;

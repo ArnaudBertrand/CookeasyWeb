@@ -1,0 +1,17 @@
+<div class="view-profile">
+  <div class="profile-picture">
+    <img ng-src="{{profView.profile.picture}}" />
+  </div>
+  <div class="profile-info">
+    <h2>{{profView.profile.username}}</h2>
+    <hr />
+    <p>{{profView.profile.description}}</p>
+    <hr />
+    <p>{{profView.profile.dob | ageFromDob}} Ans <i class="fa fa-map-marker"></i> {{profView.profile.location}}</p>
+
+    <div class="recent-activity">
+      <h3>Recent activity</h3>
+      <user-activities user-picture="profView.profile.picture" activities="profView.profile.activities"></user-activities>
+    </div>
+  </div>
+</div>

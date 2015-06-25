@@ -29,11 +29,11 @@
 }
 .create-recipe .top-input{
   background: rgba(255,255,255,0);
-  border: 0px;
+  border: 0;
   border-bottom: 1px solid #ccc;
-  box-shadow: inset 0px 0px;
+  box-shadow: inset 0 0;
 }
-.info{
+.create-recipe .info{
   font-style: italic;
   font-size: 0.8em;
 }

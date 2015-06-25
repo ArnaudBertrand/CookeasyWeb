@@ -3,11 +3,19 @@
 
   angular
     .module('app')
+    .filter('ageFromDob',ageFromDob)
     .filter('numberFixedLen', numberFixedLen)
     .filter('orderObjectBy', orderObjectBy)
     .filter('range', range)
     .filter('secondsToDateTime', secondsToDateTime);
 
+  function ageFromDob(){
+    return function(dob){
+      var ageDifMs = Date.now() - dob;
+      var ageDate = new Date(ageDifMs);
+      return Math.abs(ageDate.getUTCFullYear() - 1970);
+    }
+  }
   function numberFixedLen () {
     return function(n, len) {
       var num = parseInt(n, 10);

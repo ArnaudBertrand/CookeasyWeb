@@ -62,6 +62,12 @@
         templateUrl: '/signup/signup.html',
         controller: 'SignupCtrl',
         controllerAs: 'signup',
+      })
+      .state('viewProfile',{
+        url: '/user/:id',
+        templateUrl: '/profile-view/view-profile.html',
+        controller: 'ViewProfileCtrl',
+        controllerAs: 'profView'
       });
 
     $httpProvider.interceptors.push('TokenInterceptor');

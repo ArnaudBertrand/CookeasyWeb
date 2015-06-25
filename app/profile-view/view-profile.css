@@ -1,0 +1,33 @@
+.view-profile{
+  margin-top: 15px;
+}
+
+.view-profile .profile-picture{
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+.view-profile .profile-picture img{
+  width: 100%;
+  display: block;
+}
+
+.view-profile .profile-info{
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 50px;
+  max-width: 500px;
+  width: 100%;
+}
+.view-profile .profile-info > h2{
+  color: #07b;
+  font-size: 2.5em;
+  margin: 0;
+}
+.view-profile .profile-info > p{
+  margin: 2px 0;
+}
