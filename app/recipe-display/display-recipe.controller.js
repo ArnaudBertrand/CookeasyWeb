@@ -5,8 +5,8 @@
     .module('app')
     .controller('RecipeDisplayCtrl', RecipeDisplayCtrl);
 
-  RecipeDisplayCtrl.$inject = ['$stateParams','$timeout','recipePre','recipeDisplayService','ceModalGallery'];
-  function RecipeDisplayCtrl($stateParams,$timeout,recipePre,recipeDisplayService,ceModalGallery){
+  RecipeDisplayCtrl.$inject = ['$stateParams','$timeout','recipePre','ceRecipesComments','ceModalGallery'];
+  function RecipeDisplayCtrl($stateParams,$timeout,recipePre,ceRecipesComments,ceModalGallery){
     /* jshint validthis: true */
     var vm = this;
 
@@ -67,7 +67,8 @@
       // Check length
       if(comment.message.length > 10){
         vm.commentAdding = true;
-        recipeDisplayService.addComment($stateParams.id,comment).then(function(comment){
+
+        ceRecipesComments.save({recipeId: $stateParams.id},comment).$promise.then(function(comment){
           vm.recipe.comments.unshift(comment);
           vm.currentComment = "";
           vm.commentAdded = true;

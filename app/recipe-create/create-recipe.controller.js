@@ -4,8 +4,8 @@
     .module('app')
     .controller('RecipeCreateCtrl', RecipeCreateCtrl);
 
-  RecipeCreateCtrl.$inject = ['$state', 'recipeCreateService'];
-  function RecipeCreateCtrl ($state,recipeCreateService) {
+  RecipeCreateCtrl.$inject = ['$state','ceRecipes'];
+  function RecipeCreateCtrl($state,ceRecipes){
     var vm = this;
 
     /** Navigation **/
@@ -38,10 +38,10 @@
     /** Picture upload **/
     vm.pictureFinalTags = ['recipe','main'];
     vm.pictureStepTags = ['recipe','step'];
-    vm.pictureUrl = 'https://mysterious-eyrie-9135.herokuapp.com/picture/upload';
+    vm.pictureUrl = 'https://mysterious-eyrie-9135.herokuapp.com/pictures';
     vm.setUploadedPicture = setUploadedPicture;
 
-    function addIngredient (){
+    function addIngredient(){
       vm.errors.ingredient = {};
       var ingredient = vm.currentIngredient;
       // Check name
@@ -71,7 +71,7 @@
       vm.currentIngredient = {};
     }
 
-    function addUtensil (){
+    function addUtensil(){
       delete vm.errors.utensil;
       if(!vm.currentUtensil || vm.currentUtensil == ''){
         vm.errors.utensil = 'Please insert ustensil name.';
@@ -113,15 +113,15 @@
 
     }
 
-    function deleteIngredient (id){
+    function deleteIngredient(id){
       vm.recipe.ingredients.splice(id,1);
     }
 
-    function deleteUtensil (id){
+    function deleteUtensil(id){
       vm.recipe.utensils.splice(id,1);
     }
 
-    function deleteStep (){
+    function deleteStep(){
       // Get current step number
       var stepNb = vm.currentStep.number;
       // Go to previous step
@@ -142,7 +142,7 @@
       }
     }
 
-    function goTo (id){
+    function goTo(id){
       var stepNb = vm.currentStep.number || 0;
       // Check first page informations
       if(stepNb == 0){
@@ -185,16 +185,16 @@
       }
     }
 
-    function lastStep (){
+    function lastStep(){
       vm.goTo('E');
     }
 
-    function nextStep (){
+    function nextStep(){
       var stepNb = vm.currentStep.number || 0;
       vm.goTo(++stepNb);
     }
 
-    function previousStep (){
+    function previousStep(){
       var stepNb = vm.currentStep.number || 0;
       if(stepNb == 1) return vm.goTo('I');
       vm.goTo(--stepNb);
@@ -215,7 +215,7 @@
       }
     }
 
-    function setUploadedPicture (picture){
+    function setUploadedPicture(picture){
       vm.uploadProgress = undefined;
       if(vm.stepCreations){
         vm.currentStep.picture = picture;
@@ -225,18 +225,18 @@
       }
     }
 
-    function toggleTimer (){
+    function toggleTimer(){
       vm.showTimer = !vm.showTimer;
     }
 
-    function createRecipe (){
+    function createRecipe(){
       // Check last picture
       if(typeof vm.recipe.picture === "undefined"){
         return vm.errors.picture = 'Insert a picture before submitting recipe';
       }
 
       vm.recipe.course = vm.recipe.course.value;
-      recipeCreateService.create(vm.recipe).then(function(id){
+      ceRecipes.save(vm.recipe).$promise.then(function(id){
         $state.go('recipeDisplay',{id: id});
       });
     }

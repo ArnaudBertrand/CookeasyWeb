@@ -8,9 +8,8 @@
           <p>Add or Drop picture<p>
         </div>
         <div class="preview" ng-if="pictureUpload.imageUploaded">
-          <img ng-src="{{pictureUpload.imageUploaded.url}}"/>
+          <img ng-src="{{pictureUpload.imageUploaded.public_id | formatImg}}"/>
         </div>
-        {{pictureUpload.imageUploaded}}
       </div>
       <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
   </div>

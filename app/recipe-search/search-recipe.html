@@ -9,7 +9,7 @@
       <div class="recipe-title">
         <h2>{{recipe.name}}</h2>
       </div>
-      <img ng-src="{{ recipe.picture.url }}" alt="recipe.name" />
+      <img ng-src="{{ recipe.picture | formatImg }}" alt="recipe.name" />
     </div>
   </masonry>
  </div>

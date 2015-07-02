@@ -49,8 +49,9 @@
           }).progress(function (evt) {
             vm.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
           }).success(function (data, status, headers, config) {
+            console.log(data);
             if(vm.callback){
-              vm.callback(data.picture);
+              vm.callback(data);
             }
             vm.uploadProgress = undefined;
           });

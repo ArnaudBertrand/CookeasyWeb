@@ -82,22 +82,24 @@
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
   }
 
-  recipePre.$inject = ['$filter','$stateParams','recipeDisplayService'];
-  function recipePre ($filter,$stateParams,recipeDisplayService){
-    return recipeDisplayService.get($stateParams.id).then(function(recipe){
+  recipePre.$inject = ['$filter','$stateParams','ceRecipes'];
+  function recipePre ($filter,$stateParams,ceRecipes){
+    return ceRecipes.get({id: $stateParams.id}).$promise.then(function(recipe){
       $filter('orderObjectBy')(recipe.pictures,'createdOn',-1);
       return recipe;
     });
   }
 
-  recipesTrendsPre.$inject = ['recipeSearchService'];
-  function recipesTrendsPre (recipeSearchService){
-    return recipeSearchService.getTrends();
+  recipesTrendsPre.$inject = ['ceRecipes'];
+  function recipesTrendsPre (ceRecipes){
+    return ceRecipes.query().$promise.then(function(recipes){
+      return recipes;
+    });
   }
 
   userFromUserName.$inject = ['$stateParams','ceUser'];
-  function userFromUserName ($stateParams,ceUser){
-    return ceUser.get({username: $stateParams.username}).$promise.then(function(user){
+  function userFromUserName ($stateParams,ceUsers){
+    return ceUsers.get({username: $stateParams.username}).$promise.then(function(user){
       return user;
     });
   }

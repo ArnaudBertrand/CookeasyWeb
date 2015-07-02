@@ -20,7 +20,10 @@
 
   function formatImg(){
     return function(img,w,h){
-      return 'http://res.cloudinary.com/hqk7wz0oa/image/upload/c_fill,h_'+h+',w_'+w+'/'+img+'.jpg';
+      var url = 'http://res.cloudinary.com/hqk7wz0oa/image/upload/';
+      if(w && h) url += 'c_fill,h_'+h+',w_'+w+'/';
+      url += img+'.jpg';
+      return url;
     }
   }
 

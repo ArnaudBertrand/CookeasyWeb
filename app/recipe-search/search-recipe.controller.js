@@ -5,13 +5,13 @@
     .module('app')
     .controller('RecipeSearchCtrl', RecipeSearchCtrl);
 
-  RecipeSearchCtrl.$inject = ['$state','recipesTrendsPre','recipeSearchService'];
+  RecipeSearchCtrl.$inject = ['$state','recipesTrendsPre','ceRecipes'];
 
-  function RecipeSearchCtrl ($state,recipesTrendsPre,recipeSearchService) {
+  function RecipeSearchCtrl ($state,recipesTrendsPre,ceRecipes) {
     var vm = this;
 
     vm.recipes = [];
-    vm.trends = [];
+    vm.trends = recipesTrendsPre;
     vm.recipes = recipesTrendsPre;
     vm.displayRecipe = displayRecipe;
     vm.isPair = isPair;
@@ -27,11 +27,11 @@
 
     function search (){
       if(vm.recipeToSearch.length){
-        recipeSearchService.search(vm.recipeToSearch).then(function(recipes){
+        ceRecipes.query({match: vm.recipeToSearch}).$promise.then(function(recipes){
           vm.recipes = recipes;
         });
       } else {
-        vm.recipes = $scope.trends;
+        vm.recipes = vm.trends;
       }
     }
   }
