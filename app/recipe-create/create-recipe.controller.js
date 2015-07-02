@@ -236,8 +236,8 @@
       }
 
       vm.recipe.course = vm.recipe.course.value;
-      ceRecipes.save(vm.recipe).$promise.then(function(id){
-        $state.go('recipeDisplay',{id: id});
+      ceRecipes.saveAndGetId(vm.recipe).$promise.then(function(res){
+        $state.go('recipeDisplay',{id: res.id});
       });
     }
   }
