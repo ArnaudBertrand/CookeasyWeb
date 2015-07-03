@@ -1,7 +1,7 @@
 <div class="edit-profile">
   <aside>
     <div class="profile-picture">
-      <img ng-src="{{profView.profile.picture | formatImg:200:200 }}" />
+      <img ng-src="{{profView.profile.picture.public_id | formatImg:200:200 }}" />
     </div>
     <div class="input-fw">
       <button class="btn pointer-on" ui-sref="profileEdit({username: profView.profile.username})">Edit profile</button>
@@ -16,7 +16,7 @@
 
     <div class="recent-activity">
       <h3>Recent activity</h3>
-      <user-activities user-picture="profView.profile.picture" activities="profView.profile.activities"></user-activities>
+      <user-activities user-picture="profView.profile.picture.public_id" activities="profView.profile.activities"></user-activities>
     </div>
 
     <input type="button" value="clickkk" ng-click="profView.click()" />

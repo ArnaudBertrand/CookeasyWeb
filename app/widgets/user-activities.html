@@ -11,7 +11,7 @@
     </div>
     <div class="content">
       <h3 ng-if="activity.content.title">{{activity.content.title}}</h3>
-      <img ng-if="activity.content.picture" ng-src="{{activity.content.picture | formatImg:300:200}}" />
+      <img ng-if="activity.content.picture" ng-src="{{activity.content.picture.public_id | formatImg:300:200}}" />
       <p ng-if="activity.content.text">{{activity.content.text}}</p>
     </div>
   </li>

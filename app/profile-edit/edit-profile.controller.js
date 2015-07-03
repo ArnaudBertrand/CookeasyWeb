@@ -13,6 +13,11 @@
     vm.edit = edit;
     vm.profile = userPre;
 
+    init();
+    function init(){
+      vm.dobFormatted = new Date(vm.profile.dob);
+    }
+
     function edit(){
       ceUsers.update({username: vm.profile.username},vm.profile).$promise.then(function(res){
         console.log(res);

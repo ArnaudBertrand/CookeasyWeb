@@ -15,7 +15,7 @@
       var deferred = $q.defer();
       var req = {
         method: 'POST',
-        url: 'https://mysterious-eyrie-9135.herokuapp.com/user/login',
+        url: 'https://mysterious-eyrie-9135.herokuapp.com/login',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
