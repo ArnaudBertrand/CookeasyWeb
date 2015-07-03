@@ -63,13 +63,22 @@
         controller: 'SignupCtrl',
         controllerAs: 'signup'
       })
-      .state('viewProfile',{
+      .state('profileView',{
         url: '/user/:username',
         templateUrl: '/profile-view/view-profile.html',
         controller: 'ViewProfileCtrl',
         controllerAs: 'profView',
         resolve: {
-          userPre: userFromUserName
+          userPre: userFromUsername
+        }
+      })
+      .state('profileEdit',{
+        url: '/user/edit/:username',
+        templateUrl: '/profile-edit/edit-profile.html',
+        controller: 'EditProfileCtrl',
+        controllerAs: 'profEdit',
+        resolve: {
+          userPre: userFromUsername
         }
       });
 
@@ -97,8 +106,8 @@
     });
   }
 
-  userFromUserName.$inject = ['$stateParams','ceUser'];
-  function userFromUserName ($stateParams,ceUsers){
+  userFromUsername.$inject = ['$stateParams','ceUsers'];
+  function userFromUsername ($stateParams,ceUsers){
     return ceUsers.get({username: $stateParams.username}).$promise.then(function(user){
       return user;
     });

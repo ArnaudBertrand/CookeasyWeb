@@ -35,8 +35,24 @@ footer > .container {
   background-color: #600000;
   color: #ddd;
 }
+.bg-valid{
+  background-color: green;
+  color: white;
+}
+.bg-cancel{
+  background-color: red;
+  color: white;
+}
 
 /** Forms **/
+.input-fw button, .input-fw input, .input-fw textarea{
+  width: 100%;
+  margin: 3px 0;
+}
+.input-fw textarea{
+  resize: none;
+}
+
 .btn{
   padding: 6px 12px;
   margin: 0;
@@ -105,16 +121,6 @@ footer > .container {
   color: #483d8b;
 }
 
-/** No select **/
-.noselect {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 /** Outlined Forms **/
 .outlined-form{
   max-width: 300px;
@@ -142,4 +148,17 @@ footer > .container {
   margin: 10px 0;
   width: 100%;
   box-sizing: border-box;
+}
+
+/** Cursors **/
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.pointer-on {
+  cursor: pointer;
 }

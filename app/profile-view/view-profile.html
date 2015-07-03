@@ -1,7 +1,12 @@
-<div class="view-profile">
-  <div class="profile-picture">
-    <img ng-src="{{profView.profile.picture | formatImg:200:200 }}" />
-  </div>
+<div class="edit-profile">
+  <aside>
+    <div class="profile-picture">
+      <img ng-src="{{profView.profile.picture | formatImg:200:200 }}" />
+    </div>
+    <div class="input-fw">
+      <button class="btn pointer-on" ui-sref="profileEdit({username: profView.profile.username})">Edit profile</button>
+    </div>
+  </aside>
   <div class="profile-info">
     <h2>{{profView.profile.username}}</h2>
     <hr />

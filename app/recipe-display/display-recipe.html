@@ -15,11 +15,15 @@
       <span><i class="fa fa-clock-o"></i> {{rcpDisplay.recipe.time}} mins</span>
       <span><i class="fa fa-cutlery"></i> {{rcpDisplay.recipe.nbPerson}} person(s)</span>
     </div>
+    {{dcpDisplay.recipe.picture}}
     <div class="recipe-image">
-      <img ng-src="{{rcpDisplay.recipe.picture.url}}" ng-click="rcpDisplay.showMainPicture()" />
+      <img ng-src="{{rcpDisplay.recipe.picture.public_id | formatImg }}" ng-click="rcpDisplay.showMainPicture()" />
     </div>
     <div class="recipe-create-info">
-      Created on {{rcpDisplay.recipe.createdOn | date}} by {{rcpDisplay.recipe.author}}.
+      Created on {{rcpDisplay.recipe.createdOn | date}} by
+      <a href ui-sref="profileView({username: rcpDisplay.recipe.author.username})">
+        {{rcpDisplay.recipe.author.username}}
+      </a>.
     </div>
     <div ng-show="rcpDisplay.recipe.utensils.length">
       <h3 class="list-title">Utensils</h3>
@@ -119,9 +123,11 @@
     <div class="comments">
       <h3>Comments</h3>
       <div class="comment" ng-repeat="comment in rcpDisplay.recipe.comments">
-        <a href="#" class="profile-picture"><img ng-src="http://www.lcfc.com/images/common/bg_player_profile_default_big.png" /></a>
+        <a href="#" class="profile-picture"><img ng-src="comment.author.picture.public_id" /></a>
         <div class="content">
-          <a href="#" class="author">{{comment.author}}</a>
+          <a href ui-sref="profileView({username: comment.author.username})">
+            {{comment.author.username}}
+          </a>.
           <div class="message-container">
             <span ng-show="comment.mark" class="info-top">
               <i ng-repeat="t in [] | range: comment.mark" class="fa fa-star">

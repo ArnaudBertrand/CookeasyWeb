@@ -3,19 +3,17 @@
 
   angular
     .module('app')
-    .controller('ViewProfileCtrl', ViewProfileCtrl);
+    .controller('EditProfileCtrl', EditProfileCtrl);
 
-  ViewProfileCtrl.$inject = ['ceUsers','userPre'];
+  EditProfileCtrl.$inject = ['ceUsers','userPre'];
 
-  function ViewProfileCtrl (ceUsers,userPre) {
+  function EditProfileCtrl (ceUsers,userPre) {
     var vm = this;
 
+    vm.edit = edit;
     vm.profile = userPre;
 
-    vm.click = click;
-    function click(){
-      vm.profile.plop = 12;
-
+    function edit(){
       ceUsers.update({username: vm.profile.username},vm.profile).$promise.then(function(res){
         console.log(res);
       }, function(err){
