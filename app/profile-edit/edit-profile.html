@@ -4,15 +4,15 @@
       <img ng-src="{{profEdit.profile.picture.public_id | formatImg:200:200 }}" />
     </div>
     <div class="input-fw">
-      <button class="btn bg-valid pointer-on" ui-sref="profEdit.edit()">Save</button>
-      <button class="btn bg-cancel pointer-on" ui-sref="profileView({username: profView.profile.username})">Cancel</button>
+      <button class="btn bg-valid pointer-on" ng-click="profEdit.edit()">Save</button>
+      <button class="btn bg-cancel pointer-on" ui-sref="profileView({username: profEdit.profile.username})">Cancel</button>
     </div>
   </aside>
   <div class="profile-info input-fw">
     <h2>{{profEdit.profile.username}}</h2>
     <hr />
     Full name:
-    <input type="text" ng-model="profEdit.profile.fullname" class="input" />
+    <input type="text" ng-model="profEdit.profile.name" class="input" />
     Date of birth:
     <input type="date" ng-model="profEdit.dobFormatted" class="input" />
     Location:

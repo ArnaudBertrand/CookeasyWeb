@@ -5,9 +5,8 @@
     .module('app')
     .controller('EditProfileCtrl', EditProfileCtrl);
 
-  EditProfileCtrl.$inject = ['ceUsers','userPre'];
-
-  function EditProfileCtrl (ceUsers,userPre) {
+  EditProfileCtrl.$inject = ['$state','ceUsers','userPre'];
+  function EditProfileCtrl ($state,ceUsers,userPre) {
     var vm = this;
 
     vm.edit = edit;
@@ -19,8 +18,8 @@
     }
 
     function edit(){
-      ceUsers.update({username: vm.profile.username},vm.profile).$promise.then(function(res){
-        console.log(res);
+      ceUsers.update({username: vm.profile.username},vm.profile).$promise.then(function(){
+        $state.go('profileView',{username: vm.profile.username});
       }, function(err){
         console.log(err);
       });
