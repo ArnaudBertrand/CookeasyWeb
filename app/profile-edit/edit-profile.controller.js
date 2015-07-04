@@ -18,6 +18,7 @@
     }
 
     function edit(){
+      vm.profile.dob = vm.dobFormatted.getTime();
       ceUsers.update({username: vm.profile.username},vm.profile).$promise.then(function(){
         $state.go('profileView',{username: vm.profile.username});
       }, function(err){
