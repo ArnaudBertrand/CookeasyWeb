@@ -17,10 +17,10 @@
       vm.dataLoading = true;
       vm.error = "";
 
-      loginService.login(vm.user).then(function (token) {
-        ceAuthentication.isLogged = true;
+      loginService.login(vm.user).then(function(res) {
+        console.log(res.token,res.user);
+        ceAuthentication.setUser(res.token,res.user);
         vm.notConnected = false;
-        $window.sessionStorage.token = token;
         vm.dataLoading = false;
         $state.go('recipeSearch');
       }, function (error) {

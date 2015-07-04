@@ -23,7 +23,7 @@
         data: user
       };
       $http(req).success(function(res){
-        deferred.resolve(res.token);
+        deferred.resolve(res);
       }).error(function(res){
         deferred.reject(res.error);
       });

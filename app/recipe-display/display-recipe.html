@@ -66,7 +66,7 @@
       </div>
       <img ng-repeat="step in rcpDisplay.recipe.steps"
         ng-show="rcpDisplay.currentStep.number == step.number"
-        ng-src="{{step.picture.url}}" />
+        ng-src="{{step.picture.public_id | formatImg}}" />
       <div class="timer">
         <span ng-show="rcpDisplay.currentStep.time">
           {{((rcpDisplay.currentStep.time*60)-rcpDisplay.timerSecondsPassed) | secondsToDateTime | date:'HH:mm:ss' }}

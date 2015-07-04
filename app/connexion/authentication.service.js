@@ -5,9 +5,27 @@
     .module('app')
     .factory('ceAuthentication', ceAuthentication);
 
-  function ceAuthentication () {
+  ceAuthentication.$inject = ['$window'];
+  function ceAuthentication ($window) {
+    var connectedUser = false;
     return {
-      isLogged: false
+      getUser: getUser,
+      setUser: setUser
     };
+
+    function getUser() {
+      if(!connectedUser){
+        var user = $window.sessionStorage.user;
+        if(user) connectedUser = JSON.parse(user);
+      }
+      return connectedUser;
+    }
+
+    function setUser(token,user){
+      console.log(user);
+      $window.sessionStorage.token = token;
+      $window.sessionStorage.user = JSON.stringify(user);
+    }
+
   }
 })();

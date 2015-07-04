@@ -11,8 +11,7 @@
     var User = $resource('http://mysterious-eyrie-9135.herokuapp.com/user/:username');
 
     vm.user = new User();
-    //{username: '', password: '', email: ''}
-    vm.connected = ceAuthentication.isLogged;
+    vm.connected = ceAuthentication.getUser();
     vm.register= register;
 
     function register() {
@@ -25,9 +24,8 @@
       if(Object.keys(vm.errors).length > 0) return console.log(vm.errors);
 
       vm.user.$save().then(function(res){
-        ceAuthentication.isLogged = true;
+        ceAuthentication.setUser(res.token,res.user);
         vm.notConnected = false;
-        $window.sessionStorage.token = res.token;
         vm.dataLoading = false;
         $state.go('recipeSearch');
       }, function (error) {
