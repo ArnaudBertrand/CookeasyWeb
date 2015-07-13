@@ -110,7 +110,12 @@
     }
 
     function checkStepInformation(){
-
+      var errors = {};
+      delete vm.errors.step;
+      if(typeof vm.currentStep.action === 'undefined' || vm.currentStep.action.length < 10)
+        errors.action = 'Step action should be longer than 10 characters';
+      if(!isNaN(vm.currentStep.time) && vm.currentStep.time < 0) errors.time = 'Time should be > 0';
+      if(Object.keys(errors).length) vm.errors.step = errors;
     }
 
     function deleteIngredient(id){

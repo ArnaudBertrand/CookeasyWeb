@@ -70,8 +70,6 @@ header > nav .menu-item > .menu-item-btn {
   font-weight: 600;
   margin-top: 5px;
   color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  background: rgba(0,0,0,0.2);
 }
 
 header > nav .menu-item > .menu-item-btn span{
@@ -80,6 +78,11 @@ header > nav .menu-item > .menu-item-btn span{
   padding: 0 18px;
   font-size: 17.5px;
   letter-spacing: 0.5px;
+}
+
+header > nav .menu-item > .menu-item-btn.active {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(0,0,0,0.2);
 }
 
 @font-face {

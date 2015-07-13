@@ -1,6 +1,8 @@
 <div class="container create-recipe">
-  <step-line graph="rcpCreate.lineGraph" steps="rcpCreate.stepsInfo" current="rcpCreate.currentStep.number"
-             step-clicked="rcpCreate.goTo"></step-line>
+  <step-line graph="rcpCreate.lineGraph" steps="rcpCreate.stepsInfo"
+             current="rcpCreate.currentStep.number"
+             step-clicked="rcpCreate.goTo"
+             ng-hide="rcpCreate.stepInformation"></step-line>
   <!-- Recipe information -->
   <div ng-show="rcpCreate.stepInformation">
     <h2 class="title">Create a recipe</h2>
@@ -89,6 +91,7 @@
         </a>
         <input ng-show="showTimer" type="time" ng-model="currentStep.time" />
       </div>
+      <span class="error-details">{{rcpCreate.errors.step.action}}{{rcpCreate.errors.step.time}}</span>
       <div class="action">
         <textarea ng-model="rcpCreate.currentStep.action" placeholder="To do..."></textarea>
       </div>

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="recipe-display/display-recipe.css" />
     <link rel="stylesheet" href="layout/header.css" />
     <link rel="stylesheet" href="layout/main.css" />
+    <link rel="stylesheet" href="layout/menu-left.css" />
     <link rel="stylesheet" href="profile-view/view-profile.css" />
     <link rel="stylesheet" href="styles/modal-window.css" />
     <link rel="stylesheet" href="styles/picture-upload.css" />
@@ -26,18 +27,19 @@
     <link rel="stylesheet" href="widgets/user-activities.css" />
     <!-- endbuild -->
   </head>
-  <body ng-app="app">
+  <body ng-app="app" class="menu-left-push" ng-class="{'menu-left-push-toright': bodyPush}">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <!-- Sliding menu on the left -->
+    <menu-left></menu-left>
+
     <div id="wrapper">
-      <!-- Add your site or application content here -->
+      <!-- Header -->
       <ce-header></ce-header>
-      <div class="header">
-      </div>
 
       <div class="container">
-      <div ui-view></div>
+        <div ui-view></div>
       </div>
 
       <footer>
@@ -95,6 +97,7 @@
     <script src="connexion/connexion.service.js"></script>
     <!-- Layout -->
     <script src="layout/header.directive.js"></script>
+    <script src="layout/menu-left.directive.js"></script>
     <!-- Login -->
     <script src="login/login.controller.js"></script>
     <script src="login/login.service.js"></script>
