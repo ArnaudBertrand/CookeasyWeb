@@ -4,19 +4,22 @@
   <i class="fa fa-star"></i> {{quizDisplay.score}} Points.
   <div class="" ng-hide="quizDisplay.endOfQuiz">
     <p>{{quizDisplay.currentQuestion.title}}</p>
-    <!-- Single answer -->
-    <div ng-if="!quizDisplay.isMultiAnswer()">
+
+    <div>
+      <!-- Text answers -->
       <label class="answer" ng-repeat="answer in quizDisplay.currentQuestion.answers"
-             ng-click="quizDisplay.validateAnswer()"  ng-if="answer.type === 'text'">
-        <input type="radio" ng-model="quizDisplay.currentQuestion.answer" ng-value="answer.text"/>
-        <span class="answer-text">
-          {{answer.text}}
-        </span>
+             ng-if="quizDisplay.currentQuestion.type === 'text'">
+        <input type="radio" ng-model="quizDisplay.currentQuestion.answer"
+               ng-if="!quizDisplay.isMultiAnswer()" ng-value="answer.text"
+               ng-click="quizDisplay.validateAnswer()" />
+        <input type="checkbox" ng-model="answer.checked" ng-if="quizDisplay.isMultiAnswer()"/>
+        {{answer.text}}
       </label>
 
+      <!-- Images answers -->
       <div masonry>
-        <div class="masonry-brick masonry-nb-2 t-fast" ng-repeat="answer in quizDisplay.currentQuestion.answers"
-             ng-if="quizDisplay.currentQuestion.type === 'images'" ng-click="quizDisplay.validateAnswer(answer)">
+        <div class="masonry-brick masonry-nb-2 t-nornal" ng-repeat="answer in quizDisplay.currentQuestion.answers"
+             ng-if="quizDisplay.currentQuestion.type === 'images'" ng-click="quizDisplay.onClickAnswer(answer)">
           <img ng-src="{{answer.picture.public_id | formatImg:220:150}}" alt="answer.text" />
           <div class="recipe-title">
             <h2>{{answer.text}}</h2>
@@ -24,16 +27,10 @@
         </div>
       </div>
 
-    </div>
-    <div ng-if="quizDisplay.isMultiAnswer()">
-      <label class="answer" ng-repeat="answer in quizDisplay.currentQuestion.answers"
-             ng-click="quizDisplay.validateAnswer()">
-        <input type="checkbox" ng-model="quizDisplay.currentQuestion.answer" ng-value="answer.text"/>
-        <span class="answer-text">
-          {{answer.text}}
-        </span>
-      </label>
-      <button ng-click="quizDisplay.validateAnswer(true)">Submit</button>
+      <!-- Submit button-->
+      <button class="btn btn-submit" ng-if="quizDisplay.isMultiAnswer()" ng-click="quizDisplay.validateAnswer()">
+        Submit
+      </button>
     </div>
     {{quizDisplay.currentQuestion.answer}}
   </div>

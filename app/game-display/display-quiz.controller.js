@@ -12,6 +12,7 @@
     vm.getProgress = getProgress;
     vm.isMultiAnswer = isMultiAnswer;
     vm.nextQuestion = nextQuestion;
+    vm.onClickAnswer = onClickAnswer;
     vm.quiz = quizPre;
     vm.validateAnswer = validateAnswer;
     vm.endOfQuiz = false;
@@ -39,16 +40,13 @@
     function getCurrentAnswer(){
       var answers = vm.currentQuestion.answers;
       for(var i =0; i<answers.length; i++){
-        if(answers[i].correct){
-          return answers[i].text;
-        }
+        if(answers[i].correct) return answers[i].text;
       }
     }
 
     function nextQuestion(){
       qNb++;
       if(qNb < vm.quiz.questions.length){
-        console.log('test1');
         vm.currentQuestion = vm.quiz.questions[qNb];
       } else {
         if(vm.score < 0) vm.score = 0;
@@ -56,13 +54,26 @@
       }
     }
 
-    function validateAnswer(isMulti){
-      if(isMulti){
-
+    function onClickAnswer(answer){
+      if(isMultiAnswer()){
+        answer.checked = !answer.checked;
       } else {
-        if(vm.currentQuestion.answer !== getCurrentAnswer()){
-          vm.score -= 3;
-          return console.log(false);
+        validateAnswer(answer);
+      }
+    }
+
+    function validateAnswer(answer){
+      if(isMultiAnswer()){
+        var answers = vm.currentQuestion.answers;
+        for(var i =0; i<answers.length; i++){
+          var answer = answers[i];
+          if(answer.correct && !answer.checked || !answer.correct && answer.checked) return vm.score -= 3;
+        }
+      } else {
+        if(answer){
+          if(!answer.correct) return vm.score -= 3;
+        } else if(vm.currentQuestion.answer !== getCurrentAnswer()){
+          return vm.score -= 3;
         }
       }
       vm.score += 5;
