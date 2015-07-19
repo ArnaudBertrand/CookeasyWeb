@@ -1,0 +1,10 @@
+.signup {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signup .form-group{
+  text-align: left;
+  margin-bottom: 10px;
+}

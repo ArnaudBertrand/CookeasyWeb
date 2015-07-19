@@ -150,7 +150,7 @@
     }
 
     function showMainPicture (){
-      ceModalGallery.openGallery(0,[{url: vm.recipe.picture.url}]);
+      ceModalGallery.openGallery(0,[{url: vm.recipe.picture}]);
     }
 
     /** Timer functions **/

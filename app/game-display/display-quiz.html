@@ -1,0 +1,43 @@
+<div class="container display-recipe">
+  <h1>{{quizDisplay.quiz.title}}</h1>
+  <progress ng-value="quizDisplay.getProgress()"></progress>
+  <i class="fa fa-star"></i> {{quizDisplay.score}} Points.
+  <div class="" ng-hide="quizDisplay.endOfQuiz">
+    <p>{{quizDisplay.currentQuestion.title}}</p>
+    <!-- Single answer -->
+    <div ng-if="!quizDisplay.isMultiAnswer()">
+      <label class="answer" ng-repeat="answer in quizDisplay.currentQuestion.answers"
+             ng-click="quizDisplay.validateAnswer()"  ng-if="answer.type === 'text'">
+        <input type="radio" ng-model="quizDisplay.currentQuestion.answer" ng-value="answer.text"/>
+        <span class="answer-text">
+          {{answer.text}}
+        </span>
+      </label>
+
+      <div masonry>
+        <div class="masonry-brick masonry-nb-2 t-fast" ng-repeat="answer in quizDisplay.currentQuestion.answers"
+             ng-if="quizDisplay.currentQuestion.type === 'images'" ng-click="quizDisplay.validateAnswer(answer)">
+          <img ng-src="{{answer.picture.public_id | formatImg:220:150}}" alt="answer.text" />
+          <div class="recipe-title">
+            <h2>{{answer.text}}</h2>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div ng-if="quizDisplay.isMultiAnswer()">
+      <label class="answer" ng-repeat="answer in quizDisplay.currentQuestion.answers"
+             ng-click="quizDisplay.validateAnswer()">
+        <input type="checkbox" ng-model="quizDisplay.currentQuestion.answer" ng-value="answer.text"/>
+        <span class="answer-text">
+          {{answer.text}}
+        </span>
+      </label>
+      <button ng-click="quizDisplay.validateAnswer(true)">Submit</button>
+    </div>
+    {{quizDisplay.currentQuestion.answer}}
+  </div>
+  <div ng-show="quizDisplay.endOfQuiz">
+    {{quizDisplay.score}}
+  </div>
+</div>

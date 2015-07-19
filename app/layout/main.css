@@ -45,7 +45,11 @@ footer > .container {
 }
 
 /** Forms **/
-.input-fw button, .input-fw input, .input-fw textarea{
+.input-fw button,
+.input-fw input[type="email"],
+.input-fw input[type="password"],
+.input-fw input[type="text"],
+.input-fw textarea{
   width: 100%;
   margin: 3px 0;
 }
@@ -54,17 +58,6 @@ footer > .container {
   height: 150px;
 }
 
-.btn{
-  padding: 6px 12px;
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
 .input {
   padding: 6px 12px;
   font-size: 14px;
@@ -162,4 +155,87 @@ footer > .container {
 }
 .pointer-on {
   cursor: pointer;
+}
+
+/** Buttons **/
+.btn{
+  padding: 6px 12px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.btn-submit:enabled{
+  background-color: #800000;
+  color: #fff;
+}
+.btn-valid{
+  background-color: #080;
+  color: #fff;
+}
+.btn-valid:disabled{
+  background-color: #0a0;
+}
+/** Widths **/
+.w-half{
+  width: 48% !important;
+}
+
+/** Transitions **/
+.t-normal{
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.t-fast{
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.r-180 {
+  -ms-transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+/** Masonry **/
+.masonry-brick {
+  display: none;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 5px;
+  border: 2px solid #753;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+.masonry-brick.loaded {
+  display: block;
+}
+.masonry-brick > img {
+  width: 100%;
+  display: block;
+  border: 1px solid #753;
+}
+.masonry-brick:hover{
+  transform:scale(1.02,1.02);
+}
+.masonry-brick > .recipe-title{
+  background-color: #FFE4E1;
+  color: #800;
+}
+.masonry-brick > .recipe-title h2{
+  margin: 0;
+  text-align: center;
+}
+.masonry-nb-3{
+  width: 30%;
+}
+.masonry-nb-2{
+  width: 45%;
 }

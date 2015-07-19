@@ -8,11 +8,12 @@
 }
 
 .menu-left-content{
-  background: #47a3da;
+  background: #ccc;
   width: 240px;
   height: 100%;
   overflow-x: hidden;
   display: inline-block;
+  border-right: 1px solid #500;
 }
 
 .menu-left-toggle{
@@ -35,25 +36,21 @@
   padding: 20px;
   margin: 0;
   font-weight: 300;
-  background: #0d77b6;
+  background: #800000;
 }
 
 .menu-left-content a{
   display: block;
-  color: #fff;
+  color: black;
   font-size: 1.1em;
   font-weight: 300;
-  border-bottom: 1px solid #258ecd;
+  border-bottom: 1px solid #999;
   padding: 1em;
+  text-decoration: none;
 }
 
 .menu-left-content a:hover{
-  background: #258ecd;
-}
-
-.menu-left-content a:active{
   background: #afdefa;
-  color: #47a3da;
 }
 
 /** Push body **/

@@ -1,10 +1,11 @@
 <div class="login">
-  <form name="loginForm" ng-submit="login.login()" role="form" class="outlined-form">
-
+  <h2>Connexion</h2>
+  <form name="loginForm" ng-submit="login.login()" role="form" class="input-fw">
     <div class="form-group">
       <label>
         Username or E-mail
-        <input type="text" name="userId" class="input" ng-model="login.user.id" required />
+        <input type="text" name="userId" class="input" ng-model="login.user.id"
+               placeholder="Enter your username or you e-mail" required />
       </label>
       <span ng-show="loginForm.userId.$dirty && loginForm.userId.$error.required" class="help-block">
         Username or E-mail is required
@@ -13,17 +14,19 @@
     <div class="form-group">
       <label>
         Password
-        <input type="password" name="password" class="input" ng-model="login.user.password" ng-minlength="6" required />
+        <input type="password" name="password" class="input" ng-model="login.user.password" ng-minlength="6"
+               placeholder="Enter your password" required />
       </label>
       <span ng-show="loginForm.password.$dirty && loginForm.password.$error.required" class="help-block">
         Password is required
       </span>
     </div>
-    <span class="form-actions">
+    <div class="form-actions">
       <span ng-show="login.error" class="alert alert-danger">{{login.error}}</span>
-      <button ng-type="submit" ng-disabled="loginForm.$invalid || dataLoading" class="btn btn-danger bg-primary">
+      <button ng-type="submit" ng-disabled="loginForm.$invalid || dataLoading" class="btn btn-submit">
         Login
       </button>
     </div>
   </form>
+  <a href ui-sref="register">Need an account? Sign up</a>
 </div>

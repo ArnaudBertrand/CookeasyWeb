@@ -19,17 +19,42 @@
   function MenuLeftCtrl($rootScope,$state,ceAuthentication){
     var vm = this;
 
+    vm.goToCreateGame = goToCreateGame;
+    vm.goToCreateRecipe = goToCreateRecipe;
     vm.goToProfile = goToProfile;
     vm.opened = false;
     vm.toggleDisplay = toggleDisplay;
 
-    function goToProfile(){
+    function userConnected(){
       var user = ceAuthentication.getUser();
-      // Not connected
-      if(!user) return $state.go('login');
-      // Go to profile
-      toggleDisplay();
-      $state.go('profileView',{username: user.username});
+      if(!user){
+        toggleDisplay();
+        $state.go('login');
+        return false;
+      }
+      return user;
+    }
+
+    function goToCreateGame(){
+      if(userConnected()){
+        toggleDisplay();
+        $state.go('gameCreateQuiz');
+      }
+    }
+
+    function goToCreateRecipe(){
+      if(userConnected()){
+        toggleDisplay();
+        $state.go('recipeCreate');
+      }
+    }
+    function goToProfile(){
+      var user = userConnected();
+      if(user){
+        console.log(user);
+        toggleDisplay();
+        $state.go('profileView',{username: user.username});
+      }
     }
 
     function toggleDisplay(){

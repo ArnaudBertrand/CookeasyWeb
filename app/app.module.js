@@ -42,6 +42,21 @@
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
+      .state('gameCreateQuiz', {
+        url: '/game/create/quiz',
+        templateUrl: '/game-create/create-quiz.html',
+        controller: 'GameCreateQuizCtrl',
+        controllerAs: 'quizCreate'
+      })
+      .state('gameDisplayQuiz', {
+        url: '/game/display/quiz/:id',
+        templateUrl: '/game-display/display-quiz.html',
+        controller: 'GameDisplayQuizCtrl',
+        controllerAs: 'quizDisplay',
+        resolve: {
+          quizPre: quizPre
+        }
+      })
       .state('recipeCreate', {
         url: '/recipe/create',
         templateUrl: '/recipe-create/create-recipe.html',
@@ -89,6 +104,13 @@
   function auth ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  }
+
+  quizPre.$inject = ['$stateParams','ceGames'];
+  function quizPre ($stateParams,ceGames){
+    return ceGames.get({id: $stateParams.id}).$promise.then(function(quiz){
+      return quiz;
+    });
   }
 
   recipePre.$inject = ['$filter','$stateParams','ceRecipes'];

@@ -1,9 +1,11 @@
 <div class="signup">
-  <form name="registerForm" ng-submit="signup.register()" role="form" class="outlined-form">
+  <h2>Join Cookeasy !</h2>
+  <form name="registerForm" ng-submit="signup.register()" role="form" class="input-fw">
     <div class="form-group">
       <label>
         Username
-        <input type="text" name="username" class="input" ng-model="signup.user.username" ng-minlength="2" required />
+        <input type="text" name="username" class="input" ng-model="signup.user.username" ng-minlength="2"
+               placeholder="Choose a username" required />
       </label>
       <span ng-show="registerForm.username.$dirty && registerForm.username.$error.required" class="help-block">
         Username required
@@ -12,7 +14,8 @@
     <div class="form-group">
       <label>
         E-mail
-        <input type="email" name="email" class="input" ng-model="signup.user.email" required />
+        <input type="email" name="email" class="input" ng-model="signup.user.email"
+               placeholder="Enter your e-mail address" required />
       </label>
       <span ng-show="registerForm.email.$dirty && registerForm.email.$error.required" class="help-block">
         E-mail is required
@@ -21,7 +24,8 @@
     <div class="form-group">
       <label>
         Password
-        <input type="password" name="password" class="input" ng-model="signup.user.password" ng-minlength="6" required />
+        <input type="password" name="password" class="input" ng-model="signup.user.password" ng-minlength="6"
+               placeholder="Enter your password" required />
       </label>
       <span ng-show="registerForm.password.$dirty && registerForm.password.$error.required" class="help-block">
         Password is required
@@ -36,7 +40,7 @@
     <div class="form-actions">
       <div ng-show="signup.error" class="alert alert-danger">{{signup.error}}</div>
       <button ng-type="submit" ng-disabled="registerForm.$invalid || dataLoading || !termsAccepted"
-              class="btn btn-danger bg-primary">
+              class="btn btn-submit">
         Register
       </button>
     </div>

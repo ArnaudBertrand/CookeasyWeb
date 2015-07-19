@@ -1,0 +1,40 @@
+.container.create-quiz{
+  max-width: 600px;
+}
+
+.create-quiz .info-page > h2{
+  text-align: center;
+}
+
+.create-quiz .info-page > p{
+  margin: 10px 0 0 0;
+}
+.create-quiz .info-page .btn{
+  margin-top: 15px;
+}
+
+.create-quiz .answer-type p {
+  margin-bottom: 3px;
+}
+
+/** Answer veracity**/
+.create-quiz .answer-veracity{
+  text-align: center;
+  margin: 10px 0 10px 0;
+}
+.create-quiz .answer-veracity .fa-check {
+  background-color: #060;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  border-top: 2px solid #888;
+  border-left: 2px solid #888;
+}
+.create-quiz .answer-veracity .fa-close{
+  background-color: #600;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  border-top: 2px solid #888;
+  border-left: 2px solid #888;
+}

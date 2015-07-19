@@ -1,0 +1,10 @@
+.login {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.login .form-group{
+  text-align: left;
+  margin-bottom: 10px;
+}

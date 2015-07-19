@@ -196,13 +196,13 @@
 
     function nextStep(){
       var stepNb = vm.currentStep.number || 0;
-      vm.goTo(++stepNb);
+      goTo(++stepNb);
     }
 
     function previousStep(){
       var stepNb = vm.currentStep.number || 0;
-      if(stepNb == 1) return vm.goTo('I');
-      vm.goTo(--stepNb);
+      if(stepNb == 1) return goTo('I');
+      goTo(--stepNb);
     }
 
     function saveStep(){
