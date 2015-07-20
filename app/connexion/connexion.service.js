@@ -9,7 +9,7 @@
   function connexionService ($http, $q) {
     return {
       login: login,
-      logout: logout
+      signUp: signUp
     };
 
     function login (user) {
@@ -29,10 +29,6 @@
         deferred.reject(res.error);
       });
       return deferred.promise;
-    }
-
-    function logout (){
-      return false;
     }
 
     function signUp (user) {

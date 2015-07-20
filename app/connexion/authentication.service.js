@@ -10,15 +10,22 @@
     var connectedUser = false;
     return {
       getUser: getUser,
+      logout: logout,
       setUser: setUser
     };
 
-    function getUser() {
+    function getUser(){
       if(!connectedUser){
         var user = $window.sessionStorage.user;
         if(user) connectedUser = JSON.parse(user);
       }
       return connectedUser;
+    }
+
+    function logout(){
+      delete $window.sessionStorage.user;
+      delete $window.sessionStorage.token;
+      connectedUser = false;
     }
 
     function setUser(token,user){

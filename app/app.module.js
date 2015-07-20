@@ -57,6 +57,15 @@
           quizPre: quizPre
         }
       })
+      .state('gameSearch', {
+        url: '/game/search',
+        templateUrl: '/game-search/search-game.html',
+        controller: 'GameSearchCtrl',
+        controllerAs: 'gameSearch',
+        resolve: {
+          gamesPre: gamesPre
+        }
+      })
       .state('recipeCreate', {
         url: '/recipe/create',
         templateUrl: '/recipe-create/create-recipe.html',
@@ -104,6 +113,13 @@
   function auth ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  }
+
+  gamesPre.$inject = ['ceGames'];
+  function gamesPre (ceGames){
+    return ceGames.query().$promise.then(function(games){
+      return games;
+    });
   }
 
   quizPre.$inject = ['$stateParams','ceGames'];

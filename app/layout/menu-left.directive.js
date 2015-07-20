@@ -51,7 +51,6 @@
     function goToProfile(){
       var user = userConnected();
       if(user){
-        console.log(user);
         toggleDisplay();
         $state.go('profileView',{username: user.username});
       }

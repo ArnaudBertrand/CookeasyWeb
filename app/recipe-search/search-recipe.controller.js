@@ -14,15 +14,10 @@
     vm.trends = recipesTrendsPre;
     vm.recipes = recipesTrendsPre;
     vm.displayRecipe = displayRecipe;
-    vm.isPair = isPair;
     vm.search = search;
 
     function displayRecipe (id){
       $state.go('recipeDisplay',{id: id});
-    }
-
-    function isPair (index){
-      return index%2 === 0;
     }
 
     function search (){

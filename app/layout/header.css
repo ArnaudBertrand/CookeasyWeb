@@ -55,6 +55,7 @@ header > nav > ul {
 header > nav .menu-item{
   display: inline-block;
   height: 54px;
+  vertical-align: top;
 }
 
 header > nav .menu-item > a{
