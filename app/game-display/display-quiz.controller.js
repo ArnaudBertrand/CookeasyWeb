@@ -4,8 +4,8 @@
     .module('app')
     .controller('GameDisplayQuizCtrl', GameDisplayQuizCtrl);
 
-  GameDisplayQuizCtrl.$inject = ['quizPre'];
-  function GameDisplayQuizCtrl(quizPre){
+  GameDisplayQuizCtrl.$inject = ['$timeout','quizPre'];
+  function GameDisplayQuizCtrl($timeout,quizPre){
     var vm = this;
 
     vm.currentQuestion = quizPre.questions[0];
@@ -63,6 +63,12 @@
     }
 
     function validateAnswer(answer){
+      // Shake score
+      angular.element('.display-quiz .score .fa-star').addClass('triggered');
+      $timeout(function(){
+        angular.element('.display-quiz .score .fa-star').removeClass('triggered');
+      },1000);
+
       if(isMultiAnswer()){
         var answers = vm.currentQuestion.answers;
         for(var i =0; i<answers.length; i++){

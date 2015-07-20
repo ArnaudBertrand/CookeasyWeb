@@ -1,11 +1,13 @@
-<div class="container display-recipe">
+<div class="container display-quiz">
   <h1>{{quizDisplay.quiz.title}}</h1>
-  <progress ng-value="quizDisplay.getProgress()"></progress>
-  <i class="fa fa-star"></i> {{quizDisplay.score}} Points.
+  <div class="score">
+    <progress ng-value="quizDisplay.getProgress()"></progress>
+    <i class="fa fa-star t-slow"></i> {{quizDisplay.score}}
+  </div>
   <div class="" ng-hide="quizDisplay.endOfQuiz">
     <p>{{quizDisplay.currentQuestion.title}}</p>
 
-    <div>
+    <div class="list">
       <!-- Text answers -->
       <label class="answer" ng-repeat="answer in quizDisplay.currentQuestion.answers"
              ng-if="quizDisplay.currentQuestion.type === 'text'">
@@ -27,12 +29,11 @@
         </div>
       </div>
 
-      <!-- Submit button-->
-      <button class="btn btn-submit" ng-if="quizDisplay.isMultiAnswer()" ng-click="quizDisplay.validateAnswer()">
-        Submit
-      </button>
     </div>
-    {{quizDisplay.currentQuestion.answer}}
+    <!-- Submit button-->
+    <button class="btn btn-submit" ng-if="quizDisplay.isMultiAnswer()" ng-click="quizDisplay.validateAnswer()">
+      Submit
+    </button>
   </div>
   <div ng-show="quizDisplay.endOfQuiz">
     {{quizDisplay.score}}

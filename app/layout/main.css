@@ -99,15 +99,17 @@ footer > .container {
 }
 .list{
   list-style-type: none;
-  width: 80%;
+  width: 100%;
   margin-top: 5px;
   padding-left: 0;
 }
-.list li{
+.list li,
+.list label{
   border: 1px solid #ffcccc;
   background: rgba(255, 200, 200, 0.3);
   padding: 5px 10px;
   font-size: 1.5em;
+  display: block;
 }
 .list li a{
   font-style: italic;
