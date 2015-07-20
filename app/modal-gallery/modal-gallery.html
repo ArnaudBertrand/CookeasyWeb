@@ -1,7 +1,7 @@
 <div id="modal" ng-click="mw.close()">
   <div class="modalDialog" ng-click="$event.stopPropagation()">
     <a class="close" ng-click="mw.close()">X</a>
-    <img ng-src="{{mw.currentPicture.public_id | formatImg}}" ng-click="mw.nextPicture()"/>
+    <img ng-if="mw.currentPicture" ng-src="{{mw.currentPicture.public_id | formatImg}}" ng-click="mw.nextPicture()"/>
     <i class="fa fa-chevron-circle-left fa-2x" ng-click="mw.previousPicture()" ng-if="!mw.isFirstImage()"></i>
     <i class="fa fa-chevron-circle-right fa-2x" ng-click="mw.nextPicture()" ng-if="!mw.isLastImage()"></i>
     <i></i>

@@ -29,7 +29,6 @@
     }
 
     function setUser(token,user){
-      console.log(user);
       $window.sessionStorage.token = token;
       $window.sessionStorage.user = JSON.stringify(user);
     }

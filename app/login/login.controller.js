@@ -18,7 +18,6 @@
       vm.error = "";
 
       loginService.login(vm.user).then(function(res) {
-        console.log(res.token,res.user);
         ceAuthentication.setUser(res.token,res.user);
         vm.notConnected = false;
         vm.dataLoading = false;

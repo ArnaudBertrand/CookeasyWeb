@@ -3,7 +3,7 @@
     <div class="profile-picture pointer-on" ng-click="profView.showProfilePicture()">
       <img ng-src="{{profView.profile.picture.public_id | formatImg:200:200 }}" />
     </div>
-    <div class="input-fw">
+    <div class="input-fw" ng-if="profView.isProfile()">
       <button class="btn pointer-on" ui-sref="profileEdit({username: profView.profile.username})">Edit profile</button>
     </div>
   </aside>

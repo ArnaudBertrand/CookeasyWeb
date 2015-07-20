@@ -4,7 +4,6 @@
     .module('app')
     .factory('ceUsers', ceUsers);
 
-  console.log('ok');
   ceUsers.$inject = ['$resource'];
   function ceUsers ($resource) {
     console.log('ok');
