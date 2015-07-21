@@ -11,11 +11,11 @@
     vm.recipes = [];
     vm.trends = gamesPre;
     vm.games = gamesPre;
-    vm.displayQuiz = displayGame;
+    vm.displayGame = displayGame;
     vm.search = search;
 
-    function displayGame(id) {
-      $state.go('recipeDisplay', {id: id});
+    function displayGame(game){
+      if(game.type === 'quiz') return $state.go('gameDisplayQuiz', {id: game._id});
     }
 
     function search() {

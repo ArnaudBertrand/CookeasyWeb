@@ -4,12 +4,14 @@
            ng-model-options="{ debounce: 500 }" placeholder="Search for a game" />
   </div>
 
-  <div ng-repeat="game in gameSearch.games" ng-click="gameSearch.displayGame(recipe._id)">
+  <div class="game pointer-on" ng-repeat="game in gameSearch.games" ng-click="gameSearch.displayGame(game)">
     <div class="logo">
       <img ng-if="game.picture" ng-src="{{ game.picture.public_id | formatImg }}" alt="game.title" />
+      <img ng-if="!game.picture" src="images/quiz.png" alt="game.title" />
     </div>
     <div class="info">
-      <h2>{{game.title}}</h2>
+      <h3>{{game.title}}</h3>
+      <p>{{game.author}}</p>
     </div>
   </div>
 </div>

@@ -22,18 +22,9 @@
     vm.goToCreateGame = goToCreateGame;
     vm.goToCreateRecipe = goToCreateRecipe;
     vm.goToProfile = goToProfile;
+    vm.goToSearchGame = goToSearchGame;
     vm.opened = false;
     vm.toggleDisplay = toggleDisplay;
-
-    function userConnected(){
-      var user = ceAuthentication.getUser();
-      if(!user){
-        toggleDisplay();
-        $state.go('login');
-        return false;
-      }
-      return user;
-    }
 
     function goToCreateGame(){
       if(userConnected()){
@@ -48,6 +39,7 @@
         $state.go('recipeCreate');
       }
     }
+
     function goToProfile(){
       var user = userConnected();
       if(user){
@@ -56,9 +48,24 @@
       }
     }
 
+    function goToSearchGame(){
+      toggleDisplay();
+      $state.go('gameSearch');
+    }
+
     function toggleDisplay(){
       vm.opened = !vm.opened;
       $rootScope.bodyPush = vm.opened;
+    }
+
+    function userConnected(){
+      var user = ceAuthentication.getUser();
+      if(!user){
+        toggleDisplay();
+        $state.go('login');
+        return false;
+      }
+      return user;
     }
   }
 })();

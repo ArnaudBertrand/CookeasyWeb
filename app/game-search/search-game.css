@@ -1,0 +1,36 @@
+.game-search{
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.game-search .game{
+  width: 45%;
+  display: inline-block;
+  background-color: #fff;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.game-search .info,
+.game-search .logo
+{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.game-search .logo img{
+  height: 80px;
+  width: 80px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+}
+
+.game-search .info{
+  padding: 5px;
+}
+
+.game-search .info h3,
+.game-search .info p{
+  margin: 5px 0;
+}
