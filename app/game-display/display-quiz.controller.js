@@ -4,20 +4,22 @@
     .module('app')
     .controller('GameDisplayQuizCtrl', GameDisplayQuizCtrl);
 
-  GameDisplayQuizCtrl.$inject = ['$timeout','quizPre'];
-  function GameDisplayQuizCtrl($timeout,quizPre){
+  GameDisplayQuizCtrl.$inject = ['$state','$timeout','quizPre'];
+  function GameDisplayQuizCtrl($state,$timeout,quizPre){
     var vm = this;
 
     vm.currentQuestion = quizPre.questions[0];
+    vm.endOfQuiz = false;
     vm.getProgress = getProgress;
+    vm.goToSearch = goToSearch;
     vm.isMultiAnswer = isMultiAnswer;
     vm.nextQuestion = nextQuestion;
+    vm.nbMistake = 0;
     vm.onClickAnswer = onClickAnswer;
     vm.quiz = quizPre;
-    vm.validateAnswer = validateAnswer;
-    vm.endOfQuiz = false;
     vm.score = 0;
-
+    vm.retry = retry;
+    vm.validateAnswer = validateAnswer;
     var qNb = 0;
 
     function getProgress(){
@@ -44,6 +46,10 @@
       }
     }
 
+    function goToSearch(){
+      $state.go('gameSearch');
+    }
+
     function nextQuestion(){
       qNb++;
       if(qNb < vm.quiz.questions.length){
@@ -62,6 +68,10 @@
       }
     }
 
+    function retry(){
+      $state.reload();
+    }
+
     function validateAnswer(answer){
       // Shake score
       angular.element('.display-quiz .score .fa-star').addClass('triggered');
@@ -73,17 +83,20 @@
         var answers = vm.currentQuestion.answers;
         for(var i =0; i<answers.length; i++){
           var answer = answers[i];
-          if(answer.correct && !answer.checked || !answer.correct && answer.checked) return vm.score -= 3;
+          if(answer.correct && !answer.checked || !answer.correct && answer.checked) return fail();
         }
       } else {
         if(answer){
-          if(!answer.correct) return vm.score -= 3;
-        } else if(vm.currentQuestion.answer !== getCurrentAnswer()){
-          return vm.score -= 3;
-        }
+          if(!answer.correct) return fail();
+        } else if(vm.currentQuestion.answer !== getCurrentAnswer()) return fail();
       }
       vm.score += 5;
       nextQuestion();
+
+      function fail(){
+        vm.nbMistake++;
+        return vm.score -= 3;
+      }
     }
   }
 })();
