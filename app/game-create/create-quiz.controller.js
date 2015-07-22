@@ -9,10 +9,12 @@
     var vm = this;
 
     /** Navigation **/
+    vm.deleteQuestion = deleteQuestion;
     vm.goTo = goTo;
     vm.infoPage = true;
     vm.lineGraph = {width: 500, height: 30, rSize: 12};
     vm.nextQuestion = nextQuestion;
+    vm.qNb = 0;
     vm.questionsInfos = ['I'];
     /** Quiz **/
     vm.addAnswer = addAnswer;
@@ -35,10 +37,8 @@
 
     function addAnswer(correct){
       if(correct) vm.currentAnswer.correct = true;
-      console.log(vm.currentAnswer);
       vm.currentQuestion.answers.push(vm.currentAnswer);
       vm.currentAnswer = {};
-      console.log(vm.currentAnswer);
     }
 
     function createGame(){
@@ -48,10 +48,23 @@
       });
     }
 
+    function deleteQuestion(){
+      // Go to previous step
+      goTo(vm.qNb-1);
+      // Remove from array only if it is already in
+      if (vm.qNb < vm.quiz.questions.length) {
+        vm.quiz.questions.splice(vm.qNb,1);
+        vm.questionsInfos.splice(vm.qNb+1,1);
+        // Change step numbers
+        vm.questionsInfos= vm.questionsInfos.map(function(q){
+          return (!isNaN(q) && q > vm.qNb) ? --q: q;
+        });
+      }
+    }
+
     function goTo(id){
-      var qNb = vm.currentQuestion.number || 0;
       // Check first page informations
-      if(qNb == 0){
+      if(vm.qNb == 0){
 //TODO
 //        checkRecipeInformation();
       } else {
@@ -70,6 +83,7 @@
       if(id === 'I'){
         vm.infoPage = true;
         vm.currentQuestion = {};
+        return vm.qNb = 0;
       }
       // Show step
       if(!isNaN(id)){
@@ -77,15 +91,15 @@
         var previousType = vm.currentQuestion.type;
         vm.currentQuestion = vm.quiz.questions[id-1];
         if(typeof vm.currentQuestion === "undefined"){
-          vm.currentQuestion = {number: id, type: previousType, answers: []};
+          vm.currentQuestion = {type: previousType, answers: []};
           vm.questionsInfos.splice(id,0,id);
         }
+        vm.qNb = id;
       }
     }
 
     function nextQuestion(){
-      var qNb = vm.currentQuestion.number || 0;
-      goTo(++qNb);
+      goTo(vm.qNb+1);
     }
 
     function resetAnswer(){
@@ -93,17 +107,15 @@
     }
 
     function saveStep(){
-      // Get current question number
-      var qNb = vm.currentQuestion.number || 0;
       // Do not save if information screen
-      if(!qNb){
+      if(!vm.qNb){
         return;
       }
       // Save current question if new or edit previous
-      if(qNb > vm.quiz.questions.length){
+      if(vm.qNb > vm.quiz.questions.length){
         vm.quiz.questions.push(vm.currentQuestion);
       } else {
-        vm.quiz.questions[qNb-1] = vm.currentQuestion;
+        vm.quiz.questions[vm.qNb-1] = vm.currentQuestion;
       }
     }
 
@@ -119,6 +131,5 @@
       vm.uploadProgress = undefined;
       vm.currentQuestion.picture = picture;
     }
-
   }
 })();

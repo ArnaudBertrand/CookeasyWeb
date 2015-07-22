@@ -38,3 +38,14 @@
   border-top: 2px solid #888;
   border-left: 2px solid #888;
 }
+
+/** Delete **/
+.create-quiz .navigation{
+  margin: 10px 0;
+}
+.create-quiz .navigation step-line{
+  display: inline-block;
+}
+.create-quiz .navigation .btn-submit{
+  vertical-align: top;
+}

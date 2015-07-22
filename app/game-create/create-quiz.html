@@ -1,10 +1,17 @@
 <div class="container create-quiz">
-  <step-line graph="quizCreate.lineGraph"
-             steps="quizCreate.questionsInfos"
-             current="quizCreate.currentQuestion.number"
-             step-clicked="quizCreate.goTo"
-             ng-hide="quizCreate.infoPage"></step-line>
 
+  <!-- Navigation -->
+  <div class="navigation" ng-hide="quizCreate.infoPage">
+    <step-line graph="quizCreate.lineGraph"
+               steps="quizCreate.questionsInfos"
+               current="quizCreate.qNb"
+               step-clicked="quizCreate.goTo"></step-line>
+    <button class="btn btn-submit">
+      <i class="fa fa-trash-o pointer-on" ng-click="quizCreate.deleteQuestion()"> Delete</i>
+    </button>
+  </div>
+
+  <!-- Infos -->
   <div ng-show="quizCreate.infoPage" class="info-page input-fw">
     <h2 class="title">Create a Quiz</h2>
     <p>Set a title for you quiz:</p>
@@ -14,6 +21,8 @@
                     target-tags="quizCreate.pictureInfoTags" callback="quizCreate.setUploadedPictureInfo"></picture-upload>
     <button class="btn btn-submit" ng-click="quizCreate.nextQuestion()">Create questions</button>
   </div>
+
+  <!-- Questions -->
   <div class="questions input-fw" ng-hide="quizCreate.infoPage">
     <div class="title">
       <label>
