@@ -1,5 +1,5 @@
 <div class="game-search">
-  <div class="top">
+  <div class="top input-fw">
     <input type="text" class="input" ng-model="gameSearch.gameToSearch" ng-change="gameSearch.search()"
            ng-model-options="{ debounce: 500 }" placeholder="Search for a game" />
   </div>
@@ -11,7 +11,10 @@
     </div>
     <div class="info">
       <h3>{{game.title}}</h3>
-      <p>{{game.author.username}}</p>
+      <p class="nb-like">
+        {{game.likes.length}} <i class="fa fa-heart"></i>
+      </p>
+      <p>by {{game.author.username}} on {{game.updatedOn | date}}</p>
     </div>
   </div>
 </div>

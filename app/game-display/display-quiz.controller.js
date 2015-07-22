@@ -4,8 +4,8 @@
     .module('app')
     .controller('GameDisplayQuizCtrl', GameDisplayQuizCtrl);
 
-  GameDisplayQuizCtrl.$inject = ['$state','$timeout','quizPre'];
-  function GameDisplayQuizCtrl($state,$timeout,quizPre){
+  GameDisplayQuizCtrl.$inject = ['$http','$state','$timeout','quizPre'];
+  function GameDisplayQuizCtrl($http,$state,$timeout,quizPre){
     var vm = this;
 
     vm.currentQuestion = quizPre.questions[0];
@@ -13,6 +13,7 @@
     vm.getProgress = getProgress;
     vm.goToSearch = goToSearch;
     vm.isMultiAnswer = isMultiAnswer;
+    vm.like = like;
     vm.nextQuestion = nextQuestion;
     vm.nbMistake = 0;
     vm.onClickAnswer = onClickAnswer;
@@ -48,6 +49,17 @@
 
     function goToSearch(){
       $state.go('gameSearch');
+    }
+
+    function like(){
+      if(!vm.liked){
+        $http.put('https://mysterious-eyrie-9135.herokuapp.com/games/' + vm.quiz._id + '/like',{}).success(function(){
+          console.log('test');
+          vm.liked = true;
+        }).error(function(err){
+          console.log(err);
+        });
+      }
     }
 
     function nextQuestion(){

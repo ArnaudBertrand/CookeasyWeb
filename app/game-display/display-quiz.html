@@ -3,12 +3,7 @@
     <!-- Progress -->
     <progress ng-value="quizDisplay.getProgress()"></progress>
     <!-- Quiz title + like -->
-    <h1>{{quizDisplay.quiz.title}}
-      <span class="fa-stack fa-lg pointer-on">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-heart fa-stack-1x"></i>
-      </span>
-    </h1>
+    <h1>{{quizDisplay.quiz.title}}</h1>
 
     <!-- Info -->
     <div class="info">
@@ -51,6 +46,7 @@
   <div class="quiz-finished" ng-show="quizDisplay.endOfQuiz">
     <h1><i class="fa fa-star t-slow"></i> Quiz finished <i class="fa fa-star t-slow"></i></h1>
 
+    <!-- Stats -->
     <div class="stats">
       <h3 class="list-title">Stats</h3>
       <ul class="list">
@@ -62,6 +58,19 @@
 
     <h3>Your new score is now: {{quizDisplay.score}}</h3>
 
+    <!-- Like -->
+    <p ng-hide="quizDisplay.liked">
+      Enjoyed that quiz?
+      <span class="pointer-on" ng-click="quizDisplay.like()">
+        Like it
+        <i class="fa fa-heart"></i>
+      </span>
+    </p>
+    <p ng-show="quizDisplay.liked">
+      Thanks !
+    </p>
+
+    <!-- Menu -->
     <button class="btn btn-submit pointer-on" ng-click="quizDisplay.retry()">
       <i class="fa fa-repeat"></i> Retry
     </button>

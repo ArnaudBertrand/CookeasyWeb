@@ -25,7 +25,7 @@
     vm.getPicture = getPicture;
 
     function getPicture(pic){
-      return pic ? pic: vm.userPicture;
+      return pic ? pic.public_id: vm.userPicture;
     }
   }
 })();
