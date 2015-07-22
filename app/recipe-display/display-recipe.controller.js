@@ -5,8 +5,8 @@
     .module('app')
     .controller('RecipeDisplayCtrl', RecipeDisplayCtrl);
 
-  RecipeDisplayCtrl.$inject = ['$stateParams','$timeout','recipePre','ceRecipesComments','ceModalGallery'];
-  function RecipeDisplayCtrl($stateParams,$timeout,recipePre,ceRecipesComments,ceModalGallery){
+  RecipeDisplayCtrl.$inject = ['$http','$stateParams','$timeout','recipePre','ceRecipesComments','ceModalGallery'];
+  function RecipeDisplayCtrl($http,$stateParams,$timeout,recipePre,ceRecipesComments,ceModalGallery){
     /* jshint validthis: true */
     var vm = this;
 
@@ -15,8 +15,9 @@
     vm.lineGraph = {width: 500, height: 30, rSize: 12};
     vm.nextStep = nextStep;
     /** Recipe info **/
-    vm.showInfoPage = true;
+    vm.like = like;
     vm.recipe = recipePre;
+    vm.showInfoPage = true;
     /** Handle picture display **/
     vm.openGallery = openGallery;
     /** Handle picture upload **/
@@ -85,7 +86,7 @@
       vm.done = true;
     }
 
-    function markMouseEnter (add,index){
+    function markMouseEnter(add,index){
       if(add){
         vm.tempMark += index + 1;
       } else {
@@ -93,15 +94,15 @@
       }
     }
 
-    function markMouseLeave (){
+    function markMouseLeave(){
       vm.tempMark = vm.mark;
     }
 
-    function markMouseUp (){
+    function markMouseUp(){
       vm.mark = vm.tempMark;
     }
 
-    function goTo (id){
+    function goTo(id){
       // Reset timer
       vm.timerSecondsPassed = 0;
       // Back to info
@@ -123,6 +124,17 @@
       vm.showStep = true;
       vm.stepsFinished = false;
       vm.currentStep = vm.recipe.steps[id-1];
+    }
+
+    function like(){
+      if(!vm.liked){
+        $http.put('https://mysterious-eyrie-9135.herokuapp.com/recipes/' + vm.recipe._id + '/like',{}).success(function(){
+          console.log('test');
+          vm.liked = true;
+        }).error(function(err){
+          console.log(err);
+        });
+      }
     }
 
     function nextStep (){

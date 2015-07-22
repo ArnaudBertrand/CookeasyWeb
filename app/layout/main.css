@@ -85,12 +85,15 @@ footer > .container {
   font-style: italic;
 }
 
-/** Stars **/
+/** Fa icons **/
 .fa.fa-star{
   color: #daa520;
 }
 .fa.fa-star-o{
   color: rgba(0,0,0,0.5);
+}
+.fa.fa-heart {
+  color: #f00;
 }
 
 /** Lists **/

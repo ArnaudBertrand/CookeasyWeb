@@ -54,7 +54,6 @@
     function like(){
       if(!vm.liked){
         $http.put('https://mysterious-eyrie-9135.herokuapp.com/games/' + vm.quiz._id + '/like',{}).success(function(){
-          console.log('test');
           vm.liked = true;
         }).error(function(err){
           console.log(err);
