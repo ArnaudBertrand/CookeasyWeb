@@ -17,6 +17,15 @@
   margin-bottom: 3px;
 }
 
+/** Delete answer **/
+.create-quiz .list li{
+  position: relative;
+}
+.create-quiz .list .fa-minus-square-o{
+  position: absolute;
+  right: 5px;
+}
+
 /** Answer veracity**/
 .create-quiz .answer-veracity{
   text-align: center;

@@ -21,6 +21,7 @@
     vm.createGame = createGame;
     vm.currentQuestion = {type: 'text', answers: []};
     vm.currentAnswer = {};
+    vm.deleteAnswer = deleteAnswer;
     vm.errors = {};
     vm.pictureUrl = 'https://mysterious-eyrie-9135.herokuapp.com/pictures';
     vm.quiz = {questions: []};
@@ -46,6 +47,10 @@
       ceGamesQuizzes.saveAndGetId(vm.quiz).$promise.then(function(res){
         $state.go('gameDisplayQuiz',{id: res.id});
       });
+    }
+
+    function deleteAnswer(index){
+      vm.currentQuestion.answers.splice(index,1);
     }
 
     function deleteQuestion(){

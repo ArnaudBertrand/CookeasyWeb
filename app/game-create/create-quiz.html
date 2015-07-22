@@ -51,6 +51,7 @@
         <ul class="list">
           <li ng-repeat="answer in quizCreate.currentQuestion.answers">
             <i class="fa" ng-class="{'fa-check': answer.correct,'fa-close': !answer.correct}"></i> {{answer.text}}
+            <i class="fa fa-minus-square-o" ng-click="quizCreate.deleteAnswer($index)"></i>
           </li>
         </ul>
         <div class="add-answer">
