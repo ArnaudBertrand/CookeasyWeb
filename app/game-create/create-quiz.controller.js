@@ -19,12 +19,12 @@
     /** Quiz **/
     vm.addAnswer = addAnswer;
     vm.createGame = createGame;
-    vm.currentQuestion = {type: 'text', answers: []};
+    vm.currentQuestion = {answers: [], title: '', type: 'text'};
     vm.currentAnswer = {};
     vm.deleteAnswer = deleteAnswer;
     vm.errors = {};
     vm.pictureUrl = 'https://mysterious-eyrie-9135.herokuapp.com/pictures';
-    vm.quiz = {questions: []};
+    vm.quiz = {questions: [], title: ''};
     /** Info **/
     vm.pictureInfoTags = ['quiz','main'];
     vm.setUploadedPictureInfo = setUploadedPictureInfo;
@@ -42,7 +42,20 @@
       vm.currentAnswer = {};
     }
 
+    function checkQuestion(){
+      vm.errors = {};
+      var q = vm.currentQuestion;
+      if(q.title.length < 5) vm.errors.title = 'Title too short, 5 chars minimum';
+      if(q.answers.length < 2) vm.errors.answers = 'Insert at least 2 answers';
+    }
+
     function createGame(){
+      // Check first page informations
+      if(vm.qNb > 0) checkQuestion();
+
+      // Stop if there are some errors
+      if(Object.keys(vm.errors).length) return false;
+
       saveStep();
       ceGamesQuizzes.saveAndGetId(vm.quiz).$promise.then(function(res){
         $state.go('gameDisplayQuiz',{id: res.id});
@@ -55,48 +68,42 @@
 
     function deleteQuestion(){
       // Go to previous step
-      goTo(vm.qNb-1);
+      goTo(vm.qNb-1,true);
       // Remove from array only if it is already in
-      if (vm.qNb < vm.quiz.questions.length) {
-        vm.quiz.questions.splice(vm.qNb,1);
-        vm.questionsInfos.splice(vm.qNb+1,1);
-        // Change step numbers
-        vm.questionsInfos= vm.questionsInfos.map(function(q){
-          return (!isNaN(q) && q > vm.qNb) ? --q: q;
-        });
-      }
+      if (vm.qNb < vm.quiz.questions.length) vm.quiz.questions.splice(vm.qNb,1);
+
+      // Remove from question info
+      vm.questionsInfos.splice(vm.qNb+1,1);
+      // Change step numbers
+      vm.questionsInfos= vm.questionsInfos.map(function(q){
+        return (!isNaN(q) && q > vm.qNb) ? --q: q;
+      });
     }
 
-    function goTo(id){
+    function goTo(id,skipSave){
       // Check first page informations
-      if(vm.qNb == 0){
-//TODO
-//        checkRecipeInformation();
-      } else {
-//TODO
-//        checkStepInformation();
-      }
+      if(vm.qNb > 0 && !skipSave) checkQuestion();
 
       // Stop if there are some errors
-      if(Object.keys(vm.errors).length){
-        return false;
-      }
+      if(Object.keys(vm.errors).length) return false;
 
       // Save step
-      saveStep();
+      if(!skipSave) saveStep();
+
       // Show information
       if(id === 'I'){
         vm.infoPage = true;
         vm.currentQuestion = {};
         return vm.qNb = 0;
       }
+      
       // Show step
       if(!isNaN(id)){
         vm.infoPage = false;
         var previousType = vm.currentQuestion.type;
         vm.currentQuestion = vm.quiz.questions[id-1];
         if(typeof vm.currentQuestion === "undefined"){
-          vm.currentQuestion = {type: previousType, answers: []};
+          vm.currentQuestion = {answers: [], title: '', type: previousType};
           vm.questionsInfos.splice(id,0,id);
         }
         vm.qNb = id;

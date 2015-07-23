@@ -18,8 +18,10 @@
     <input type="text" class="input" ng-model="quizCreate.quiz.title" placeholder="Quiz title" />
     <p>Main picture of your quiz:</p>
     <picture-upload image-uploaded="quizCreate.quiz.picture" target-url="quizCreate.pictureUrl"
-                    target-tags="quizCreate.pictureInfoTags" callback="quizCreate.setUploadedPictureInfo"></picture-upload>
-    <button class="btn btn-submit" ng-click="quizCreate.nextQuestion()">Create questions</button>
+                    target-tags="quizCreate.pictureInfoTags"
+                    callback="quizCreate.setUploadedPictureInfo"></picture-upload>
+    <button class="btn btn-submit" ng-disabled="quizCreate.quiz.title.length < 5"
+            ng-click="quizCreate.nextQuestion()">Create questions</button>
   </div>
 
   <!-- Questions -->
@@ -29,6 +31,7 @@
         Your question:
         <input type="text" class="input" ng-model="quizCreate.currentQuestion.title" placeholder="Type your question here"/>
       </label>
+      <span class="error-details">{{quizCreate.errors.title}}</span>
     </div>
     <div class="answer-type">
       <p>Answer type:</p>
@@ -72,6 +75,7 @@
                           callback="quizCreate.setUploadedPictureAnswer"></picture-upload>
         </div>
       </div>
+      <span class="error-details">{{quizCreate.errors.answers}}</span>
       <div class="answer-veracity">
         <i class="fa fa-close fa-2x pointer-on" ng-click="quizCreate.addAnswer(false)"> Uncorrect</i>
         <i class="fa fa-check fa-2x pointer-on" ng-click="quizCreate.addAnswer(true)"> Correct</i>
