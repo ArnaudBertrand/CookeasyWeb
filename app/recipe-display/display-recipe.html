@@ -140,7 +140,7 @@
     <div class="comments">
       <h3>Comments</h3>
       <div class="comment" ng-repeat="comment in rcpDisplay.recipe.comments">
-        <a href="#" class="profile-picture"><img ng-src="comment.author.picture.public_id" /></a>
+        <a href="#" class="profile-picture"><img ng-src="{{comment.author.picture.public_id | formatImg:90:90}}" /></a>
         <div class="content">
           <a href ui-sref="profileView({username: comment.author.username})">
             {{comment.author.username}}
