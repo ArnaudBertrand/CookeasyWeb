@@ -68,6 +68,7 @@
       } else {
         if(vm.score < 0) vm.score = 0;
         vm.endOfQuiz = true;
+        sendScore();
       }
     }
 
@@ -81,6 +82,19 @@
 
     function retry(){
       $state.reload();
+    }
+
+    function sendScore(){
+      var data = {game: vm.quiz._id, score: vm.score},
+        url = 'https://mysterious-eyrie-9135.herokuapp.com/users/' + vm.quiz._id + '/scores';
+
+      console.log('test');
+      $http({method: 'POST', url: url, data: data})
+        .success(function(res){
+          vm.totalScore = res.total;
+        }).error(function(err){
+          console.log(err);
+        });
     }
 
     function validateAnswer(answer){
