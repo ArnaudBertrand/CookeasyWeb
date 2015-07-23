@@ -16,7 +16,7 @@
   width: 100%;
 }
 .create-recipe .recipe-title input{
-  width: 60%;
+  width: 100%;
   font-size: 1.5em;
   padding: 3px 5px;
   border-radius: 5px;
@@ -43,13 +43,13 @@
   margin-left: 10px;
 }
 .create-recipe .ingredients input{
-  width: 15%;
+  width: 20%;
 }
 .create-recipe .ingredients input.name{
-  width: 30%;
+  width: 50%;
 }
 .create-recipe .utensils input{
-  width: 50%;
+  width: 90%;
 }
 
 /** Next step button **/
@@ -80,6 +80,11 @@
   width: 65%;
   display: inline-block;
   text-align: center;
+}
+.create-recipe .step .timer{
+  text-align:left;
+  width: 80%;
+  margin: 5px auto;
 }
 .create-recipe .action textarea{
   width: 80%;

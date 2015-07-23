@@ -7,8 +7,11 @@
   <div ng-show="rcpCreate.stepInformation">
     <h2 class="title">Create a recipe</h2>
     <div class="recipe-title">
-      <input type="text" ng-class="{'input-error' : rcpCreate.errors.name}" ng-model="rcpCreate.recipe.name"
-             placeholder="Name of the recipe" />
+      <label>
+        Recipe name
+        <input type="text" ng-class="{'input-error' : rcpCreate.errors.name}" ng-model="rcpCreate.recipe.name"
+               placeholder="Enter the name of your recipe" />
+      </label>
       <br /><span class="error-details">{{rcpCreate.errors.name}}</span>
     </div>
     <p>
@@ -82,14 +85,17 @@
     </div>
     <div class="step">
       <h2 class="title">Step {{rcpCreate.currentStep.number}}</h2>
-      <div class="timer" style="text-align:left; width: 80%; margin: 0px auto;">
+      <div class="timer">
+        <i class="fa fa-clock-o"></i>
         <a ng-hide="rcpCreate.showTimer" ng-click="rcpCreate.toggleTimer()">
-          <i class="fa fa-clock-o"></i> Add timer
+          Add timer
         </a>
-        <a ng-show="rcpCreate.showTimer" ng-click="rcpCreate.toggleTimer()">
-          <i class="fa fa-clock-o"></i> Remove timer
-        </a>
-        <input ng-show="showTimer" type="time" ng-model="currentStep.time" />
+        <span ng-show="rcpCreate.showTimer" >
+          <input type="number" ng-model="rcpCreate.currentStep.time" min="0" placeholder="Number of minutes" />
+          <a ng-click="rcpCreate.toggleTimer()">
+            Remove timer
+          </a>
+        </span>
       </div>
       <span class="error-details">{{rcpCreate.errors.step.action}}{{rcpCreate.errors.step.time}}</span>
       <div class="action">
