@@ -9,7 +9,11 @@
       templateUrl: '/connexion/connexion.html',
       restrict: 'E',
       controller: ConnexionCtrl,
-      controllerAs: 'connexion'
+      controllerAs: 'connexion',
+      scope: {
+        active: '='
+      },
+      bindToController: true
     };
   }
 

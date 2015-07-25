@@ -1,10 +1,10 @@
 <li ng-if="!connexion.userConnected" class="menu-item">
-  <a class="menu-item-btn" ng-click="connexion.login()">
+  <a class="menu-item-btn" ng-click="connexion.login()" ng-class="{'active': connexion.active === 'login'}">
     <span>Login</span>
   </a>
 </li>
 <li ng-if="!connexion.userConnected" class="menu-item">
-  <a class="menu-item-btn" ng-click="connexion.register()">
+  <a class="menu-item-btn" ng-click="connexion.register()" ng-class="{'active': connexion.active === 'register'}">
     <span>Signup</span>
   </a>
 </li>

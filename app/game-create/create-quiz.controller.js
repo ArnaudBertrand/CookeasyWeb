@@ -96,7 +96,7 @@
         vm.currentQuestion = {};
         return vm.qNb = 0;
       }
-      
+
       // Show step
       if(!isNaN(id)){
         vm.infoPage = false;

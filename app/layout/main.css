@@ -244,3 +244,8 @@ footer > .container {
 .masonry-nb-2{
   width: 45%;
 }
+
+/** Links **/
+a{
+  text-decoration: none;
+}

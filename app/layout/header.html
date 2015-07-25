@@ -7,16 +7,16 @@
     </div>
     <ul>
       <li class="menu-item">
-        <a class="menu-item-btn active">
+        <a ui-sref="recipeSearch" class="menu-item-btn" ng-class="{'active': ceHeader.active === 'recipe'}">
           <span>Recipes</span>
         </a>
       </li>
       <li class="menu-item">
-        <a class="menu-item-btn">
+        <a ui-sref="gameSearch" class="menu-item-btn" ng-class="{'active': ceHeader.active === 'game'}">
           <span>Learning Games</span>
         </a>
       </li>
-      <ce-connexion></ce-connexion>
+      <ce-connexion active="ceHeader.active"></ce-connexion>
     </ul>
   </nav>
 </header>
