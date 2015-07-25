@@ -115,11 +115,12 @@
   </div>
 
   <!-- Final step -->
-  <div ng-show="rcpCreate.stepFinal">
+  <div ng-show="rcpCreate.stepFinal" class="final-step">
     <h2>Upload the main picture of your recipe</h2>
     <picture-upload image-uploaded="rcpCreate.recipe.picture" target-url="rcpCreate.pictureUrl"
                     target-tags="rcpCreate.pictureFinalTags" callback="rcpCreate.setUploadedPicture">
     </picture-upload>
-    <button class="bg-primary" ng-click="rcpCreate.createRecipe()">Submit your recipe !</button>
+    <button class="btn btn-submit" ng-disabled="!rcpCreate.recipe.picture"
+            ng-click="rcpCreate.createRecipe()">Submit your recipe !</button>
   </div>
 </div>

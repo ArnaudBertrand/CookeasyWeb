@@ -25,8 +25,8 @@
     $rootScope.$on('$stateChangeStart',
       function(event, toState, toParams, fromState, fromParams){
         console.log(toState.name);
-        if(vm.active !== 'game' && game.indexOf(toState.name) > 0) return vm.active = 'game';
-        if(vm.active !== 'recipe' && recipe.indexOf(toState.name) > 0) return vm.active = 'recipe';
+        if(vm.active !== 'game' && game.indexOf(toState.name) != -1) return vm.active = 'game';
+        if(vm.active !== 'recipe' && recipe.indexOf(toState.name) != -1) return vm.active = 'recipe';
         if(vm.active !== 'login' && toState.name === 'login') return vm.active = 'login';
         if(vm.active !== 'register' && toState.name === 'register') return vm.active = 'register';
       });

@@ -93,3 +93,12 @@
   border-radius: 5px;
   padding: 20px;
 }
+
+/** Final step **/
+.create-recipe .final-step{
+  text-align: center;
+}
+.create-recipe .final-step .btn-submit{
+  width: 100%;
+  margin-top: 20px;
+}

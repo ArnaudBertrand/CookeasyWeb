@@ -84,37 +84,35 @@
     function checkRecipeInformation(){
       vm.errors = {};
       // Name
-      if(vm.recipe.name.length < 5){
-        vm.errors.name = 'Recipe name too short.';
-      }
+      if(vm.recipe.name.length < 5) vm.errors.name = 'Recipe name too short.';
+
       // Course
-      if(!(vm.recipe.course.value > 0 && vm.recipe.course.value <= 3)){
-        vm.errors.course = 'Please choose a course.';
-      }
+      if(!(vm.recipe.course.value > 0 && vm.recipe.course.value <= 3)) vm.errors.course = 'Please choose a course.';
+
       // Difficulty
-      if(!(vm.recipe.difficulty > 0 && vm.recipe.difficulty < 5)){
+      if(!(vm.recipe.difficulty > 0 && vm.recipe.difficulty < 5))
         vm.errors.difficulty = 'Please choose a difficulty between 1 and 5.';
-      }
+
       // Ingredients
-      if(!vm.recipe.ingredients.length){
-        vm.errors.ingredients = 'Please add at least one ingredient';
-      }
+      if(!vm.recipe.ingredients.length) vm.errors.ingredients = 'Please add at least one ingredient';
+
       // Number of person
-      if(!(vm.recipe.nbPerson > 0)){
-        vm.errors.nbPerson = 'Please insert a valid number of person.';
-      }
+      if(!(vm.recipe.nbPerson > 0)) vm.errors.nbPerson = 'Please insert a valid number of person.';
+
       // Time
-      if(!(vm.recipe.time > 0)){
-        vm.errors.time = 'Please insert a valid number of minutes.';
-      }
+      if(!(vm.recipe.time > 0)) vm.errors.time = 'Please insert a valid number of minutes.';
     }
 
     function checkStepInformation(){
       var errors = {};
       delete vm.errors.step;
+
+      // Action
       if(typeof vm.currentStep.action === 'undefined' || vm.currentStep.action.length < 10)
         errors.action = 'Step action should be longer than 10 characters';
+      // Time
       if(!isNaN(vm.currentStep.time) && vm.currentStep.time < 0) errors.time = 'Time should be > 0';
+      // Add to errors obhect if we have errors
       if(Object.keys(errors).length) vm.errors.step = errors;
     }
 
@@ -130,31 +128,25 @@
       // Get current step number
       var stepNb = vm.currentStep.number;
       // Go to previous step
-      vm.previousStep();
+      vm.previousStep(true);
       // Remove from array only if it is already in
       if (stepNb < (vm.recipe.steps.length+1)) {
         // Delete step
         vm.recipe.steps.splice(stepNb-1,1);
-        vm.stepsInfo.splice(stepNb,1);
         // Change step numbers
         vm.recipe.steps.map(function(step){
           if(step.number > stepNb-1) step.number--;
         });
-        vm.stepsInfo = vm.stepsInfo.map(function(step){
-          if(!isNaN(step) && step > stepNb-1) --step;
-          return step;
-        });
       }
+      // Remove one step in steps info
+      vm.stepsInfo.splice(vm.stepsInfo.length-2,1);
     }
 
-    function goTo(id){
+    function goTo(id,skipSave){
       var stepNb = vm.currentStep.number || 0;
-      // Check first page informations
-      if(stepNb == 0){
-        checkRecipeInformation();
-      } else {
-        checkStepInformation();
-      }
+      // Check errors
+      if(stepNb == 0) checkRecipeInformation();
+      if(stepNb > 0 && !skipSave) checkStepInformation();
 
       // Stop if there are some errors
       if(Object.keys(vm.errors).length){
@@ -162,7 +154,8 @@
       }
 
       // Save step
-      saveStep();
+      if(!skipSave) saveStep();
+
       // Show information
       if(id === 'I'){
         vm.stepInformation = true;
@@ -199,10 +192,10 @@
       goTo(++stepNb);
     }
 
-    function previousStep(){
+    function previousStep(skipSave){
       var stepNb = vm.currentStep.number || 0;
-      if(stepNb == 1) return goTo('I');
-      goTo(--stepNb);
+      if(stepNb == 1) return goTo('I',skipSave);
+      goTo(--stepNb,skipSave);
     }
 
     function saveStep(){
