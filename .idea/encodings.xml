@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/app/filters.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/game/create/create-quiz.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/game/create/create-quiz.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/game/create/create-quiz.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/game/display/display-quiz.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/game/display/display-quiz.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/game/display/display-quiz.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/game/search/search.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/game/search/search.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/game/search/search.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/layout/connexion/authentication.service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/layout/connexion/connexion.directive.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/layout/connexion/connexion.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/layout/connexion/connexion.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/layout/header/header.directive.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/layout/header/header.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/layout/header/header.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/layout/menu-left/menu-left.directive.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/layout/menu-left/menu-left.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/layout/menu-left/menu-left.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/login/login.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/login/login.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/login/login.service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/login/login.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/profile/edit/edit.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/profile/edit/edit.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/profile/edit/edit.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/profile/view/view.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/profile/view/view.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/profile/view/view.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/recipe/create/create.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/recipe/create/create.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/recipe/create/create.services.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/recipe/create/create.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/recipe/display/display.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/recipe/display/display.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/recipe/display/display.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/recipe/search/search.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/recipe/search/search.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/recipe/search/search.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/register/register.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/register/register.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/register/register.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/resources/games.resource.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/resources/recipes.resource.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/resources/users.resource.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/widgets/modal-gallery/modal-gallery.directive.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/widgets/modal-gallery/modal-gallery.service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/widgets/modal-gallery/modal-gallery.tpl.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/widgets/picture-upload/picture-upload.directive.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/widgets/picture-upload/picture-upload.service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/widgets/step-line/step-line.directive.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/widgets/step-line/step-line.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/widgets/token-interceptor/token-interceptor.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/widgets/user-activities/user-activities.directive.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/widgets/user-activities/user-activities.less" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/widgets/user-activities/user-activities.tpl.html" charset="UTF-8" />
+  </component>
+</project>

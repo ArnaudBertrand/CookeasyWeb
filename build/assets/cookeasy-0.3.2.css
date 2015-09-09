@@ -1,0 +1,1143 @@
+/**
+ * This is the main application stylesheet. It should include or import all
+ * stylesheets used throughout the application as this is the only stylesheet in
+ * the Grunt configuration that is automatically processed.
+ */
+/**
+ * This is our main variables file. We must include it last so we can overwrite any variable
+ * definitions in our imported stylesheets.
+ */
+/**
+ * These are the variables used throughout the application. This is where 
+ * overwrites that are not specific to components should be maintained.
+ */
+/**
+ * Typography-related.
+ */
+@font-face {
+  font-family: cookiedough;
+  src: url(fonts/cookiedough.otf);
+}
+/**
+ * Navigation
+ */
+/**
+ * Footer
+ **/
+footer {
+  background-color: #800000;
+}
+footer li {
+  display: inline-block;
+}
+/** Architecture **/
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(60deg, #fff0f5, #ffe4e1);
+  height: 100%;
+}
+#wrapper {
+  min-height: 100%;
+  margin-bottom: -100px;
+  position: relative;
+}
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+footer {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+footer > .container {
+  padding-bottom: 0;
+}
+/** Colors **/
+.bg-primary {
+  background-color: #800000;
+  color: #fff;
+}
+.bg-primary:disabled {
+  background-color: #600000;
+  color: #ddd;
+}
+.bg-valid {
+  background-color: green;
+  color: white;
+}
+.bg-cancel {
+  background-color: red;
+  color: white;
+}
+/** Forms **/
+.input-fw button,
+.input-fw input[type="email"],
+.input-fw input[type="password"],
+.input-fw input[type="text"],
+.input-fw textarea {
+  width: 100%;
+  margin: 3px 0;
+}
+.input-fw textarea {
+  resize: none;
+  height: 150px;
+}
+.input {
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  box-sizing: border-box;
+}
+.input[type="number"] {
+  width: 70px;
+}
+.input-error {
+  border-color: red !important;
+  box-shadow: 0 0 5px red !important;
+}
+.error-details {
+  color: #a94442;
+  font-style: italic;
+}
+/** Fa icons **/
+.fa.fa-star {
+  color: #daa520;
+}
+.fa.fa-star-o {
+  color: rgba(0, 0, 0, 0.5);
+}
+.fa.fa-heart {
+  color: #f00;
+}
+/** Lists **/
+.list-title {
+  margin-bottom: 5px;
+}
+.list {
+  list-style-type: none;
+  width: 100%;
+  margin-top: 5px;
+  padding-left: 0;
+}
+.list li,
+.list label {
+  border: 1px solid #ffcccc;
+  background: rgba(255, 200, 200, 0.3);
+  padding: 5px 10px;
+  font-size: 1.5em;
+  display: block;
+}
+.list li a {
+  font-style: italic;
+  cursor: pointer;
+  color: #483d8b;
+}
+/** Outlined Forms **/
+.outlined-form {
+  max-width: 300px;
+  margin: 30px auto;
+  padding: 15px;
+  background: #fff;
+  box-shadow: 0 0 1px #800;
+  border-radius: 5px;
+}
+.outlined-form > .form-group {
+  margin-bottom: 10px;
+}
+.outlined-form .input,
+.outlined-form .btn {
+  width: 100%;
+}
+.outlined-form > .form-actions {
+  text-align: center;
+}
+/** Box **/
+.box-white {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+/** Cursors **/
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.pointer-on {
+  cursor: pointer;
+}
+/** Buttons **/
+.btn {
+  padding: 6px 12px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.btn-submit:enabled {
+  background-color: #800000;
+  color: #fff;
+}
+.btn-valid {
+  background-color: #080;
+  color: #fff;
+}
+.btn-valid:disabled {
+  background-color: #0a0;
+}
+/** Widths **/
+.w-half {
+  width: 48% !important;
+}
+/** Transitions **/
+.t-normal {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.t-fast {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.r-180 {
+  -ms-transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+/** Masonry **/
+.masonry-brick {
+  display: none;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 5px;
+  border: 1px solid #753;
+  box-sizing: border-box;
+}
+.masonry-brick.loaded {
+  display: block;
+}
+.masonry-brick > img {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid #753;
+}
+.masonry-brick:hover {
+  transform: scale(1.02, 1.02);
+}
+.masonry-brick > .recipe-title {
+  background-color: #FFE4E1;
+  color: #800;
+}
+.masonry-brick > .recipe-title h2 {
+  margin: 0;
+  text-align: center;
+}
+.masonry-nb-3 {
+  width: 30%;
+}
+.masonry-nb-2 {
+  width: 45%;
+}
+/** Links **/
+a {
+  text-decoration: none;
+}
+/**
+ * Now that all app-wide styles have been applied, we can load the styles for
+ * all the submodules and components we are using. 
+ *
+ * TODO: In a later version of this boilerplate, I'd like to automate this.
+ */
+ce-connexion {
+  display: inline-block;
+}
+ce-connexion .user-connected {
+  position: relative;
+}
+ce-connexion .user-connected img {
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+}
+ce-connexion .user-connected .fa-caret-down {
+  vertical-align: top;
+  line-height: 54px;
+  margin-left: 5px;
+}
+ce-connexion .user-connected .user-info {
+  position: absolute;
+  right: 0;
+  z-index: 100;
+  width: 150px;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  box-shadow: 0 0 2px #000;
+}
+ce-connexion .user-connected .user-info h3 {
+  margin: 0 0 10px 0;
+}
+ce-connexion .user-connected .user-info ul {
+  list-style-type: none;
+  padding: 0;
+  display: inline-block;
+}
+ce-connexion .user-connected .user-info li {
+  display: inline-block;
+  margin: 0 10px;
+}
+ce-connexion .user-connected .user-info li i {
+  display: block;
+}
+.container.create-quiz {
+  max-width: 600px;
+}
+.create-quiz .info-page > h2 {
+  text-align: center;
+}
+.create-quiz .info-page > p {
+  margin: 10px 0 0 0;
+}
+.create-quiz .info-page .btn {
+  margin-top: 15px;
+}
+.create-quiz .answer-type p {
+  margin-bottom: 3px;
+}
+/** Delete answer **/
+.create-quiz .list li {
+  position: relative;
+}
+.create-quiz .list .fa-minus-square-o {
+  position: absolute;
+  right: 5px;
+}
+/** Answer veracity**/
+.create-quiz .answer-veracity {
+  text-align: center;
+  margin: 10px 0 10px 0;
+}
+.create-quiz .answer-veracity .fa-check {
+  background-color: #060;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  border-top: 2px solid #888;
+  border-left: 2px solid #888;
+}
+.create-quiz .answer-veracity .fa-close {
+  background-color: #600;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  border-top: 2px solid #888;
+  border-left: 2px solid #888;
+}
+/** Delete **/
+.create-quiz .navigation {
+  margin: 10px 0;
+}
+.create-quiz .navigation step-line {
+  display: inline-block;
+}
+.create-quiz .navigation .btn-submit {
+  vertical-align: top;
+}
+.display-quiz.container {
+  text-align: center;
+  max-width: 600px;
+}
+.display-quiz {
+  /** Progress **/
+  /** Question list **/
+  /** Score **/
+  /** Question title **/
+  /** Quiz finished **/
+  /** Answers **/
+}
+.display-quiz progress {
+  width: 100%;
+  height: 5px;
+}
+.display-quiz .list {
+  margin-bottom: 10px;
+  text-align: left;
+}
+@-webkit-keyframes shaky-p-70 {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.7);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+.display-quiz .score .fa-star.triggered {
+  -webkit-animation-name: shaky-p-70;
+  -webkit-animation-duration: 200ms;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: 2;
+  -webkit-animation-timing-function: linear;
+}
+.display-quiz .question-title {
+  text-align: left;
+}
+.display-quiz .quiz-finished {
+  /** Shaky stars **/
+}
+.display-quiz .quiz-finished .stats {
+  text-align: left;
+}
+.display-quiz .quiz-finished .fa-star {
+  -webkit-animation-name: shaky-p-70;
+  -webkit-animation-duration: 600ms;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+.display-quiz .hide-answer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.game-search {
+  max-width: 800px;
+  margin: 20px auto;
+}
+/** Game **/
+.game-search .game {
+  width: 45%;
+  display: inline-block;
+  margin: 5px;
+  padding: 5px;
+  box-shadow: 0 0 1px #333;
+  background-color: #fff;
+}
+.game-search .info,
+.game-search .logo {
+  display: inline-block;
+  vertical-align: top;
+}
+/** Logo **/
+.game-search .logo img {
+  height: 80px;
+  width: 80px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+}
+/** Info **/
+.game-search .info {
+  padding: 5px;
+}
+.game-search .info h3,
+.game-search .info p {
+  margin: 5px 0;
+}
+.game-search .info h3 {
+  border-bottom: 1px solid #ccc;
+}
+.game-search .info .nb-like .fa-heart {
+  color: #800;
+}
+header {
+  background-color: #800000;
+  border-bottom: 1px solid black;
+  padding: 10px 20px;
+}
+header nav {
+  max-width: 1024px;
+  color: #fff;
+  margin: 0 auto;
+}
+header nav .logo {
+  display: inline-block;
+  height: 54px;
+}
+header nav .logo .title {
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: top;
+  font-family: cookiedough, arial, sans-serif;
+  font-size: 2.5em;
+  font-weight: normal;
+  text-shadow: 1px 1px 2px #333;
+  color: #FFE4E1;
+  background: linear-gradient(to bottom right, #550000, #880011);
+  border-radius: 15px;
+  padding: 0 15px;
+  border: 1px solid #FFE4E1;
+}
+@-webkit-keyframes shaky {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.05);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+header nav .logo .title:hover {
+  -webkit-animation-name: shaky;
+  -webkit-animation-duration: 200ms;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: 2;
+  -webkit-animation-timing-function: linear;
+}
+header > nav > ul {
+  list-style-type: none;
+  display: inline-block;
+  text-align: right;
+  margin: 0;
+  vertical-align: top;
+  float: right;
+}
+header > nav .menu-item {
+  display: inline-block;
+  height: 54px;
+  vertical-align: top;
+}
+header > nav .menu-item > a {
+  height: 54px;
+  cursor: pointer;
+}
+header > nav .menu-item > .menu-item-btn {
+  border-radius: 6.2px;
+  display: inline-block;
+  position: relative;
+  height: 40px;
+  font-weight: 600;
+  margin-top: 5px;
+  color: #FFFFFF;
+}
+header > nav .menu-item > .menu-item-btn span {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+  line-height: 2.25em;
+  padding: 0 18px;
+  font-size: 17.5px;
+  letter-spacing: 0.5px;
+}
+header > nav .menu-item > .menu-item-btn.active {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.2);
+}
+/** Menu **/
+.menu-left {
+  position: fixed;
+  left: -240px;
+  top: 0;
+  z-index: 1000;
+  height: 100%;
+}
+.menu-left-content {
+  background: #ccc;
+  width: 240px;
+  height: 100%;
+  overflow-x: hidden;
+  display: inline-block;
+  border-right: 1px solid #500;
+}
+.menu-left-toggle {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 200px;
+  color: white;
+  background-color: #800000;
+  padding: 11px;
+  border-radius: 0 5px 5px 0;
+}
+.menu-left.menu-left-open {
+  left: 0;
+}
+.menu-left-content h3 {
+  color: #afdefa;
+  font-size: 1.9em;
+  padding: 20px;
+  margin: 0;
+  font-weight: 300;
+  background: #800000;
+}
+.menu-left-content a {
+  display: block;
+  color: black;
+  font-size: 1.1em;
+  font-weight: 300;
+  border-bottom: 1px solid #999;
+  padding: 1em;
+  text-decoration: none;
+}
+.menu-left-content a:hover {
+  background: #afdefa;
+}
+/** Push body **/
+.menu-left-push {
+  overflow-x: hidden;
+  position: relative;
+  left: 0;
+}
+.menu-left-push.menu-left-push-toright {
+  left: 240px;
+}
+/* Transitions */
+.menu-left,
+.menu-left-push {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.login {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+.login .form-group {
+  text-align: left;
+  margin-bottom: 10px;
+}
+/** Black background **/
+#modal {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  -webkit-transition: opacity 300ms ease-in;
+  -moz-transition: opacity 300ms ease-in;
+  transition: opacity 300ms ease-in;
+  pointer-events: none;
+  text-align: center;
+}
+/** Modal container **/
+#modal > div {
+  position: relative;
+  display: inline-block;
+  margin-top: 10%;
+  padding: 5px;
+  background: #fff;
+  background: -moz-linear-gradient(#ffffff, #999999);
+  background: -webkit-linear-gradient(#ffffff, #999999);
+  background: -o-linear-gradient(#ffffff, #999999);
+}
+/** Arrow for pictures **/
+#modal > div > .fa {
+  position: absolute;
+  top: 50%;
+  line-height: 0px;
+  color: #800000;
+  cursor: pointer;
+}
+#modal > div > .fa.fa-chevron-circle-left {
+  left: 5%;
+}
+#modal > div > .fa.fa-chevron-circle-right {
+  right: 5%;
+}
+/** Close button **/
+#modal > div .close {
+  background: #800000;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  right: 0px;
+  text-align: center;
+  top: 0px;
+  width: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-botton-left-radius: 100%;
+  -moz-border-bottom-left-radius: 100%;
+  border-bottom-left-radius: 100%;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+  cursor: pointer;
+  padding-bottom: 7px;
+  padding-left: 7px;
+}
+#modal > div .close:hover {
+  background: #b44;
+}
+.edit-profile {
+  margin-top: 15px;
+}
+.edit-profile .profile-picture {
+  position: relative;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+.edit-profile .profile-picture img {
+  width: 100%;
+  display: block;
+}
+.edit-profile .profile-info {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 50px;
+  max-width: 500px;
+  width: 100%;
+}
+.edit-profile .profile-info input[type="date"] {
+  width: 100%;
+}
+.edit-profile .profile-info > h2 {
+  color: #07b;
+  font-size: 2.5em;
+  margin: 0;
+}
+.edit-profile .profile-info > p {
+  margin: 2px 0;
+}
+.edit-profile > aside {
+  display: inline-block;
+  vertical-align: top;
+  width: 200px;
+}
+.edit-profile {
+  margin-top: 15px;
+}
+.edit-profile > aside {
+  display: inline-block;
+  vertical-align: top;
+  width: 200px;
+}
+.edit-profile .profile-picture {
+  position: relative;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+.edit-profile .profile-picture img {
+  width: 100%;
+  display: block;
+}
+.edit-profile .profile-info {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 50px;
+  max-width: 500px;
+  width: 100%;
+}
+.edit-profile .profile-info > h2 {
+  color: #07b;
+  font-size: 2.5em;
+  margin: 0;
+}
+.edit-profile .profile-info > p {
+  margin: 2px 0;
+}
+.container.create-recipe {
+  max-width: 700px;
+}
+/** Page title **/
+.create-recipe .title {
+  text-align: center;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 3em;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+/** Recipe title **/
+.create-recipe .recipe-title {
+  width: 100%;
+}
+.create-recipe .recipe-title input {
+  width: 100%;
+  font-size: 1.5em;
+  padding: 3px 5px;
+  border-radius: 5px;
+  border: 1px solid #ffcccc;
+}
+/** Recipe information **/
+.create-recipe p {
+  font-size: 1.2em;
+}
+.create-recipe .top-input {
+  background: rgba(255, 255, 255, 0);
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  box-shadow: inset 0 0;
+}
+.create-recipe .info {
+  font-style: italic;
+  font-size: 0.8em;
+}
+/** List adding **/
+.create-recipe .list-add button {
+  margin-left: 10px;
+}
+.create-recipe .ingredients input {
+  width: 20%;
+}
+.create-recipe .ingredients input.name {
+  width: 50%;
+}
+.create-recipe .utensils input {
+  width: 90%;
+}
+/** Next step button **/
+.create-recipe .next-step {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+}
+.create-recipe .next-step button {
+  width: 40%;
+  border-radius: 5px;
+  border: 1px solid #ffcccc;
+  font-size: 2em;
+}
+/** Step **/
+.create-recipe .previous,
+.create-recipe .next {
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+  vertical-align: top;
+  color: #800000;
+  margin-top: 120px;
+  cursor: pointer;
+}
+.create-recipe .step {
+  width: 65%;
+  display: inline-block;
+  text-align: center;
+}
+.create-recipe .step .timer {
+  text-align: left;
+  width: 80%;
+  margin: 5px auto;
+}
+.create-recipe .action textarea {
+  width: 80%;
+  resize: none;
+  height: 150px;
+  border-radius: 5px;
+  padding: 20px;
+}
+/** Final step **/
+.create-recipe .final-step {
+  text-align: center;
+}
+.create-recipe .final-step .btn-submit {
+  width: 100%;
+  margin-top: 20px;
+}
+/** Main **/
+.container.display-recipe {
+  max-width: 600px;
+  padding-top: 15px;
+}
+/** Recipe informations**/
+.display-recipe h1 {
+  text-align: center;
+}
+.display-recipe .recipe-info {
+  text-align: center;
+}
+.display-recipe .recipe-info span {
+  margin: 5px 10px;
+}
+.display-recipe .recipe-image {
+  width: 95%;
+  text-align: center;
+  margin: 0 auto;
+}
+.display-recipe .recipe-image img {
+  max-width: 90%;
+  border-radius: 15px;
+  margin-top: 10px;
+  border: 1px solid #bbb;
+  max-height: 400px;
+  cursor: pointer;
+}
+.display-recipe .recipe-create-info {
+  text-align: center;
+}
+/** Actions buttons **/
+.display-recipe .recipe-actions {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+}
+.display-recipe .recipe-actions button {
+  width: 40%;
+  border-radius: 5px;
+  border: 1px solid #ffcccc;
+  font-size: 2em;
+}
+/** Steps **/
+.display-recipe .previous,
+.display-recipe .next {
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+  vertical-align: top;
+  color: #800000;
+  margin-top: 100px;
+  cursor: pointer;
+}
+.display-recipe .step {
+  width: 65%;
+  display: inline-block;
+  text-align: center;
+}
+.display-recipe .step .action {
+  padding: 10px 15px;
+  border-radius: 15px;
+  background-color: #fff;
+  margin: 15px 0;
+  font-size: 1.5em;
+  border: 1px solid #c77;
+}
+.display-recipe .step img {
+  max-width: 100%;
+  border: 1px solid #c77;
+  border-radius: 5px;
+}
+.display-recipe .step .timer {
+  margin-top: 15px;
+}
+.display-recipe .step .timer > span {
+  background-color: #800000;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+}
+.display-recipe .step .timer > span > button {
+  background-color: rgba(255, 0, 0, 0);
+  border: 0;
+  color: white;
+}
+/** End of steps **/
+.after-steps {
+  text-align: center;
+}
+/** Thumbnails **/
+.display-recipe .thumbnail-area h3 {
+  margin-bottom: 5px;
+}
+.display-recipe .thumbnail-area .thumbnails {
+  height: 100px;
+  overflow: hidden;
+  animation: going 15s linear infinite;
+}
+.display-recipe .thumbnail-area .thumbnails .thumbnail {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin-right: 15px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.display-recipe .thumbnail-area .thumbnails .thumbnail img {
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  cursor: pointer;
+}
+/** Comments **/
+.display-recipe .comment-area {
+  width: 100%;
+  margin-top: 10px;
+}
+.display-recipe .add-comment {
+  text-align: center;
+  width: 100%;
+  border: 1px solid #a88;
+  padding: 10px 0;
+  background-color: #bdcdbd;
+}
+.display-recipe .add-comment h3 {
+  margin: 0 0 5px 0;
+}
+.display-recipe .add-comment .add-mark {
+  margin-bottom: 5px;
+  font-style: italic;
+}
+.display-recipe .add-comment textarea {
+  width: 90%;
+  height: 80px;
+  resize: none;
+  padding: 10px;
+}
+.display-recipe .add-comment button {
+  width: 50%;
+  border-radius: 5px;
+  border: 0;
+  padding: 10px 0;
+  margin-top: 5px;
+}
+.display-recipe .comments {
+  margin-top: 10px;
+  width: 100%;
+}
+.display-recipe .comment {
+  background-color: #e6e6e4;
+  padding: 10px;
+  display: table;
+  vertical-align: top;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+.display-recipe .comment .profile-picture {
+  margin: 0 10px 0 0;
+}
+.display-recipe .comment .profile-picture img {
+  width: 60px;
+  height: auto;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+.display-recipe .content {
+  width: 500px;
+  display: table-cell;
+  vertical-align: top;
+}
+.display-recipe .content .author {
+  text-decoration: none;
+}
+.display-recipe .content .message-container {
+  margin: 10px 0 0 0;
+  background: #fff;
+  border: 1px solid #d6d6d4;
+  padding: 10px;
+}
+.display-recipe .content .message-container .info-top {
+  border-bottom: 1px solid #d6d6d4;
+  font-style: italic;
+}
+.recipe-search {
+  text-align: center;
+  width: 100%;
+  margin: 10px auto;
+}
+.recipe-search .top {
+  text-align: left;
+  margin-bottom: 10px;
+}
+.signup {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+.signup .form-group {
+  text-align: left;
+  margin-bottom: 10px;
+}
+picture-upload .preview {
+  width: 100%;
+  margin-top: -15px;
+}
+picture-upload .preview img {
+  width: 100%;
+  display: block;
+}
+picture-upload .add-picture .drop-box {
+  margin-top: 15px;
+  padding-top: 15px;
+  border: 5px dashed #a55;
+  text-align: center;
+}
+picture-upload .add-picture .drop-box.dragover {
+  border: 5px dashed blue;
+}
+picture-upload .add-picture p {
+  margin-top: 0px;
+}
+step-line {
+  text-align: center;
+  margin: 0px auto;
+  display: block;
+}
+step-line circle {
+  fill: #FFC07F;
+  stroke: #999;
+}
+step-line circle.current {
+  stroke: black;
+  fill: #ddd;
+}
+step-line circle:not(.current):hover {
+  stroke: #FFC07F;
+  stroke-width: 7px;
+  pointer: cursor;
+}
+step-line line {
+  stroke-width: 2px;
+  stroke: #FFC07F;
+}
+step-line text {
+  font-weight: bold;
+  pointer-events: none;
+}
+user-activities > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+/** Top **/
+user-activities > ul > li > .top > .picture,
+user-activities > ul > li > .top > .info {
+  display: inline-block;
+  vertical-align: top;
+}
+user-activities > ul > li > .top > .picture > img {
+  height: 40px;
+  width: 40px;
+  border-radius: 2px;
+}
+/** Content **/
+user-activities > ul > li > .content {
+  text-align: center;
+}
+user-activities > ul > li > .content > img {
+  width: 100%;
+}
+user-activities > ul > li > .content > p {
+  text-align: left;
+}

@@ -1,0 +1,165 @@
+<div class="container display-recipe">
+  <!-- Step selector -->
+  <step-line graph="rcpDisplay.lineGraph" steps="rcpDisplay.stepsInfo"
+    ng-hide="rcpDisplay.showInfoPage" current="rcpDisplay.currentStep.number"
+    step-clicked="rcpDisplay.goTo"></step-line>
+
+  <!-- Informations -->
+  <div ng-show="rcpDisplay.showInfoPage">
+    <h1>{{rcpDisplay.recipe.name}}</h1>
+    <div class="recipe-info">
+      <span class="difficulty">
+        Difficulty:
+        <i ng-repeat="t in [] | range: rcpDisplay.recipe.difficulty" class="fa fa-star">
+        </i><i ng-repeat="t in [] | range: (5-rcpDisplay.recipe.difficulty)" class="fa fa-star-o"></i>
+      </span>
+      <span><i class="fa fa-clock-o"></i> {{rcpDisplay.recipe.time}} mins</span>
+      <span><i class="fa fa-cutlery"></i> {{rcpDisplay.recipe.nbPerson}} person(s)</span>
+    </div>
+    {{dcpDisplay.recipe.picture}}
+    <div class="recipe-image">
+      <img ng-src="{{rcpDisplay.recipe.picture.public_id | formatImg }}" ng-click="rcpDisplay.showMainPicture()" />
+    </div>
+    <div class="recipe-create-info">
+      Created on {{rcpDisplay.recipe.createdOn | date}} by
+      <a href ui-sref="profileView({username: rcpDisplay.recipe.author.username})">
+        {{rcpDisplay.recipe.author.username}}
+      </a>.
+    </div>
+
+    <!-- Utensils -->
+    <div ng-show="rcpDisplay.recipe.utensils.length">
+      <h3 class="list-title">Utensils</h3>
+      <ul class="list">
+        <li ng-repeat="utensil in rcpDisplay.recipe.utensils">
+          {{utensil}}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Ingredients -->
+    <div>
+      <h3 class="list-title">Ingredients</h3>
+      <ul class="list">
+        <li ng-repeat="ingredient in rcpDisplay.recipe.ingredients">
+          {{ingredient.qte}} <span ng-show="ingredient.unit">{{ingredient.unit }} of </span>{{ingredient.name}}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="list-title">Steps</h3>
+      <ul class="list">
+        <li ng-repeat="step in rcpDisplay.recipe.steps">
+          {{step.number}} | {{step.action}}
+        </li>
+      </ul>
+    </div>
+    <div class="recipe-actions">
+      <button class="bg-primary" ng-click="rcpDisplay.nextStep()">Start Recipe</button>
+    </div>
+  </div>
+
+  <!-- Steps -->
+  <div ng-show="rcpDisplay.showStep" class="current-step">
+    <div class="previous" ng-click="rcpDisplay.previousStep()">
+      <i class="fa fa-chevron-circle-left fa-3x"></i>
+    </div>
+    <div class="step">
+      <h2>Step {{rcpDisplay.currentStep.number}}</h2>
+      <div class="action">
+        {{rcpDisplay.currentStep.action}}
+      </div>
+      <img ng-repeat="step in rcpDisplay.recipe.steps"
+           ng-if="step.picture"
+           ng-show="rcpDisplay.currentStep.number == step.number"
+        ng-src="{{step.picture.public_id | formatImg}}" />
+      <div class="timer">
+        <span ng-show="rcpDisplay.currentStep.time">
+          {{((rcpDisplay.currentStep.time*60)-rcpDisplay.timerSecondsPassed) | secondsToDateTime | date:'HH:mm:ss' }}
+          <button ng-hide="rcpDisplay.timerRunning" ng-click="rcpDisplay.timerStart()"><i class="fa fa-play"></i></button>
+          <button ng-show="rcpDisplay.timerRunning" ng-click="rcpDisplay.timerPause()"><i class="fa fa-pause"></i></button>
+          <button ng-show="rcpDisplay.timerRunning" ng-click="rcpDisplay.timerStop()"><i class="fa fa-stop"></i></button>
+        </span>
+      </div>
+    </div>
+    <div class="next">
+      <i class="fa fa-chevron-circle-right fa-3x" ng-click="rcpDisplay.nextStep()"></i>
+    </div>
+  </div>
+
+  <!-- End of steps -->
+  <div class="after-steps" ng-show="rcpDisplay.stepsFinished">
+    <h2>Congratulations !</h2>
+    <!-- Like -->
+    <p ng-hide="rcpDisplay.liked">
+      Enjoyed that recipe?
+      <span class="pointer-on" ng-click="rcpDisplay.like()">
+        Like it
+        <i class="fa fa-heart"></i>
+      </span>
+    </p>
+    <p ng-show="rcpDisplay.liked">
+      Thanks !
+    </p>
+    <!-- Picture -->
+    <p>Or share a picture of your result with the community :)</p>
+    <picture-upload target-url="rcpDisplay.picturesUploadUrl"
+      target-tags="rcpDisplay.picturesUploadTags" callback="rcpDisplay.afterPictureUpload"
+      ng-hide="rcpDisplay.done"></picture-upload>
+    <div ng-show="rcpDisplay.done">
+      <p>Upload finished</p>
+      <h2>Thanks for sharing !</h2>
+    </div>
+  </div>
+
+  <!-- Thumbnails -->
+  <div ng-if="rcpDisplay.recipe.pictures.length" class="thumbnail-area"
+    ng-show="rcpDisplay.showInfoPage || rcpDisplay.stepsFinished">
+    <h3>Pictures of this recipe by other users:</h3>
+    <div class="thumbnails">
+      <div class="thumbnail" ng-click="rcpDisplay.openGallery($index)"
+        ng-repeat="pic in rcpDisplay.recipe.pictures | orderObjectBy:'createdOn':-1 track by $index">
+        <img ng-src="{{pic.miniThumbUrlSquare}}" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Comments -->
+  <div ng-show="rcpDisplay.showInfoPage || rcpDisplay.stepsFinished" class="comment-area">
+    <div class="add-comment" ng-hide="rcpDisplay.commentAdded">
+      <h3>Leave a comment</h3>
+      <div class="add-mark" ng-mouseleave="rcpDisplay.markEvent.mouseLeave()"
+        ng-mouseup="rcpDisplay.markEvent.mouseUp()">
+        Give a mark: <i ng-repeat="t in [] | range: rcpDisplay.tempMark" class="fa fa-star"
+          ng-mouseenter="rcpDisplay.markEvent.mouseEnter(false,$index)">
+          </i><i ng-repeat="t in [] | range: (5-rcpDisplay.tempMark)" class="fa fa-star-o"
+          ng-mouseenter="rcpDisplay.markEvent.mouseEnter(true,$index)"></i>
+      </div>
+      <textarea ng-model="rcpDisplay.currentComment" placeholder="Type your comment here..."></textarea>
+      <button class="bg-primary" ng-click="rcpDisplay.addComment()" ng-disabled="vm.commentAdding">Add comment</button>
+    </div>
+    <div class="comments">
+      <h3>Comments</h3>
+      <div class="comment" ng-repeat="comment in rcpDisplay.recipe.comments">
+        <a href="#" class="profile-picture">
+          <img ng-if="comment.author.picture" ng-src="{{comment.author.picture.public_id | formatImg:90:90 }}" />
+          <img ng-if="!comment.author.picture" src="assets/images/user-default.png" alt="game.title" />
+        </a>
+        <div class="content">
+          <a href ui-sref="profileView({username: comment.author.username})">
+            {{comment.author.username}}
+          </a>.
+          <div class="message-container">
+            <span ng-show="comment.mark" class="info-top">
+              <i ng-repeat="t in [] | range: comment.mark" class="fa fa-star">
+              </i><i ng-repeat="t in [] | range: (5-comment.mark)" class="fa fa-star-o">
+              </i> -
+            </span>
+            <span class="info-top">Added on {{comment.createdOn | date}}</span>
+            <p>{{comment.message}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

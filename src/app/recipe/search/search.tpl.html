@@ -1,0 +1,16 @@
+<div class="recipe-search">
+  <div class="top input-fw  ">
+    <input type="text" class="input" ng-model="rcpSearch.recipeToSearch" ng-change="rcpSearch.search()"
+           ng-model-options="{ debounce: 500 }" placeholder="Search for a recipe" />
+  </div>
+
+  <div masonry>
+    <div class="masonry-brick masonry-nb-3" ng-repeat="recipe in rcpSearch.recipes" ng-click="rcpSearch.displayRecipe(recipe._id)">
+      <img ng-src="{{ recipe.picture.public_id
+       | formatImg }}" alt="recipe.name" />
+      <div class="recipe-title">
+        <h2>{{recipe.name}}</h2>
+      </div>
+    </div>
+  </div>
+ </div>

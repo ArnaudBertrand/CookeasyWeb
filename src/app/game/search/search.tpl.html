@@ -1,0 +1,20 @@
+<div class="game-search">
+  <div class="top input-fw">
+    <input type="text" class="input" ng-model="gameSearch.gameToSearch" ng-change="gameSearch.search()"
+           ng-model-options="{ debounce: 500 }" placeholder="Search for a game" />
+  </div>
+
+  <div class="game pointer-on" ng-repeat="game in gameSearch.games" ng-click="gameSearch.displayGame(game)">
+    <div class="logo">
+      <img ng-if="game.picture" ng-src="{{ game.picture.public_id | formatImg }}" alt="game.title" />
+      <img ng-if="!game.picture" src="assets/images/quiz.png" alt="game.title" />
+    </div>
+    <div class="info">
+      <h3>{{game.title}}</h3>
+      <p class="nb-like">
+        {{game.likes.length}} <i class="fa fa-heart"></i>
+      </p>
+      <p>by {{game.author.username}} on {{game.updatedOn | date}}</p>
+    </div>
+  </div>
+</div>

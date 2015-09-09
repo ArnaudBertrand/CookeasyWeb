@@ -1,0 +1,28 @@
+<div class="edit-profile">
+  <aside>
+    <div class="profile-picture pointer-on" ng-click="profView.showProfilePicture()">
+      <img ng-if="profView.profile.picture" ng-src="{{profView.profile.picture.public_id | formatImg:200:200 }}" />
+      <img ng-if="!profView.profile.picture" src="assets/images/user-default.png" alt="game.title" />
+    </div>
+    <div class="input-fw" ng-if="profView.isProfile()">
+      <button class="btn pointer-on" ui-sref="profileEdit({username: profView.profile.username})">Edit profile</button>
+    </div>
+  </aside>
+  <div class="profile-info">
+    <h2>{{profView.profile.username}}</h2>
+    <hr />
+    <p>{{profView.profile.description}}</p>
+    <p ng-if="!profView.profile.description">This user hasn't completed his description.</p>
+    <hr />
+    <p>
+      <span ng-show="profView.profile.dob">{{profView.profile.dob | ageFromDob}} Ans</span>
+      <span ng-show="profView.profile.location"><i class="fa fa-map-marker"></i> {{profView.profile.location}}</span>
+    </p>
+
+    <div class="recent-activity">
+      <h3>Recent activity</h3>
+      <user-activities user-picture="profView.profile.picture.public_id" activities="profView.profile.activities"></user-activities>
+      <p ng-if="!profView.profile.activities.length">No recent activities.</p>
+    </div>
+  </div>
+</div>

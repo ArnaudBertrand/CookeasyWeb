@@ -1,0 +1,54 @@
+<div class="signup">
+  <h2>Join Cookeasy !</h2>
+  <form name="registerForm" ng-submit="register.register()" role="form" class="input-fw">
+    <div class="form-group">
+      <label>
+        Username
+        <input type="text" name="username" class="input" ng-model="register.user.username" ng-minlength="2"
+               placeholder="Choose a username" required />
+      </label>
+      <span ng-show="registerForm.username.$dirty && registerForm.username.$error.required" class="help-block">
+        Username required
+      </span>
+      <div ng-show="registerForm.email.$touched">
+        <span ng-show="registerForm.username.$error.required" class="help-block">Username</span>
+        <span ng-show="registerForm.username.$error.email" class="help-block">Username too short</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>
+        E-mail
+        <input type="email" name="email" class="input" ng-model="register.user.email"
+               placeholder="Enter your e-mail address" required />
+      </label>
+      <div ng-show="registerForm.email.$touched">
+        <span ng-show="registerForm.email.$error.required" class="help-block">E-mail is required</span>
+        <span ng-show="registerForm.email.$error.email" class="help-block">This is not a valid e-mail</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>
+        Password
+        <input type="password" name="password" class="input" ng-model="register.user.password" ng-minlength="6"
+               placeholder="Enter your password" required />
+      </label>
+      <div ng-show="registerForm.email.$touched">
+        <span ng-show="registerForm.password.$error.required" class="help-block">Password is required</span>
+        <span ng-show="registerForm.password.$error.minlength" class="help-block">Password too short</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>
+        <input type="checkbox" name="terms" ng-model="termsAccepted" />
+        I agree with <a ui-sref="terms">terms and conditions</a>
+      </label>
+    </div>
+    <div class="form-actions">
+      <div ng-show="signup.error" class="alert alert-danger">{{signup.error}}</div>
+      <button ng-type="submit" ng-disabled="registerForm.$invalid || dataLoading || !termsAccepted"
+              class="btn btn-submit">
+        Register
+      </button>
+    </div>
+  </form>
+</div>

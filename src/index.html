@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="AppCtrl">
+  <head>
+    <title ng-bind="pageTitle"></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+  </head>
+  <body class="menu-left-push" ng-class="{'menu-left-push-toright': bodyPush}">
+    <!-- Sliding menu on the left -->
+    <menu-left></menu-left>
+
+    <div id="wrapper">
+      <!-- Header -->
+      <ce-header></ce-header>
+
+      <div class="container">
+        <div ui-view="main"></div>
+      </div>
+
+      <footer>
+        <div class="container">
+        </div>
+      </footer>
+    </div>
+
+    <ce-modal-gallery></ce-modal-gallery>
+  </body>
+</html>

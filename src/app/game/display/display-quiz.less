@@ -1,0 +1,61 @@
+.display-quiz.container{
+  text-align: center;
+  max-width: 600px;
+}
+
+.display-quiz{
+  /** Progress **/
+  progress {
+    width: 100%;
+    height: 5px;
+  }
+
+  /** Question list **/
+  .list{
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  /** Score **/
+  @-webkit-keyframes shaky-p-70{
+    0% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(1.7); }
+    100% { -webkit-transform: scale(1); }
+  }
+  .score .fa-star.triggered{
+    -webkit-animation-name: shaky-p-70;
+    -webkit-animation-duration: 200ms;
+    -webkit-transform-origin:50% 50%;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-timing-function: linear;
+  }
+
+  /** Question title **/
+  .question-title{
+    text-align: left;
+  }
+
+  /** Quiz finished **/
+  .quiz-finished{
+    .stats{
+      text-align: left;
+    }
+
+    /** Shaky stars **/
+    .fa-star{
+      -webkit-animation-name: shaky-p-70;
+      -webkit-animation-duration: 600ms;
+      -webkit-transform-origin:50% 50%;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+    }
+  }
+
+  /** Answers **/
+  .hide-answer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+  }
+}

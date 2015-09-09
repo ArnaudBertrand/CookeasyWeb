@@ -1,0 +1,24 @@
+<div class="edit-profile">
+  <aside>
+    <div class="profile-picture">
+      <img ng-if="profEdit.profile.picture" ng-src="{{profEdit.profile.picture.public_id | formatImg:200:200 }}" />
+      <img ng-if="!profEdit.profile.picture" src="assets/images/user-default.png" alt="game.title" />
+    </div>
+    <div class="input-fw">
+      <button class="btn bg-valid pointer-on" ng-click="profEdit.edit()">Save</button>
+      <button class="btn bg-cancel pointer-on" ui-sref="profileView({username: profEdit.profile.username})">Cancel</button>
+    </div>
+  </aside>
+  <div class="profile-info input-fw">
+    <h2>{{profEdit.profile.username}}</h2>
+    <hr />
+    Full name:
+    <input type="text" ng-model="profEdit.profile.name" class="input" />
+    Date of birth:
+    <input type="date" ng-model="profEdit.dobFormatted" class="input" />
+    Location:
+    <input type="text" ng-model="profEdit.profile.location" class="input" />
+    Description
+    <textarea class="input" ng-model="profEdit.profile.description"></textarea>
+  </div>
+</div>
